@@ -1,0 +1,269 @@
+ctjsVersion: 3.2.0
+language: typescript
+notes: /* empty */
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  fittoscreen:
+    mode: scaleFit
+  pointer: {}
+  keyboard: {}
+  keyboard.polyfill: {}
+  sound.howler: {}
+textures:
+  - lastmod: 1680338625274
+    type: texture
+    name: Circle_02
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 65
+      - 65
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: itwMWKqpwqrqcCF.png
+    shape: circle
+    left: 65
+    right: 65
+    top: 65
+    bottom: 65
+    uid: twMWKqpwqrqcCF
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: \\192.168.178.1\NetzwerkSpeicher\INTENSO-1\Share\Jasmin\bubble2.png
+    r: 65
+  - lastmod: 1680338629426
+    type: texture
+    name: bg_bunny_01
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 1280
+    imgHeight: 768
+    width: 1280
+    height: 768
+    offx: 0
+    offy: 0
+    origname: iGBhd9c317f6WB3.png
+    shape: rect
+    left: 0
+    right: 1280
+    top: 0
+    bottom: 768
+    uid: GBhd9c317f6WB3
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: \\192.168.178.1\NetzwerkSpeicher\INTENSO-1\Share\Jasmin\bg_bunny_01.png
+    tiled: true
+skeletons: []
+templates:
+  - type: template
+    name: Bubble
+    depth: 0
+    texture: twMWKqpwqrqcCF
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: |-
+          this.age++;
+
+          let time = 180.0;
+          let scale = 1.0 - this.age / time;
+
+
+          this.scale.x = scale;
+          this.scale.y = scale;
+
+          if(this.age > time) {
+              this.kill = true;
+          }
+        arguments: {}
+      - eventKey: OnPointerClick
+        code: |-
+          ct.room.count++;
+          this.kill = true;
+        arguments: {}
+        lib: core
+      - eventKey: OnCreate
+        code: |-
+          this.age = 0;
+          console.log(this.scale);
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1680336579312
+    uid: RczW7FDRbW5wKq
+  - type: template
+    name: counter
+    depth: 0
+    texture: -1
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: this.textLabel.text = ct.room.count;
+        arguments: {}
+      - eventKey: OnCreate
+        code: >
+          this.textLabel = new PIXI.Text('Your text here',
+          ct.styles.get('counter')); 
+
+          this.addChild(this.textLabel);
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1680335964779
+    uid: wB6cpd81gjkHr7
+sounds: []
+styles:
+  - name: counter
+    uid: 3Fwj3jd2D5Qj6L
+    origname: sD5Qj6L
+    font:
+      family: sans-serif
+      size: 23
+      weight: '500'
+      italic: false
+      halign: left
+      lineHeight: 0
+      wrap: false
+    lastmod: 1680335647701
+    fill:
+      type: '1'
+fonts: []
+rooms:
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    simulate: true
+    width: 1280
+    height: 720
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: Room_Gp4WgW
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds:
+      - depth: 0
+        texture: GBhd9c317f6WB3
+        shiftX: 0
+        shiftY: 0
+        parallaxX: 1
+        parallaxY: 1
+        movementX: 0
+        movementY: 0
+        scaleX: 1
+        scaleY: 1
+        repeat: repeat
+    copies:
+      - x: 32
+        'y': 32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 2
+          'y': 2
+        rotation: 0
+        uid: wB6cpd81gjkHr7
+        exts: {}
+        customProperties: {}
+    tiles: []
+    extends: {}
+    lastmod: 1680338643422
+    events:
+      - eventKey: OnRoomStart
+        code: this.count = 0;
+        arguments: {}
+        lib: core
+      - eventKey: OnStep
+        code: |-
+          if (Math.random() < 1.0/60.0) {
+              let x = Math.random() * ct.camera.width;
+              let y = Math.random() * ct.camera.height;
+              ct.templates.copy('Bubble',x , y )
+          }
+        arguments: {}
+        lib: core
+    uid: g99Gb2BjGp4WgW
+actions: []
+emitterTandems: []
+scripts:
+  - name: roomStart
+    code: /* Use scripts to define frequent functions and import small libraries */
+startroom: -1
+contentTypes: []
+groups:
+  fonts: []
+  textures: []
+  styles: []
+  rooms: []
+  templates: []
+  sounds: []
+  emitterTandems: []
+settings:
+  authoring:
+    author: Jasmin Dammertz
+    site: ''
+    title: EGJ01 BubblePop
+    version:
+      - 0
+      - 0
+      - 0
+    versionPostfix: ''
+    appId: ''
+  rendering:
+    usePixiLegacy: true
+    maxFPS: 60
+    pixelatedrender: false
+    highDensity: true
+    desktopMode: maximized
+    hideCursor: false
+    mobileScreenOrientation: unspecified
+  export:
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+  branding:
+    accent: '#446adb'
+    invertPreloaderScheme: true
+    icon: -1
+    splashScreen: -1
+    forceSmoothIcons: false
+    forceSmoothSplashScreen: false
+    hideLoadingLogo: false
+  fps: 30
