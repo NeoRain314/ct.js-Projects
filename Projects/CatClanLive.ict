@@ -1,0 +1,7554 @@
+ctjsVersion: 3.2.0
+language: typescript
+notes: |+
+  /*
+
+          >>> ToDo <<<
+      > add Hares
+      > draw animation for Player (front + back)
+      > 'pick up Item/Prey' for Player
+      > add pose 'sit' + key (r)
+      > more Cats ()
+      > Heilkräuter
+
+         >>> Ideas <<< 
+      > better Grass Tile
+      > better talking Mode
+      > kill all Prey when too much
+
+
+
+
+
+
+               -d-o-n-e-
+          > animate Mouse
+          >Start Screen
+          > Camp Tiles
+              - fresh kill pile
+              - dens
+          > Mouse Counter
+
+
+
+
+
+
+
+  */
+
+
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  fittoscreen:
+    mode: scaleFit
+  pointer: {}
+  keyboard: {}
+  keyboard.polyfill: {}
+  sound.howler: {}
+  gamepad: {}
+textures:
+  - lastmod: 1703602753295
+    type: texture
+    name: Grass1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: ifFrrB1fbmLn1K9.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: fFrrB1fbmLn1K9
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Grass1.png'
+    tiled: true
+  - lastmod: 1677265481828
+    type: texture
+    name: Player_Sit
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 16
+      - 16
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: i9LJ9fhcJBHMMNJ.png
+    shape: rect
+    left: 11
+    right: 11
+    top: 12
+    bottom: 14
+    uid: 9LJ9fhcJBHMMNJ
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Player_Sit.png'
+  - lastmod: 1677265478627
+    type: texture
+    name: Player_Side
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 16
+      - 16
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: i388bJztjC7z9Rb.png
+    shape: rect
+    left: 16
+    right: 16
+    top: -2
+    bottom: 14
+    uid: 388bJztjC7z9Rb
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Player_Stand.png'
+  - lastmod: 1677046223925
+    type: texture
+    name: Rock1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 16
+      - 16
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: idHDd5bW31mggBw.png
+    shape: rect
+    left: 13
+    right: 13
+    top: 7
+    bottom: 10
+    uid: dHDd5bW31mggBw
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Rock1.png'
+  - lastmod: 1676972003226
+    type: texture
+    name: Tree1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iF21p3ngCfB48FW.png
+    shape: rect
+    left: -7
+    right: 23
+    top: -29
+    bottom: 32
+    uid: F21p3ngCfB48FW
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Tree1 (1).png'
+  - lastmod: 1676971785941
+    type: texture
+    name: LargeTree1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 16
+      - 32
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 64
+    width: 32
+    height: 64
+    offx: 0
+    offy: 0
+    origname: ippnrCpfQJqHQ5D.png
+    shape: rect
+    left: 16
+    right: 16
+    top: -25
+    bottom: 32
+    uid: ppnrCpfQJqHQ5D
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Tree\LargeTree1.png'
+  - lastmod: 1703602746750
+    type: texture
+    name: WalkTiles_Side
+    untill: 2
+    grid:
+      - 2
+      - 1
+    axis:
+      - 16
+      - 16
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: itw6fK3pmN8hq5B.png
+    shape: rect
+    left: 15
+    right: 15
+    top: 12
+    bottom: 14
+    uid: tw6fK3pmN8hq5B
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Player\WalkTiles.png'
+    tiled: false
+  - lastmod: 1677401701472
+    type: texture
+    name: Mouse1
+    untill: 2
+    grid:
+      - 1
+      - 2
+    axis:
+      - 16
+      - 16
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 64
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iKrCwbpq9MCFdCT.png
+    shape: rect
+    left: 14
+    right: 11
+    top: 2
+    bottom: 8
+    uid: KrCwbpq9MCFdCT
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Prey\Mouse1.png'
+    tiled: false
+  - lastmod: 1677055240823
+    type: texture
+    name: Flametail1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 16
+      - 16
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iJG9fT8P58f5rKH.png
+    shape: rect
+    left: 16
+    right: 16
+    top: 16
+    bottom: 16
+    uid: JG9fT8P58f5rKH
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\NPCs\Flametail1.png'
+  - lastmod: 1676980907253
+    type: texture
+    name: Border1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iL6GJ8MRDn47CNT.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: L6GJ8MRDn47CNT
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Borders\Border1.png'
+  - lastmod: 1677242719142
+    type: texture
+    name: Grass2
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iP7HCqJ6b5QN6n8.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: P7HCqJ6b5QN6n8
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Grass\Grass2.png'
+    tiled: true
+  - lastmod: 1676996605605
+    type: texture
+    name: MouseSpawn
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: in7c7qwHDzh57mn.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: n7c7qwHDzh57mn
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Prey\MouseSpawn.png'
+  - lastmod: 1681385135814
+    type: texture
+    name: Bush1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iDtRnDH1q4f7qRh.png
+    shape: rect
+    left: 0
+    right: 32
+    top: -7
+    bottom: 32
+    uid: DtRnDH1q4f7qRh
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Map\Bush1.png'
+  - lastmod: 1677046346370
+    type: texture
+    name: Nest
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: i473GkTRLjrKWrh.png
+    shape: rect
+    left: -1
+    right: 30
+    top: -4
+    bottom: 25
+    uid: 473GkTRLjrKWrh
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Map\Nest.png'
+    r: 16
+  - lastmod: 1677401890606
+    type: texture
+    name: FreshKillPile_0
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iB8rzMc5PzC2bWR.png
+    shape: rect
+    left: -2
+    right: 30
+    top: -6
+    bottom: 25
+    uid: B8rzMc5PzC2bWR
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Prey\FreshKillPile1\FreshKillPile_0.png'
+  - lastmod: 1680446219380
+    type: texture
+    name: FreshKillPile_1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iLt1HJM85w2W7BF.png
+    shape: rect
+    left: -2
+    right: 30
+    top: -6
+    bottom: 25
+    uid: Lt1HJM85w2W7BF
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Prey\FreshKillPile1\FreshKillPile_1.png'
+  - lastmod: 1677053653987
+    type: texture
+    name: LargeBush1
+    untill: 0
+    grid:
+      - 1
+      - 3
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 96
+    width: 64
+    height: 32
+    offx: 0
+    offy: 0
+    origname: icL6714cnbmhBdk.png
+    shape: rect
+    left: 0
+    right: 64
+    top: -22
+    bottom: 32
+    uid: cL6714cnbmhBdk
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Map\LargeBush2.png'
+    tiled: false
+  - lastmod: 1677401745130
+    type: texture
+    name: Hare1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 16
+      - 16
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: ifWPnG8tQpQpBg3.png
+    shape: rect
+    left: 16
+    right: 15
+    top: 14
+    bottom: 16
+    uid: fWPnG8tQpQpBg3
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Prey\Hare1.png'
+  - lastmod: 1677227684586
+    type: texture
+    name: HareSpawn
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: i1mdznT3CPwdd8C.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: 1mdznT3CPwdd8C
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Prey\Spawn\HareSpawn.png'
+  - lastmod: 1677244278159
+    type: texture
+    name: Player_Back
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 16
+      - 16
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iP75Rnftf6nTWCp.png
+    shape: rect
+    left: 8
+    right: 6
+    top: 12
+    bottom: 14
+    uid: P75Rnftf6nTWCp
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Player\Player_Back.png'
+  - lastmod: 1677234557123
+    type: texture
+    name: Player_Front
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 16
+      - 16
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: itmMbwBH7CnrKqp.png
+    shape: rect
+    left: 8
+    right: 6
+    top: 12
+    bottom: 14
+    uid: tmMbwBH7CnrKqp
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Player\Player_Front.png'
+  - lastmod: 1677233313103
+    type: texture
+    name: WalkTiles_Back
+    untill: 2
+    grid:
+      - 2
+      - 1
+    axis:
+      - 16
+      - 16
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: if7Jg61zBkRqKff.png
+    shape: rect
+    left: 8
+    right: 6
+    top: 12
+    bottom: 14
+    uid: f7Jg61zBkRqKff
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Player\WalkTiles_Back.png'
+  - lastmod: 1680448633435
+    type: texture
+    name: WalkTiles_Front
+    untill: 0
+    grid:
+      - 2
+      - 1
+    axis:
+      - 16
+      - 8
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: i1zPBLf2WJ3Nf7n.png
+    shape: rect
+    left: 8
+    right: 6
+    top: 4
+    bottom: 22
+    uid: 1zPBLf2WJ3Nf7n
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Player\WalkTiles_Front.png'
+    tiled: false
+  - lastmod: 1677265701089
+    type: texture
+    name: AreaTileset
+    untill: 0
+    grid:
+      - 8
+      - 8
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 256
+    imgHeight: 256
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iQ91D5fwMn1D39T.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: Q91D5fwMn1D39T
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\CatClanLive\Map\Old\AreaTileset.png'
+    tiled: false
+  - lastmod: 1677242734258
+    type: texture
+    name: Grass
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iFHwKC7BnwDkwDF.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: FHwKC7BnwDkwDF
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\Map\Grass.png'
+    tiled: true
+  - lastmod: 1677314111760
+    type: texture
+    name: Nightbreeze
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iG7hcd475DQP4LT.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: G7hcd475DQP4LT
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\CatClanLive\NPCs\Nightbreeze.png'
+  - lastmod: 1678605769781
+    type: texture
+    name: Empty
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iNHQN2RGpnWCFMN.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: NHQN2RGpnWCFMN
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\Downloads\Empty.png'
+  - lastmod: 1703614710498
+    type: texture
+    name: E_Button
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 15.8125
+      - 15.75
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: i9jkcdMMHBtgjmd.png
+    shape: circle
+    left: 16
+    right: 16
+    top: 16
+    bottom: 16
+    uid: 9jkcdMMHBtgjmd
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\CatClanLive\UI\E_Button.png'
+    r: 6
+skeletons: []
+templates:
+  - type: template
+    name: Player
+    depth: 0
+    texture: 388bJztjC7z9Rb
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: |
+
+          if(ct.actions.Sneak.down) {
+              this.movespeed = 0.3 * ct.delta;  
+              this.animationSpeed = 0.03;         // low speed
+          } else if(ct.actions.Run.down) {
+              this.movespeed = 2 * ct.delta;      // run speed
+              this.animationSpeed = 0.2;          
+          } else {
+              this.movespeed = 0.8 * ct.delta;    // norm speed
+              this.animationSpeed = 0.05;
+          }
+
+          if(ct.actions.Catch.pressed) {
+              // jump  -- run realy fast for a short time
+          }
+
+
+          if (ct.actions.MoveLeft.down) {
+              this.myDirecton = "left";
+              this.hspeed = -this.movespeed;           //move left
+              this.scale.x = 1;
+              if (this.tex !== 'WalkTiles_Side') { // animate
+                  this.tex = 'WalkTiles_Side';
+                  this.play();
+              }
+          } else if (ct.actions.MoveRight.down) {
+              this.myDirecton = "right";
+              this.hspeed = this.movespeed;          //move right
+              this.scale.x = -1;
+              if (this.tex !== 'WalkTiles_Side') { // animate
+                  this.tex = 'WalkTiles_Side';
+                  this.play();
+              }
+          } else {
+              this.hspeed = 0;
+              /*
+              if (this.myDirecton = "left"){
+                  this.tex = 'Player_Side'
+              } else if(this.myDirecton = "right") {
+                  this.tex = 'Player_Side'
+              }else if(this.myDirecton = "up") {
+                  this.tex = 'Player_Back'
+              }else {
+                  this.tex = 'Player_Front'
+              }
+              */
+          }
+
+          if (ct.actions.MoveUp.down) {
+              this.myDirecton = "up";
+              this.vspeed = -this.movespeed;           //move up
+              this.scale.x = 1;
+              if (this.tex !== 'WalkTiles_Back') { // animate
+                  this.tex = 'WalkTiles_Back';
+                  this.play();
+              }
+          } else if (ct.actions.MoveDown.down) {
+              this.myDirecton = "down";
+              this.vspeed = this.movespeed;            //move down
+              this.scale.x = 1;
+              if (this.tex !== 'WalkTiles_Front') { // animate
+                  this.tex = 'WalkTiles_Front';
+                  this.play();
+              }
+          } else {
+              this.vspeed = 0;
+            /*  if (this.myDirecton = "left"){
+                  this.tex = 'Player_Side'
+              } else if(this.myDirecton = "right") {
+                  this.tex = 'Player_Side'
+              }else if(this.myDirecton = "up") {
+                  this.tex = 'Player_Back'
+              }else {
+                  this.tex = 'Player_Front'
+              }
+              */
+          }
+
+
+          this.moveContinuousByAxes('Solid');
+        arguments: {}
+      - eventKey: OnCreate
+        code: |-
+          this.layer = 0;
+          this.hspeed = 0;
+          this.myDirecton;
+
+          ct.camera.follow = this;
+          ct.camera.borderX = 450;
+          ct.camera.borderY = 200;
+
+          this.animationSpeed = 0.1;
+
+          ct.room.player = this;
+          ct.room.playerName = "Oakstripe"
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1703751092870
+    uid: D6DPpMMk4mhhrk
+  - type: template
+    name: Grass
+    depth: 0
+    texture: P7HCqJ6b5QN6n8
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: ''
+        arguments: {}
+    extends: {}
+    lastmod: 1677053866678
+    uid: 2P97qMk691JHmC
+  - type: template
+    name: Rock
+    depth: 0
+    texture: dHDd5bW31mggBw
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: ''
+        arguments: {}
+      - eventKey: OnCreate
+        code: this.depth = 5;
+        arguments: {}
+        lib: core
+    extends:
+      cgroup: Solid
+    lastmod: 1677053933064
+    uid: jJfp18FHfRNq26
+  - type: template
+    name: Tree
+    depth: 0
+    texture: F21p3ngCfB48FW
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: ''
+        arguments: {}
+      - eventKey: OnCreate
+        code: this.depth = 5;
+        arguments: {}
+        lib: core
+    extends:
+      cgroup: Solid
+    lastmod: 1677312280773
+    uid: pgHpRDcPDjtLq3
+  - type: template
+    name: LargeTree
+    depth: 0
+    texture: ppnrCpfQJqHQ5D
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: this.depth = 5;
+        arguments: {}
+        lib: core
+    extends:
+      cgroup: Solid
+    lastmod: 1677393277675
+    uid: 8mBH96j9QkzdWH
+  - type: template
+    name: Mouse
+    depth: 0
+    texture: KrCwbpq9MCFdCT
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: |-
+          function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
+
+          this.moveContinuousByAxes('Solid');
+          this.speed = getRandomInt(5) /2;
+          this.direction += getRandomInt(5) * 2;
+
+          this.animationSpeed = 0.1;
+          this.play();
+
+          if (ct.actions.Interact.down) {
+              // if mouses > 0, then eat a mouse (remove from mice counter)
+          }
+        arguments: {}
+      - eventKey: collisionTemplate
+        code: |-
+          if (ct.actions.Catch.down) {
+              this.kill = true;
+              ct.room.collectedPrey ++;
+          }
+        arguments:
+          template: D6DPpMMk4mhhrk
+        lib: place
+      - eventKey: OnCreate
+        code: |-
+          this.depth = -5;
+
+          this.speed = 1;
+          this.direction =90;
+        arguments: {}
+        lib: core
+      - eventKey: collisionCGroup
+        code: |-
+          this.direction *= -1 
+          this.speed = 5
+          this.move();
+        arguments:
+          group: Solid
+        lib: place
+    extends: {}
+    lastmod: 1690020677280
+    uid: CCRb7GWRbGQ3p8
+  - type: template
+    name: Flametail
+    depth: 0
+    texture: JG9fT8P58f5rKH
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnPointerClick
+        code: |-
+          /*
+          ct.room.text = "Flametail: " + this.talkText[this.talk];
+
+          if (this.talk < 4){     // tutorial part 1 (woods)
+              this.place = "woods";
+              this.talk++;    
+          } else if (this.talk == 4) {
+              console.log(ct.room.collectedPrey);
+              if (ct.room.collectedPrey >= 3) {
+                  this.talk++;   // tutorial part 2 (to the camp)
+              }
+          } else if(this.talk < 7) {
+                  this.talk++;
+          } else if (this.talk == 7) {
+              this.place = "preyPile";
+              this.talk++;
+          } else if (this.talk < 11) {
+              this.talk++;
+          }
+
+          */
+
+
+
+          /* WALK TEST!!! (half working??)
+          while ( this.x < target_x){
+                  this.hspeed = 5;
+                  this.move();
+              }
+          */
+        arguments: {}
+        lib: core
+      - eventKey: OnCreate
+        code: >-
+          this.depth = -1;
+
+          this.talk = 0;
+
+          ct.room.npc_flametail = this;
+
+
+          this.place = "woods";
+
+          this.placesOnMap = [
+
+          /*woods-X*/ 160,   //0
+
+          /*woods-Y*/ 96,    //1
+
+          /*camp-X*/  0,     //2
+
+          /*camp-Y*/ -160,   //3
+
+          /*preyPile-X*/  -128,     //4
+
+          /*preyPile-Y*/ -64,   //5
+
+          ]
+
+
+          this.talkText = [
+
+          /*00*/    "Hey! I am Flametail!  (...)"
+          ,                                                                 
+
+          /*01*/    "You can walk around with 'W, A, S, D'!  (...)",
+
+          /*02*/    "If you see some Prey jump/run at it and press space to
+          catch it!  (...)",
+
+          /*03*/    "Prey spawns almost everywhere, but a mouse for example you
+          find mostly in the woods!  (...)",
+
+          /*04*/    "Come again to me when you catched 3 mice!",
+
+
+          /*05*/    "Nice! I see you got it how to hunt for prey! (...)",
+
+          /*06*/    "Now lets see, that we bring this prey back to our camp!
+          (...)",
+
+          /*07*/    "Follow me, the Darkclan camp isn't far away!",
+
+
+          /*08*/    "You can interact with things or Cats with 'E'. Try it out
+          and put your prey in the fresh kill pile!",
+
+
+          /*09*/    "Perfect! Warriors have to hunt for their clan!  (...)",
+
+          /*10*/    "If you feel hungry you can get the mouse again with
+          pressing E  (...)",
+
+          /*11*/    "('E' is mostly for interact with other cats or objects,
+          Space to pick up something.)",
+
+          /*12*/    "But always remember, that Elders and Queens must be fed
+          before apprentices and warriors (...)",  //Warrior Code 4
+
+          /*13*/    "Ok, now just look a little bit around in the camp and try
+          talking with some other cats",
+
+
+          /*14*/    "___ (...)",
+
+          ]
+
+           
+        arguments: {}
+        lib: core
+      - eventKey: OnDraw
+        code: |
+          if (this.place == "woods"){
+              this.scale.x = 1;
+              this.x = this.placesOnMap[0];
+              this.y = this.placesOnMap[1];
+          } else if(this.place == "camp") {
+              this.x = this.placesOnMap[2];
+              this.y = this.placesOnMap[3];
+          } else if(this.place == "preyPile") {
+              this.scale.x = -1;
+              this.x = this.placesOnMap[4];
+              this.y = this.placesOnMap[5];
+          }
+        arguments: {}
+        lib: core
+      - eventKey: collisionTemplate
+        code: |-
+          ct.room.select_button.selected = this;
+          ct.room.select_button.button = "E";
+
+          if(ct.actions.Interact.pressed) {
+              ct.room.text = "Flametail: " + this.talkText[this.talk];
+
+              if (this.talk < 4){     // tutorial part 1 (woods)
+                  this.place = "woods";
+                  this.talk++;    
+              } else if (this.talk == 4) {
+                  console.log(ct.room.collectedPrey);
+                  if (ct.room.collectedPrey >= 3) {
+                      this.talk++;   // tutorial part 2 (to the camp)
+                  }
+              } else if(this.talk < 7) {
+                      this.talk++;
+              } else if (this.talk == 7) {
+                  this.place = "preyPile";
+                  this.talk++;
+              } else if (this.talk == 8) {
+                  if (ct.room.prey >= 3)
+                  this.talk++;
+              } else if (this.talk < 13) {
+                  if (this.talk == 12) {
+                      // add warrior code at place 3 (-1) 
+                       
+                  }
+                  this.talk++
+              } 
+
+          }
+        arguments:
+          template: D6DPpMMk4mhhrk
+        lib: place
+    extends:
+      cgroup: NPC
+    lastmod: 1703750902288
+    uid: 7b7LqL6g76G3z3
+    blendMode: normal
+  - type: template
+    name: Text
+    depth: 0
+    texture: -1
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |
+          this.textLabel = new PIXI.Text("", ct.styles.get('Text')); 
+          this.addChild(this.textLabel);
+
+          this.depth = 10;
+        arguments: {}
+        lib: core
+      - eventKey: OnDraw
+        code: this.textLabel.text = ct.room.text + " ⨂";
+        arguments: {}
+        lib: core
+      - eventKey: OnPointerClick
+        code: ct.room.text = "";
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1680589673149
+    uid: zgtNr8PhmqGNWH
+  - type: template
+    name: PreyCounter
+    depth: 0
+    texture: KrCwbpq9MCFdCT
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: ''
+        arguments: {}
+      - eventKey: OnCreate
+        code: >-
+          this.text = new PIXI.Text(ct.room.lives,
+          ct.styles.get('HeartCounter'));
+
+          this.text.x = 16;
+
+          this.text.anchor.y = 0.5;
+
+
+          this.addChild(this.text);
+
+
+          this.depth = 10;
+        arguments: {}
+        lib: core
+      - eventKey: OnDraw
+        code: this.text.text = ct.room.collectedPrey  + "";
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1677398449280
+    uid: drGmqfKNLT92jN
+  - type: template
+    name: GameBorder
+    depth: 0
+    texture: L6GJ8MRDn47CNT
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: ''
+        arguments: {}
+      - eventKey: OnCreate
+        code: |
+          this.depth = 10;
+        arguments: {}
+        lib: core
+    extends:
+      cgroup: Solid
+    lastmod: 1677053856421
+    uid: G1hG8cTk9H6G2R
+  - type: template
+    name: MouseSpawner
+    depth: 0
+    texture: n7c7qwHDzh57mn
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: false
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: >-
+          function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
+
+
+
+          if (getRandomInt(60* 45) === 1) {
+              ct.templates.copy('Mouse', this.x, this.y);
+              
+          }
+
+
+          /*
+
+          let i = ct.templates.list['mouse']; //how many mouses do already
+          exist?
+              console.log(i);
+              if(i && i.length < 10) { //only spawn new mouses if there arent too much! (maybe later just erase too old ones, idk...)
+                  
+              } 
+          */
+        arguments: {}
+    extends: {}
+    lastmod: 1680434989876
+    uid: Mgw6Rc2K58pk1P
+  - type: template
+    name: MenueText
+    depth: 0
+    texture: -1
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: >
+          this.textLabel = new PIXI.Text(' >>> START <<< ',
+          ct.styles.get('MenueText')); 
+
+          this.addChild(this.textLabel);
+
+          this.depth = 10;
+        arguments: {}
+        lib: core
+      - eventKey: OnPointerClick
+        code: ct.rooms.switch('Map1');
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1677263820294
+    uid: QFcgCfp5h9Cgqk
+  - type: template
+    name: Bush
+    depth: 0
+    texture: DtRnDH1q4f7qRh
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: this.depth = 5;
+        arguments: {}
+        lib: core
+    extends:
+      cgroup: Solid
+    lastmod: 1680432575397
+    uid: 996M4Gk4f261B5
+  - type: template
+    name: Nest
+    depth: 0
+    texture: 473GkTRLjrKWrh
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: this.depth = -9;
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1678106083734
+    uid: CgJpDJCb4mBLDM
+  - type: template
+    name: FreshKillPile
+    depth: 0
+    texture: B8rzMc5PzC2bWR
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: |-
+          if (ct.room.prey > 0) {
+              this.tex = 'FreshKillPile_1'; // -> there is prey in the kill pile
+          } else {
+              this.tex = 'FreshKillPile_0'; // -> there is no prey in the kill pile
+          }
+
+          //if(this.coll)
+        arguments: {}
+      - eventKey: OnCreate
+        code: |
+          this.depth = -9;
+        arguments: {}
+        lib: core
+      - eventKey: collisionTemplate
+        code: |-
+          ct.room.select_button.selected = this;
+          ct.room.select_button.button = "Space";
+
+          if (ct.actions.Interact.down) {
+              ct.room.prey += ct.room.collectedPrey;
+              ct.room.collectedPrey = 0;
+              ct.room.holdingItem = "empty";
+              if (ct.room.prey == 1) {
+                  // because of grammer :D
+                  ct.room.text = "There is " + ct.room.prey + " piece of prey in the Fresh kill pile!";
+              } else {
+                      ct.room.text = "There are " + ct.room.prey + " pieces of prey in the Fresh kill pile!";
+              }
+
+
+          } else if(ct.actions.Catch.pressed) {
+              if (ct.room.prey > 0){
+              //    ct.room.holdingItem = "mouse";
+                  ct.room.prey --;
+                  ct.room.collectedPrey ++;
+                  ct.room.text = "There are now " + ct.room.prey + " pieces of prey in the Fresh kill pile!";
+              } else {
+                  ct.room.text = "There is no prey in the Fresh kill pile!"
+              }
+          }
+        arguments:
+          template: D6DPpMMk4mhhrk
+        lib: place
+    extends: {}
+    lastmod: 1703750937667
+    uid: HBJFnwHNn35L7W
+  - type: template
+    name: Debug
+    depth: 0
+    texture: -1
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |+
+          this.textLabel = new PIXI.Text("", ct.styles.get('Text')); 
+          this.addChild(this.textLabel);
+
+          this.depth = 10;
+
+        arguments: {}
+        lib: core
+      - eventKey: OnDraw
+        code: |
+          this.debugText = [
+              "Mice catched: " + ct.room.collectedPrey + " ; ",
+              "Mice: " + ct.room.prey + " ; ",
+              "Flametail talk: " + ct.room.npc_flametail.talk + ";",
+              "Player X: " + Math.round(ct.room.player.x) + ";",
+              "Player Y: " + Math.round(ct.room.player.y) + ";",
+              "Item: " + ct.room.holdingItem + ";",
+          //  "___: " + ___ + ";",
+          ]
+
+          this.textLabel.text = "";
+
+          for (let i = 0; i < this.debugText.length; i++) {
+              this.textLabel.text += this.debugText[i] + "";
+          }
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1680432703075
+    uid: DLPgfhNJQFrkQz
+  - type: template
+    name: Hare
+    depth: 0
+    texture: fWPnG8tQpQpBg3
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: |-
+          function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
+
+          this.moveContinuousByAxes('Solid');
+          this.speed = getRandomInt(5) /2;
+          this.direction += getRandomInt(5) * 2;
+
+          this.animationSpeed = 0.1;
+          this.play();
+
+          if (ct.actions.Interact.down) {
+              // if mouses > 0, then eat a mouse (remove from mice counter)
+          }
+        arguments: {}
+      - eventKey: collisionTemplate
+        code: |-
+          if (ct.actions.Catch.down) {
+              this.kill = true;
+              ct.room.collectedPrey ++;
+          }
+        arguments:
+          template: D6DPpMMk4mhhrk
+        lib: place
+      - eventKey: OnCreate
+        code: |-
+          this.depth = -5;
+
+          this.speed = 1;
+          this.direction =90;
+        arguments: {}
+        lib: core
+      - eventKey: collisionCGroup
+        code: |-
+          this.direction *= -1 
+          this.speed = 5
+          this.move();
+        arguments:
+          group: Solid
+        lib: place
+    extends: {}
+    lastmod: 1677228256099
+    uid: R6QN62QDPkG27W
+  - type: template
+    name: HareSpawner
+    depth: 0
+    texture: 1mdznT3CPwdd8C
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: false
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: |-
+          function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
+
+
+          if (getRandomInt(60* 60) === 1) {
+              ct.templates.copy('Hare', this.x, this.y);
+          }
+        arguments: {}
+    extends: {}
+    lastmod: 1680430579488
+    uid: dzQDRL7njbPhqh
+  - type: template
+    name: WarriorCode
+    depth: 0
+    texture: L6GJ8MRDn47CNT
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnPointerClick
+        code: |-
+
+          for (this.i = 0; this.i < ct.room.warriorCode.length; this.i++) {
+              console.log(this.i);
+              if (ct.room.foundWarriorCode[this.i] == 1) {
+                  this.textLabel.text = ct.room.warriorCode[this.i]
+                  console.log(this.text);
+              }
+          }
+        arguments: {}
+        lib: core
+      - eventKey: OnCreate
+        code: |-
+          this.text = "hello";
+          this.textLabel = new PIXI.Text(this.text, ct.styles.get('easyFont')); 
+
+          this.text.x = 16;
+          this.text.anchor.y = 0.5;
+
+          this.depth = 10;
+
+          this.addChild(this.textLabel);
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1677231841565
+    uid: wtRq8C19312wTh
+  - type: template
+    name: Nightbreeze
+    depth: 0
+    texture: G7hcd475DQP4LT
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: >-
+          this.depth = -1;
+
+          this.talk = 0;
+
+          ct.room.npc_nightbreeze = this;
+
+
+          this.place = "camp1";
+
+
+
+          this.talkText = [
+
+          /*00*/    "Hey!",
+
+          /*01*/    "I love it to run around in the woods, its just so
+          relaxing",
+
+          /*02*/    "(...)",
+
+          ]
+        arguments: {}
+        lib: core
+      - eventKey: OnDraw
+        code: |
+          if (this.place == "woods"){
+              this.scale.x = 1;
+              this.x = 832;
+              this.y = 256;
+          } else if(this.place == "camp1") {
+              this.x = 0;
+              this.y = -128;
+          } 
+        arguments: {}
+        lib: core
+      - eventKey: collisionTemplate
+        code: |-
+          ct.room.select_button.selected = this;
+          ct.room.select_button.button = "E";
+
+          if(ct.actions.Interact.pressed) {
+              ct.room.text = "Nightbreeze: " + this.talkText[this.talk];
+
+              if (this.talk < 2){
+                  this.talk++;    
+              }
+          }
+        arguments:
+          template: D6DPpMMk4mhhrk
+        lib: place
+    extends: {}
+    lastmod: 1703743934095
+    uid: 1Cjt792rbbCPM2
+  - type: template
+    name: Prey
+    depth: 0
+    texture: -1
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: |2-
+           //checks interactions
+          if(ct.room.collectedPrey == 0){
+              //nothing holding
+              ct.room.holdingItem = ""; 
+          } else if(ct.actions.Interact.down){
+              //holding mouse
+              if(ct.room.holdingItem !== "mouse"){
+                  ct.room.holdingItem = "mouse";
+              }
+          } else if(ct.actions.Catch.down && ct.room.holdingItem == "mouse"){
+                  this.placed = true;
+                  ct.room.collectedPrey--;
+              }
+
+
+
+              
+          // if holding then go to cat and 
+          if (ct.room.holdingItem == "mouse") {
+              this.tex = "Mouse1";
+              if (ct.room.player.direction < 180) { 
+                      this.x = ct.room.player.x +10;
+                      this.y = ct.room.player.y ;
+                  } else {
+                      this.x = ct.room.player.x -10;
+                      this.y = ct.room.player.y ;
+                  }
+          } else{
+              this.tex = "Empty";
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          //this.eat
+           
+
+                  
+          /*
+          if(this.eat = false) {
+                  //holding the item
+                  if (ct.room.player.direction < 180) { 
+                      this.x = ct.room.player.x +10;
+                      this.y = ct.room.player.y ;
+                  } else {
+                      this.x = ct.room.player.x -10;
+                      this.y = ct.room.player.y ;
+                  }
+                  if (ct.actions.Catch.down) {
+                      if(this.eat = false) {
+                      if (ct.room.player.direction < 180) {
+                          this.x = ct.room.player.x +10;
+                          this.y = ct.room.player.y +10;
+                      } else {
+                          this.x = ct.room.player.x -10;
+                          this.y = ct.room.player.y +10;
+                      }
+                      this.eat = true;
+                  } else if(this.eat) {
+                      if (ct.room.player.direction < 180) {
+                          this.x = ct.room.player.x +10;
+                          this.y = ct.room.player.y +10;
+                      } else {
+                          this.x = this.x;
+                          this.y = this.y;
+                      }
+                  }
+
+                  }  
+              }
+          */
+
+
+          /*
+          if (this.placed == false) {
+
+              }
+              if (ct.room.player.direction < 180) {
+                      this.x = ct.room.player.x +10;
+                      this.y = ct.room.player.y ;
+                  } else {
+                      this.x = ct.room.player.x -10;
+                      this.y = ct.room.player.y ;
+                  }
+
+              if(ct.actions.Catch.down && this.placed == false){}
+              */
+        arguments: {}
+      - eventKey: OnActionPress
+        code: |+
+          /*
+          if(ct.room.holdingItem == "mouse") {
+              this.tex = "Mouse1";
+          }else if(ct.room.holdingItem == "hare") {
+              this.tex = "Hare1"
+          } else {
+              this.tex = "Empty"
+          }
+          */
+
+
+        arguments:
+          action: Catch
+        lib: core
+      - eventKey: OnCreate
+        code: |-
+          this.eat = false;
+          this.placed = false;
+          ct.room.holdingPrey = this;
+        arguments: {}
+        lib: core
+      - eventKey: collisionTemplate
+        code: ''
+        arguments:
+          template: D6DPpMMk4mhhrk
+        lib: place
+    extends: {}
+    lastmod: 1680435003470
+    uid: rDjNdR39Cd8frz
+  - type: template
+    name: Select_Button
+    depth: 0
+    texture: 9jkcdMMHBtgjmd
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |
+          ct.room.select_button = this;
+          this.selected = this;
+          this.button = "E";
+        arguments: {}
+        lib: core
+      - eventKey: OnStep
+        code: |-
+          if(this.button === "E") this.tex = "E_Button";
+          if(this.button === "Space") this.tex = "Hare1";
+          this.x = this.selected.x;
+          this.y = this.selected.y - 20;
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1703769579188
+    uid: 2Dpw13L58G6BP4
+sounds: []
+styles:
+  - name: Names
+    uid: gWH5PgdbwnLGJd
+    origname: swnLGJd
+    font:
+      family: sans-serif
+      size: 13
+      weight: '100'
+      italic: false
+      halign: left
+      wrap: true
+      lineHeight: 0
+    fill:
+      type: '0'
+      color1: '#FF2121'
+      color: '#FFFFFF'
+    lastmod: 1677000196479
+  - name: Text
+    uid: 44nkkggFCjM1nf
+    origname: sCjM1nf
+    font:
+      family: sans-serif
+      size: 12
+      weight: 400
+      italic: false
+      halign: left
+    shadow:
+      color: '#FFFFFF'
+      x: 1
+      'y': 0
+      blur: 34
+    lastmod: 1677008622980
+  - name: MenueText
+    uid: hBmppCFwbmbW1T
+    origname: sbmbW1T
+    font:
+      family: sans-serif
+      size: 40
+      weight: '400'
+      italic: false
+      wrap: false
+      lineHeight: 0
+      halign: left
+    fill:
+      type: '1'
+      color1: '#094514'
+      color2: '#083B11'
+    stroke:
+      color: '#0F7021'
+      weight: 13
+    shadow:
+      color: '#BABABA'
+      x: 0
+      'y': 0
+      blur: 7
+    lastmod: 1677000154247
+  - name: easyFont
+    uid: NPmz4r9kbR2nPf
+    origname: sbR2nPf
+    font:
+      family: sans-serif
+      size: 14
+      weight: '100'
+      italic: false
+      wrap: false
+    stroke:
+      color: '#000000'
+      weight: 0.3
+    lastmod: 1677230236526
+fonts: []
+rooms:
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 32
+    gridY: 32
+    diagonalGrid: false
+    simulate: true
+    width: 512
+    height: 288
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: Map1
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds:
+      - depth: -10
+        texture: FHwKC7BnwDkwDF
+        shiftX: 0
+        shiftY: 0
+        parallaxX: 1
+        parallaxY: 1
+        movementX: 0
+        movementY: 0
+        scaleX: 0.4
+        scaleY: 0.4
+        repeat: repeat
+    copies:
+      - x: -32
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: D6DPpMMk4mhhrk
+        exts: {}
+        customProperties:
+          newProperty1: ''
+          newProperty2: ''
+          newProperty3: ''
+          newProperty4: ''
+      - x: 0
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 160
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 256
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 416
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 288
+        'y': 224
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 96
+        'y': 320
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 352
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 256
+        'y': 320
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 480
+        'y': 128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 448
+        'y': 288
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 192
+        'y': 288
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 352
+        'y': 320
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 352
+        'y': 96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 256
+        'y': 160
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 448
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 288
+        'y': 32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 192
+        'y': 96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 96
+        'y': 224
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 512
+        'y': 256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 544
+        'y': 160
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 128
+        'y': 384
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 384
+        'y': 352
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 32
+        'y': 320
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 544
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 384
+        'y': 0
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 352
+        'y': 256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 320
+        'y': 128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 32
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 192
+        'y': 0
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 160
+        'y': 320
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: 192
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: 96
+        'y': 0
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: 480
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: 448
+        'y': 0
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: 288
+        'y': 416
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: 320
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: Mgw6Rc2K58pk1P
+        exts: {}
+        customProperties: {}
+      - x: 448
+        'y': 0
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: Mgw6Rc2K58pk1P
+        exts: {}
+        customProperties: {}
+      - x: -128
+        'y': 32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CgJpDJCb4mBLDM
+        exts: {}
+        customProperties: {}
+      - x: -96
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CgJpDJCb4mBLDM
+        exts: {}
+        customProperties: {}
+      - x: 0
+        'y': -160
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CgJpDJCb4mBLDM
+        exts: {}
+        customProperties: {}
+      - x: 32
+        'y': -192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CgJpDJCb4mBLDM
+        exts: {}
+        customProperties: {}
+      - x: -32
+        'y': -256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 32
+        'y': -224
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 64
+        'y': -160
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -64
+        'y': -224
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -64
+        'y': -192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: -64
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: -64
+        'y': 96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -112
+        'y': 96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 128
+        'y': 96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 7b7LqL6g76G3z3
+        exts: {}
+        customProperties: {}
+      - x: 576
+        'y': 320
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: dzQDRL7njbPhqh
+        exts: {}
+        customProperties: {}
+      - x: 224
+        'y': 416
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 608
+        'y': 256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 672
+        'y': 128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 96
+        'y': 416
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 288
+        'y': 480
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 320
+        'y': 352
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 448
+        'y': 384
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 544
+        'y': 384
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 384
+        'y': 480
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 704
+        'y': 384
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 768
+        'y': 224
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 608
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 640
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 736
+        'y': 96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 576
+        'y': 480
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 800
+        'y': 448
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 896
+        'y': 288
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 928
+        'y': 160
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 192
+        'y': 480
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 352
+        'y': 416
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 480
+        'y': 480
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 608
+        'y': 416
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 480
+        'y': 320
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 704
+        'y': 256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 576
+        'y': 128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 832
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 768
+        'y': 352
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 704
+        'y': 480
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 64
+        'y': 128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -64
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -192
+        'y': 128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -288
+        'y': -128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -192
+        'y': -192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -160
+        'y': -256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 0
+        'y': -320
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 192
+        'y': -128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 96
+        'y': -96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -256
+        'y': 0
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -192
+        'y': 32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: -224
+        'y': -96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: -288
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: -256
+        'y': -160
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: -256
+        'y': -256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: -128
+        'y': -224
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: -96
+        'y': -288
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 96
+        'y': -256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: -224
+        'y': -32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 128
+        'y': -96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 96
+        'y': -288
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 365
+        'y': -49
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 864
+        'y': 352
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 576
+        'y': 544
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 800
+        'y': 32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 480
+        'y': 544
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: 832
+        'y': 128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: 576
+        'y': 0
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: -64
+        'y': -32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: -192
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -128
+        'y': -160
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -160
+        'y': -192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 32
+        'y': 32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -32
+        'y': 32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -160
+        'y': 0
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 64
+        'y': -96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: 128
+        'y': -192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: -160
+        'y': 224
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: -32
+        'y': 320
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 996M4Gk4f261B5
+        exts: {}
+        customProperties: {}
+      - x: -288
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: -96
+        'y': 256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 128
+        'y': -160
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 64
+        'y': -256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: 672
+        'y': 320
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: pgHpRDcPDjtLq3
+        exts: {}
+        customProperties: {}
+      - x: -32
+        'y': -224
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CgJpDJCb4mBLDM
+        exts: {}
+        customProperties: {}
+      - x: -32
+        'y': -192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CgJpDJCb4mBLDM
+        exts: {}
+        customProperties: {}
+      - x: 0
+        'y': -160
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CgJpDJCb4mBLDM
+        exts: {}
+        customProperties: {}
+      - x: 32
+        'y': -128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 16
+        'y': -176
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: -176
+        'y': -144
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: -192
+        'y': -128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -96
+        'y': -192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -256
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jJfp18FHfRNq26
+        exts: {}
+        customProperties: {}
+      - x: 384
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CCRb7GWRbGQ3p8
+        exts: {}
+        customProperties: {}
+      - x: 416
+        'y': 416
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CCRb7GWRbGQ3p8
+        exts: {}
+        customProperties: {}
+      - x: 192
+        'y': 384
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CCRb7GWRbGQ3p8
+        exts: {}
+        customProperties: {}
+      - x: 672
+        'y': 224
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CCRb7GWRbGQ3p8
+        exts: {}
+        customProperties: {}
+      - x: -32
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CCRb7GWRbGQ3p8
+        exts: {}
+        customProperties: {}
+      - x: -96
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: HBJFnwHNn35L7W
+        exts: {}
+        customProperties: {}
+      - x: -160
+        'y': -32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: -128
+        'y': 32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8mBH96j9QkzdWH
+        exts: {}
+        customProperties: {}
+      - x: 0
+        'y': -128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 1Cjt792rbbCPM2
+        exts: {}
+        customProperties: {}
+      - x: 96
+        'y': 96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: rDjNdR39Cd8frz
+        exts: {}
+        customProperties: {}
+      - x: 0
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 2Dpw13L58G6BP4
+        exts: {}
+        customProperties: {}
+    tiles:
+      - depth: -9
+        tiles:
+          - x: 96
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 1
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 1
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 256
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 1
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 320
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 1
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 256
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 1
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 1
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 1
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -192
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -224
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 128
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 160
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 160
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 160
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 192
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 224
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 224
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -224
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -224
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -256
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -224
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 160
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 192
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 224
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 256
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 256
+            'y': 416
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 256
+            'y': 448
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 384
+            'y': 448
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 480
+            'y': 448
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 288
+            'y': 416
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 448
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 448
+            'y': 352
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 480
+            'y': 352
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 320
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 448
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 320
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 288
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 256
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 384
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 416
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 512
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 384
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 608
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 640
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 640
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 608
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 640
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 640
+            'y': 352
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 512
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 544
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 576
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 544
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 512
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 512
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 480
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 384
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 576
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 608
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 576
+            'y': 448
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 512
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 416
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 384
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 384
+            'y': 352
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 320
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 320
+            'y': 416
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 288
+            'y': 416
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 288
+            'y': 448
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 384
+            'y': 480
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 448
+            'y': 480
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 480
+            'y': 480
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 512
+            'y': 480
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 288
+            'y': 416
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 224
+            'y': 416
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 192
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 160
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 192
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 192
+            'y': 352
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 224
+            'y': 352
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 256
+            'y': 352
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 288
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 288
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 320
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 320
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 384
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 416
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 448
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 480
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 480
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 448
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 480
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 544
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 576
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 576
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 608
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 608
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 608
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 608
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 576
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 576
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 576
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 608
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 640
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 672
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 704
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 704
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 736
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 800
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 800
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 800
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 832
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 832
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 832
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 832
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 832
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 832
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 800
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 416
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 736
+            'y': 416
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 704
+            'y': 480
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 800
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 736
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 800
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 832
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 864
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 544
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 512
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 384
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 384
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 352
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 224
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 224
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 192
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 192
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 160
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 128
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 128
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 128
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 128
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 64
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 64
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 64
+            'y': 352
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 64
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 64
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 128
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 128
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 0
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 2
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 320
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 2
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 704
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 2
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 224
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 416
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 352
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 544
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 672
+            'y': 96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': 448
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 384
+            'y': 512
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 640
+            'y': 512
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 672
+            'y': 448
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 416
+            'y': 416
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 416
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 608
+            'y': 352
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 640
+            'y': 352
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 704
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 512
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 480
+            'y': 384
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 352
+            'y': 480
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 224
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 192
+            'y': 224
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 192
+            'y': 128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': 160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 64
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 256
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 128
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 64
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': -192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': -192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 15
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 15
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 15
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 15
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 13
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': -192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 13
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 13
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 8
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 8
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': -192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 9
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': -160
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 9
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 10
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 10
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 12
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 10
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 11
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 14
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 14
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 11
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 11
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 12
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 12
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 12
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 12
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 12
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 14
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 11
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -192
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 10
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -192
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 8
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': 32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 2
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -64
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 2
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 32
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 2
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -256
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 2
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 224
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 1
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': -192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 1
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 96
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 416
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 3
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 6
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 6
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -32
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 6
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 6
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': 0
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 6
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -160
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 6
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -96
+            'y': -128
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 6
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 0
+            'y': -96
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 6
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: -128
+            'y': -32
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 6
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 6
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 800
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 9
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 800
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 11
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 736
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 10
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 736
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 8
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 10
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 11
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 736
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 12
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 256
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 13
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 800
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 14
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 768
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 15
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 832
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 9
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 832
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 11
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 800
+            'y': 320
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 15
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+          - x: 800
+            'y': 288
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            frame: 7
+            rotation: 0
+            texture: Q91D5fwMn1D39T
+        extends: {}
+        hidden: false
+    extends: {}
+    lastmod: 1703670570708
+    events:
+      - eventKey: OnRoomStart
+        code: inGameRoomStart(this);
+        arguments: {}
+        lib: core
+    uid: c4wJNFMPn54GJk
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 32
+    gridY: 32
+    diagonalGrid: false
+    simulate: true
+    width: 512
+    height: 288
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: true
+    name: LayerUI
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds: []
+    copies:
+      - x: 16
+        'y': 16
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: zgtNr8PhmqGNWH
+        exts: {}
+        customProperties: {}
+      - x: 32
+        'y': 224
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: drGmqfKNLT92jN
+        exts: {}
+        customProperties: {}
+      - x: 32
+        'y': 256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: DLPgfhNJQFrkQz
+        exts: {}
+        customProperties: {}
+    tiles: []
+    extends: {}
+    lastmod: 1681385122166
+    events: []
+    uid: kfLLk13k3L48nQ
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    simulate: true
+    width: 512
+    height: 288
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: Menue
+    backgroundColor: '#114719'
+    follow: -1
+    backgrounds: []
+    copies:
+      - x: 88
+        'y': 128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: QFcgCfp5h9Cgqk
+        exts: {}
+        customProperties: {}
+    tiles: []
+    extends: {}
+    lastmod: 1677308847795
+    events: []
+    uid: WQqbK31bTDk6KR
+actions:
+  - name: MoveLeft
+    methods:
+      - code: keyboard.KeyA
+      - code: gamepad.Left
+  - name: MoveRight
+    methods:
+      - code: keyboard.KeyD
+      - code: gamepad.Right
+  - name: MoveDown
+    methods:
+      - code: keyboard.KeyS
+      - code: gamepad.Down
+  - name: MoveUp
+    methods:
+      - code: keyboard.KeyW
+      - code: gamepad.Up
+  - name: Sneak
+    methods:
+      - code: keyboard.ControlLeft
+      - code: gamepad.L1
+  - name: Run
+    methods:
+      - code: keyboard.ShiftLeft
+      - code: gamepad.R1
+  - name: Interact
+    methods:
+      - code: keyboard.KeyE
+      - code: gamepad.Button4
+  - name: Catch
+    methods:
+      - code: keyboard.Space
+      - code: gamepad.Button3
+emitterTandems: []
+scripts:
+  - name: inGameRoomStart
+    code: |
+      var inGameRoomStart = function (room) {
+          ct.rooms.append('LayerUI');
+          ct.room.collectedPrey = 3; //prey in your inventory
+          ct.room.text = "";  //Text in the top of the screen
+         /*ct.room.prey = [ //prey in fresh kill pile
+              0,  //mice
+              0,  //hares
+          ];*/
+          ct.room.prey =  0;
+          ct.room.holdingItem;
+          warriorCode();  //object which you collect over time (quest)
+      };
+
+
+      function createQuestStep(questText) {
+          let ret = {
+              text: questText + "",
+              done: false,
+          }
+          return ret;
+      }
+
+      function warriorCode() {
+          ct.room.warriorCode = [
+          /*00*/  createQuestStep("Defend your Clan, even with your life. You may have friendships with cats from other Clans, but your loyalty must remain to your Clan, as one day you may meet them in battle."),
+          /*01*/  createQuestStep("Do not hunt or trespass on another Clan's territory."),
+          /*02*/  createQuestStep("Elders, queens, sick or injured cats and kits must be fed before apprentices and warriors. Unless they have permission, apprentices may not eat until they have hunted to feed the elders."),
+          /*03*/  createQuestStep("Prey is killed only to be eaten. Give thanks to StarClan for its life."),
+          /*04*/  createQuestStep("A kit must be at least six moons old to become an apprentice."),
+          /*05*/  createQuestStep("Newly appointed warriors will keep a silent vigil for one night after receiving their warrior name."),
+          /*06*/  createQuestStep("A cat cannot be made deputy without having mentored at least one apprentice."),
+          /*07*/  createQuestStep("The deputy will become Clan leader when the leader dies, retires, or is exiled."),
+          /*08*/  createQuestStep("After the death, retirement, promotion (to a leader status), or exile of the deputy, the new deputy must be chosen before moonhigh."),
+          /*09*/  createQuestStep("A Gathering of all [five] Clans is held at the full moon during a truce that lasts for the night. There shall be no fighting among Clans at this time."),
+          /*10*/  createQuestStep("Boundaries must be checked and marked daily. Challenge all trespassing cats."),
+          /*11*/  createQuestStep("No warrior can neglect a kit in pain or danger, even if the kit is from a different Clan."),
+          /*12*/  createQuestStep("The word of the Clan leader is the warrior code."),
+          /*13*/  createQuestStep("An honorable warrior does not need to kill other cats to win their battles, unless they are outside the warrior code or if it is necessary for self-defense."),
+          /*14*/  createQuestStep("A warrior rejects the soft life of a kittypet."),
+          /*15*/  createQuestStep("Each Clan has the right to be proud and independent, but in times of trouble they must forget their boundaries and fight side by side to protect the [five]. Each Clan must help the others so that no Clan will fall."),
+          ]
+      }
+startroom: c4wJNFMPn54GJk
+contentTypes: []
+groups:
+  fonts: []
+  textures: []
+  styles: []
+  rooms: []
+  templates: []
+  sounds: []
+  emitterTandems: []
+settings:
+  authoring:
+    author: Jasmin Dammertz
+    site: ''
+    title: CatClan Live
+    version:
+      - 0
+      - 0
+      - 0
+    versionPostfix: ''
+    appId: ''
+  rendering:
+    usePixiLegacy: true
+    maxFPS: 60
+    pixelatedrender: true
+    highDensity: true
+    desktopMode: maximized
+    hideCursor: false
+    mobileScreenOrientation: unspecified
+  export:
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+  branding:
+    accent: '#446adb'
+    invertPreloaderScheme: true
+    icon: -1
+    splashScreen: -1
+    forceSmoothIcons: false
+    forceSmoothSplashScreen: false
+    hideLoadingLogo: false
+  fps: 30
+palette: []

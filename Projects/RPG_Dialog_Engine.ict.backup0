@@ -1,0 +1,296 @@
+ctjsVersion: 3.2.0
+language: typescript
+notes: /* empty */
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  fittoscreen:
+    mode: scaleFit
+  pointer: {}
+  keyboard: {}
+  keyboard.polyfill: {}
+  sound.howler: {}
+textures:
+  - lastmod: 1704631176110
+    type: texture
+    name: BG
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 265
+    imgHeight: 64
+    width: 265
+    height: 64
+    offx: 0
+    offy: 0
+    origname: iwQb6NQTn1hDdB4.png
+    shape: rect
+    left: 0
+    right: 640
+    top: 0
+    bottom: 220
+    uid: wQb6NQTn1hDdB4
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\RPG_Dialog_Engine\BG.png'
+    stripPoints:
+      - x: 0
+        'y': -110
+      - x: 304
+        'y': -34
+      - x: 188
+        'y': 89
+      - x: -188
+        'y': 89
+      - x: -304
+        'y': -34
+    closedStrip: true
+  - lastmod: 1704630484578
+    type: texture
+    name: img
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: ipB8NR5kqjCN653.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: pB8NR5kqjCN653
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\RPG_Dialog_Engine\img.png'
+skeletons: []
+templates:
+  - type: template
+    name: TextBox
+    depth: 0
+    texture: wQb6NQTn1hDdB4
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |-
+          ct.room.textBox = this;
+          this.textLable = new PIXI.Text("", ct.styles.get('dialog_text'));
+
+          this.textLable.x = 68;
+          this.textLable.y = 15;
+
+          this.addChild(this.textLable);
+        arguments: {}
+        lib: core
+      - eventKey: OnStep
+        code: //this.textLable.text = ct.room.dialog_text
+        arguments: {}
+        lib: core
+      - eventKey: OnPointerClick
+        code: >-
+          writeText("Hello, this is a text for testing my RPG Dialog Engine :D.
+          I hope it will work to split the words right.")
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1704632603121
+    uid: h4jMqGT8W8P69H
+  - type: template
+    name: Dialog img
+    depth: 0
+    texture: pB8NR5kqjCN653
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |-
+          this.textLable = new PIXI.Text("", ct.styles.get('dialog_name'));
+          /* text on top of img
+          this.textLable.x = 0;
+          this.textLable.anchor.y = 1;
+          */
+
+          this.textLable.x = 68;
+          this.textLable.anchor.y = -0.1;
+
+          this.addChild(this.textLable);
+        arguments: {}
+        lib: core
+      - eventKey: OnStep
+        code: this.textLable.text = ct.room.dialog_name;
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1704631424862
+    uid: 4NLJLQ2k37f2KP
+sounds: []
+styles:
+  - name: dialog_name
+    uid: r3ppKh9FFGrL3n
+    origname: sFGrL3n
+    font:
+      family: sans-serif
+      size: 15
+      weight: '400'
+      italic: false
+    lastmod: 1704632333847
+    fill:
+      type: '0'
+      color: '#FFFFFF'
+  - name: dialog_text
+    uid: Q7qRHkn9QGgwzc
+    origname: sQGgwzc
+    font:
+      family: sans-serif
+      size: 12
+      weight: 400
+      italic: false
+    lastmod: 1704631295273
+fonts: []
+rooms:
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    simulate: true
+    width: 640
+    height: 360
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: Room_6nj3tg
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds: []
+    copies:
+      - x: 192
+        'y': 128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: h4jMqGT8W8P69H
+        exts: {}
+        customProperties: {}
+      - x: 192
+        'y': 128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 4NLJLQ2k37f2KP
+        exts: {}
+        customProperties: {}
+    tiles: []
+    extends: {}
+    lastmod: 1704632604485
+    events:
+      - eventKey: OnRoomStart
+        code: |-
+          ct.room.dialog_name = "NeoRain314"
+          ct.room.dialog_text = "Hello there!! \nThis is RPG Dialog \nEngine!"
+        arguments: {}
+        lib: core
+    uid: fFPKMCrL6nj3tg
+actions: []
+emitterTandems: []
+scripts:
+  - name: dialog
+    code: |-
+      function writeText(text) {
+          ct.room.textBox.textLable.text += ""
+          let l = 0;
+          for(let i= 0; i<text.length; i++){
+              l++
+              if(l> 33){
+                  l = 0;
+                  if(text[i] === " "){
+                      i++;
+                  } else {
+                      ct.room.textBox.textLable.text += "-"
+                  }
+                  ct.room.textBox.textLable.text += "\n"
+              }
+              ct.room.textBox.textLable.text += text[i];
+          }
+      }
+startroom: -1
+contentTypes: []
+groups:
+  fonts: []
+  textures: []
+  styles: []
+  rooms: []
+  templates: []
+  sounds: []
+  emitterTandems: []
+settings:
+  authoring:
+    author: Jasmin Dammertz
+    site: ''
+    title: RPG Dialog Engine
+    version:
+      - 0
+      - 0
+      - 0
+    versionPostfix: ''
+    appId: ''
+  rendering:
+    usePixiLegacy: true
+    maxFPS: 60
+    pixelatedrender: true
+    highDensity: true
+    desktopMode: maximized
+    hideCursor: false
+    mobileScreenOrientation: unspecified
+  export:
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+  branding:
+    accent: '#446adb'
+    invertPreloaderScheme: true
+    icon: -1
+    splashScreen: -1
+    forceSmoothIcons: false
+    forceSmoothSplashScreen: false
+    hideLoadingLogo: false
+  fps: 30
+palette: []

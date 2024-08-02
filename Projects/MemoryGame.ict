@@ -1,0 +1,422 @@
+ctjsVersion: 3.2.0
+language: typescript
+notes: /* empty */
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  fittoscreen:
+    mode: scaleFit
+  pointer: {}
+  keyboard: {}
+  keyboard.polyfill: {}
+  sound.howler: {}
+textures:
+  - lastmod: 1704349697187
+    type: texture
+    name: blancCard
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i6gpDz3fR96zG9M.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 6gpDz3fR96zG9M
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\MemoryGame\blancCard.png'
+  - lastmod: 1704522805730
+    type: texture
+    name: Card1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: iNncTD8WQHpBdcJ.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: NncTD8WQHpBdcJ
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\MemoryGame\blancCard\Card1.png'
+  - lastmod: 1704365617582
+    type: texture
+    name: Card2
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: i1Ppr6zkWc4LJBJ.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: 1Ppr6zkWc4LJBJ
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\MemoryGame\blancCard\Card2.png'
+  - lastmod: 1704365617583
+    type: texture
+    name: Card5
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: iK1n3mN86WJw4P3.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: K1n3mN86WJw4P3
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\MemoryGame\blancCard\Card5.png'
+  - lastmod: 1704365617584
+    type: texture
+    name: Card3
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: iz9p5CCzqWDgCTB.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: z9p5CCzqWDgCTB
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\MemoryGame\blancCard\Card3.png'
+  - lastmod: 1704365617587
+    type: texture
+    name: Card4
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 64
+    imgHeight: 64
+    width: 64
+    height: 64
+    offx: 0
+    offy: 0
+    origname: ihMpm2rdJLFhQ3m.png
+    shape: rect
+    left: 0
+    right: 64
+    top: 0
+    bottom: 64
+    uid: hMpm2rdJLFhQ3m
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\MemoryGame\blancCard\Card4.png'
+skeletons: []
+templates:
+  - type: template
+    name: blancCard
+    depth: 0
+    texture: 6gpDz3fR96zG9M
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: console.log(this.stat);
+        arguments: {}
+        lib: core
+      - eventKey: OnPointerClick
+        code: >+
+          if(ct.room.turned.length < 1 && ct.room.gamestate == 0 && this.stat ==
+          0) {
+              this.stat = 1;
+              ct.room.turned.push(this);
+              ct.room.gamestate = 1;
+              //console.log(ct.room.turned);
+          } else if(ct.room.gamestate == 1 && this.stat == 0){
+              this.stat = 1;
+              ct.room.counter = 60;
+              ct.room.turned.push(this);
+              
+              if(ct.room.turned[0].id == ct.room.turned[1].id){
+                  ct.room.gamestate = 2;
+                  ct.room.counter++;
+                  //console.log("counter: " + ct.room.counter );
+                  ct.room.turned[0].stat = 2;
+                  ct.room.turned[1].stat = 2;
+              }else{
+                  ct.room.gamestate = 3;
+                  //console.log(ct.room.turned);
+              }
+          }
+
+
+          console.log("Gamestate " + ct.room.gamestate);
+
+
+          // 1 second delay
+
+        arguments: {}
+        lib: core
+      - eventKey: OnStep
+        code: |+
+          if(this.stat == 0){
+              this.tex = 'blancCard';
+          }else if(this.stat == 1){
+              this.tex = this.id;
+          }else {
+              this.tex = this.id;
+              //console.log("found")
+          }
+
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1704522159566
+    uid: rFhhdCrtb682gg
+sounds: []
+styles: []
+fonts: []
+rooms:
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    simulate: true
+    width: 640
+    height: 360
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: Game
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds: []
+    copies: []
+    tiles: []
+    extends: {}
+    lastmod: 1704522745838
+    events:
+      - eventKey: OnRoomStart
+        code: |-
+          ct.room.turned = [];
+          ct.room.counter = 0;
+
+          ct.room.gamestate = 0;
+          ct.room.counter = 0;
+
+          createCards()
+          showCards()
+        arguments: {}
+        lib: core
+      - eventKey: OnStep
+        code: |-
+          if(ct.room.turned.length > 1){
+              if(ct.room.turned[0].stat);
+          }
+
+          if(ct.room.gamestate == 2 || ct.room.gamestate == 3){
+              if(ct.room.counter > 0){
+                  ct.room.counter --
+                  //console.log(ct.room.counter);
+              } else{   
+                  if(ct.room.gamestate == 3){
+                      console.log(ct.room.turned)
+                      ct.room.turned[0].stat = 0;
+                      ct.room.turned[1].stat = 0;  
+                  }
+                  ct.room.turned = [];
+                  ct.room.gamestate = 0;
+              }
+          }
+        arguments: {}
+        lib: core
+    uid: tNB6wL31jLHdrQ
+actions: []
+emitterTandems: []
+scripts:
+  - name: Game
+    code: |-
+      let xPos = [32, 161, 288, 416, 544, 32, 161, 288, 416, 544];
+      let yPos = [128, 128, 128, 128, 128, 256, 256, 256, 256, 256];
+      let cards = [];
+
+      function createCards(){
+          for(let i=0; i<5; i++){
+              cards.push(createCard("Card" + (i + 1), 0, 0, i + 1));
+              cards.push(createCard("Card" + (i + 1), 0, 0, i + 1)); 
+          }
+
+          
+
+          cards = mixArray(cards);
+          console.log(cards);
+
+          for(let i=0; i<cards.length; i++){
+              cards[i].x = xPos[i];
+              cards[i].y = yPos[i];
+          }
+
+          
+      }
+
+      function createCard(id, x, y, cardNumber){
+              const card = {
+                  cardNumber: cardNumber,
+                  id: id,
+                  x: x,
+                  y: y,
+                  stat: 0, //0-> blank; 1-> open; 2-> found
+              }
+              return card;
+          }
+
+      function mixArray(array){
+          let mixed = [];
+          let index = 0;
+          while(array.length > 0){
+              index = getRandomInt(array.length);
+              mixed.push(array[index]);
+              array.splice(index,1);
+          }
+          return mixed;
+      }
+
+
+      function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
+
+
+      function showCards(){
+          for(let i=0; i<cards.length; i++){
+              ct.templates.copy('blancCard', cards[i].x, cards[i].y, cards[i])
+          }
+      }
+startroom: -1
+contentTypes: []
+groups:
+  fonts: []
+  textures: []
+  styles: []
+  rooms: []
+  templates: []
+  sounds: []
+  emitterTandems: []
+settings:
+  authoring:
+    author: ''
+    site: ''
+    title: Memory Game
+    version:
+      - 0
+      - 0
+      - 0
+    versionPostfix: ''
+    appId: ''
+  rendering:
+    usePixiLegacy: true
+    maxFPS: 60
+    pixelatedrender: true
+    highDensity: true
+    desktopMode: maximized
+    hideCursor: false
+    mobileScreenOrientation: unspecified
+  export:
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+  branding:
+    accent: '#446adb'
+    invertPreloaderScheme: true
+    icon: -1
+    splashScreen: -1
+    forceSmoothIcons: false
+    forceSmoothSplashScreen: false
+    hideLoadingLogo: false
+  fps: 30

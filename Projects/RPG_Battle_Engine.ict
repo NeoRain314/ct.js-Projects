@@ -1,0 +1,932 @@
+ctjsVersion: 3.2.0
+language: typescript
+notes: /* empty */
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  fittoscreen:
+    mode: scaleFit
+  pointer: {}
+  keyboard: {}
+  keyboard.polyfill: {}
+  sound.howler: {}
+textures:
+  - lastmod: 1698833874954
+    type: texture
+    name: Player_(1)
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 64
+    width: 32
+    height: 64
+    offx: 0
+    offy: 0
+    origname: in8mbN4ckrwg8WH.png
+    shape: rect
+    left: -9
+    right: 27
+    top: -7
+    bottom: 60
+    uid: n8mbN4ckrwg8WH
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\RPG_Battle_Engine\Player (1).png'
+  - lastmod: 1698833010930
+    type: texture
+    name: Bug_(1)
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iQ3HRrp883R9G8p.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: Q3HRrp883R9G8p
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\RPG_Battle_Engine\Bug (1).png'
+  - lastmod: 1698747041888
+    type: texture
+    name: New_Piskel_(12)
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 256
+    imgHeight: 144
+    width: 256
+    height: 144
+    offx: 0
+    offy: 0
+    origname: ikPLfckmBqFFB9z.png
+    shape: rect
+    left: 0
+    right: 256
+    top: 0
+    bottom: 144
+    uid: kPLfckmBqFFB9z
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\RPG_Battle_Engine\New Piskel (12).png'
+    tiled: true
+  - lastmod: 1698747654128
+    type: texture
+    name: Foreground
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 256
+    imgHeight: 144
+    width: 256
+    height: 144
+    offx: 0
+    offy: 0
+    origname: iDFL4gfrp4nfBLF.png
+    shape: rect
+    left: 0
+    right: 256
+    top: 0
+    bottom: 144
+    uid: DFL4gfrp4nfBLF
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\RPG_Battle_Engine\Foreground.png'
+  - lastmod: 1698833142344
+    type: texture
+    name: FightingMenueBackground_large
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 96
+    imgHeight: 64
+    width: 96
+    height: 64
+    offx: 0
+    offy: 0
+    origname: iLGQhqQKBCN1MCP.png
+    shape: rect
+    left: 0
+    right: 96
+    top: 0
+    bottom: 64
+    uid: LGQhqQKBCN1MCP
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\ct.js\Graphiks\RPG_Battle_Engine\FightingMenue\FightingMenue_large.png
+  - lastmod: 1698831704995
+    type: texture
+    name: FightingMenueBackground_small
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 96
+    imgHeight: 64
+    width: 96
+    height: 64
+    offx: 0
+    offy: 0
+    origname: iJQDKh3CRqNwnPc.png
+    shape: rect
+    left: 0
+    right: 96
+    top: 0
+    bottom: 64
+    uid: JQDKh3CRqNwnPc
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\ct.js\Graphiks\RPG_Battle_Engine\FightingMenue\FightingMenue_small.png
+  - lastmod: 1698842372111
+    type: texture
+    name: arrowLeft
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 8
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iwfwqC2qNJ9C49h.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: wfwqC2qNJ9C49h
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\ct.js\Graphiks\RPG_Battle_Engine\FightingMenue\arrowLeft.png
+  - lastmod: 1698842374390
+    type: texture
+    name: arrowRight
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 8
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: i8f16BCb21f5FGp.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: 8f16BCb21f5FGp
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\ct.js\Graphiks\RPG_Battle_Engine\FightingMenue\arrowRight.png
+    stripPoints:
+      - x: 0
+        'y': -16
+      - x: 15
+        'y': -5
+      - x: 9
+        'y': 13
+      - x: -9
+        'y': 13
+      - x: -15
+        'y': -5
+    closedStrip: true
+  - lastmod: 1698844935110
+    type: texture
+    name: selectButton
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 2
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: ikJjjpjj3q3bgFN.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 1
+    bottom: 11
+    uid: kJjjpjj3q3bgFN
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\ct.js\Graphiks\RPG_Battle_Engine\FightingMenue\selectButton2.png
+skeletons: []
+templates:
+  - type: template
+    name: Player
+    depth: 5
+    texture: n8mbN4ckrwg8WH
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |-
+          ct.room.player = this
+
+          this.maxHp = 50;
+          this.hp = this.maxHp;
+          this.maxMp = 10
+          this.mp = this.maxMp;
+
+          this.attacks = [
+              this.simpleHit = {
+                  name: "Simple Hit",
+                  damage: 10,
+                  mpCost: 0
+              },
+              this.doubleHit = {
+                  name: "Double Hit",
+                  damage: 20,
+                  mpCost: 3
+              }
+          ]
+        arguments: {}
+        lib: core
+      - eventKey: OnPointerClick
+        code: |+
+
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1699109243423
+    uid: 8JNMrJ5LjzNnL7
+  - type: template
+    name: Enemie
+    depth: 5
+    texture: Q3HRrp883R9G8p
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |
+          ct.room.enemy1 = this;
+
+          this.maxHp = 50;
+          this.hp = this.maxHp;
+
+          this.attacks = [
+              this.wingHit = {
+                  name: "Wing Hit",
+                  damage: 10,
+              },
+              this.windBlast = {
+                  name: "Wind Blast",
+                  damage: 20,
+              }
+          ]
+
+          //text
+          this.text = new PIXI.Text("", ct.styles.get('font1'));
+          this.addChild(this.text);
+
+          this.text.x = 0;
+          this.text.anchor.y = -2.4;
+
+          //states
+          this.stateCounter = 0;
+          this.possibleStates = {
+              standing: 0,
+              walkingForward: 1,
+              walkingBackward: 2,
+          }
+
+          this.currentState = this.possibleStates.standing;
+          this.nextState = this.possibleStates.walkingForward;
+        arguments: {}
+        lib: core
+      - eventKey: OnStep
+        code: |-
+          function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+          }
+
+          this.text.text = this.hp
+
+          if(ct.room.turn[0] === "enemy"){
+              ct.room.player.hp -= this.attacks[getRandomInt(this.attacks.length)].damage; //cause Damage
+              nextTurn(); //next Turn
+              this.stateCounter = 1;
+          }else{
+              
+          }
+
+
+
+          //states
+          if(this.stateCounter > 0){
+              console.log("Enemy: counter = " + this.stateCounter);
+              this.stateCounter--;
+              if(this.stateCounter === 0){
+                  console.log("Enemy");
+              }
+          }
+
+          if(this.currentState === this.possibleStates.walkingForward){
+              console.log("----------->>> walking");
+              this.x -= 1;
+              this.move();
+          }
+          /*
+          this.currentState === this.nextState;
+                  this.nextState = this.possibleStates.standing;
+                  */
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1699108568474
+    uid: BRJGDjCjFPJdjL
+  - type: template
+    name: player_stats
+    depth: 0
+    texture: -1
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: >-
+          this.playerStats = "HP: " + ct.room.player.hp + "/" +
+          ct.room.player.maxHp + "\n" + "MP:" + ct.room.player.mp + "/" +
+          ct.room.player.maxMp
+
+          this.text = new PIXI.Text(this.playerStast, ct.styles.get('font1'));
+
+          this.addChild(this.text);
+
+
+          this.text.x = -7;
+
+          this.text.anchor.y = 0.5;
+
+
+          /*
+
+
+          */
+        arguments: {}
+        lib: core
+      - eventKey: OnDraw
+        code: >
+          this.playerStats = "HP: " + ct.room.player.hp + "/" +
+          ct.room.player.maxHp + "\n" + "MP:" + ct.room.player.mp + "/" +
+          ct.room.player.maxMp
+
+
+          this.text.text = this.playerStats;
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1698844685473
+    uid: jzCKBm325b6z91
+  - type: template
+    name: Foreground
+    depth: 10
+    texture: DFL4gfrp4nfBLF
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: this.move();
+        arguments: {}
+    extends: {}
+    lastmod: 1698830704947
+    uid: L7Kj2pF1f9qT1b
+  - type: template
+    name: player_fightMenue
+    depth: 0
+    texture: JQDKh3CRqNwnPc
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |-
+          //console.log(this.tex);
+
+          this.textureArr = [
+              "FightingMenueBackground_large",
+              "FightingMenueBackground_small"
+          ]
+        arguments: {}
+        lib: core
+      - eventKey: OnStep
+        code: |-
+          if(ct.room.turn[0] === "player"){
+              this.tex = this.textureArr[0]
+          } else {
+              this.tex = this.textureArr[1]
+          }
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1699078197384
+    uid: 6kgr7874DfGt9t
+  - type: template
+    name: player_attackSelection
+    depth: 0
+    texture: kJjjpjj3q3bgFN
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |+
+          ct.room.playerAttacSelection = this;
+
+          this.selection = 0;
+          this.selectedAttac = ct.room.player.attacks[this.selection]
+
+          //text
+          this.text = new PIXI.Text("hello", ct.styles.get('font1'));
+          this.addChild(this.text);
+
+          this.text.x = -10;
+          this.text.anchor.y = 1.3;
+
+        arguments: {}
+        lib: core
+      - eventKey: OnDraw
+        code: >-
+          this.selectedAttac = ct.room.player.attacks[this.selection];
+
+
+          this.attackText = this.selectedAttac.name +  "\n  dmg:" +
+          this.selectedAttac.damage + "\n  mp cost:" +
+          this.selectedAttac.mpCost;
+
+
+
+          if(ct.room.turn[0] === "player"){
+              this.visible = true;
+              this.text.text = this.attackText;
+          } else {
+              this.visible = false;
+          }
+        arguments: {}
+        lib: core
+      - eventKey: OnPointerClick
+        code: |
+          if(ct.room.player.mp >= this.selectedAttac.mpCost){
+              //cause damage
+              ct.room.player.mp -= this.selectedAttac.mpCost;
+              ct.room.enemy1.hp -= this.selectedAttac.damage;
+              console.log(ct.room.enemy1.hp);
+              //next turn
+              nextTurn();
+          }else{
+              
+          }
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1699078223803
+    uid: cGgq2FLRjJTmwJ
+  - type: template
+    name: attackChange_arrowLeft
+    depth: 0
+    texture: wfwqC2qNJ9C49h
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnPointerClick
+        code: |-
+          if(ct.room.playerAttacSelection.selection > 0){
+              ct.room.playerAttacSelection.selection--;
+          }else{
+              ct.room.playerAttacSelection.selection = ct.room.player.attacks.length -1;
+          }
+
+          console.log(ct.room.playerAttacSelection.selection)
+        arguments: {}
+        lib: core
+      - eventKey: OnStep
+        code: |
+          if(ct.room.turn[0] === "player"){
+              this.visible = true
+          } else {
+              this.visible = false
+          }
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1699120336175
+    uid: nNw1tDhj2B436L
+  - type: template
+    name: attackChange_arrowRight
+    depth: 0
+    texture: 8f16BCb21f5FGp
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnPointerClick
+        code: >-
+          if(ct.room.playerAttacSelection.selection <
+          ct.room.player.attacks.length-1){
+              ct.room.playerAttacSelection.selection++;
+          }else{
+              ct.room.playerAttacSelection.selection = 0;
+          }
+
+
+          console.log(ct.room.playerAttacSelection.selection)
+        arguments: {}
+        lib: core
+      - eventKey: OnStep
+        code: |
+          if(ct.room.turn[0] === "player"){
+              this.visible = true
+          } else {
+              this.visible = false
+          }
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1699039726494
+    uid: Mktw2GmLLgtzR2
+sounds: []
+styles:
+  - name: font1
+    uid: c4CN9hDqfzF1Wm
+    origname: sfzF1Wm
+    font:
+      family: sans-serif
+      size: 10
+      weight: 400
+      italic: false
+      wrap: false
+      lineHeight: 8
+    lastmod: 1698832263539
+fonts: []
+rooms:
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 32
+    gridY: 32
+    diagonalGrid: false
+    simulate: true
+    width: 256
+    height: 144
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: BattleArea
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds:
+      - depth: 0
+        texture: kPLfckmBqFFB9z
+        shiftX: 0
+        shiftY: 0
+        parallaxX: 1
+        parallaxY: 1
+        movementX: 0
+        movementY: 0
+        scaleX: 1
+        scaleY: 1
+        repeat: repeat
+    copies:
+      - x: 32
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8JNMrJ5LjzNnL7
+        exts: {}
+        customProperties: {}
+      - x: 192
+        'y': 96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: BRJGDjCjFPJdjL
+        exts: {}
+        customProperties: {}
+      - x: 0
+        'y': 0
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: L7Kj2pF1f9qT1b
+        exts: {}
+        customProperties: {}
+    tiles: []
+    extends: {}
+    lastmod: 1698831322799
+    events:
+      - eventKey: OnRoomStart
+        code: battleRoomStart(this)
+        arguments: {}
+        lib: core
+    uid: j3pfWQ55558BDn
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 32
+    gridY: 32
+    diagonalGrid: false
+    simulate: true
+    width: 256
+    height: 144
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: true
+    name: BattleUI
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds: []
+    copies:
+      - x: 0
+        'y': 0
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 6kgr7874DfGt9t
+        exts: {}
+        customProperties: {}
+      - x: 16
+        'y': 16
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: jzCKBm325b6z91
+        exts: {}
+        customProperties: {}
+      - x: 32
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: cGgq2FLRjJTmwJ
+        exts: {}
+        customProperties: {}
+      - x: 64
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: nNw1tDhj2B436L
+        exts: {}
+        customProperties: {}
+      - x: 64
+        'y': 32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: Mktw2GmLLgtzR2
+        exts: {}
+        customProperties: {}
+      - x: 0
+        'y': 32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: nNw1tDhj2B436L
+        exts: {}
+        customProperties: {}
+    tiles: []
+    extends: {}
+    lastmod: 1698844270092
+    events: []
+    uid: LHhPfGFftJRDGB
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 32
+    gridY: 32
+    diagonalGrid: false
+    simulate: true
+    width: 512
+    height: 288
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: Test
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds: []
+    copies:
+      - x: 352
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: BRJGDjCjFPJdjL
+        exts: {}
+        customProperties: {}
+      - x: 96
+        'y': 160
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 8JNMrJ5LjzNnL7
+        exts: {}
+        customProperties: {}
+    tiles: []
+    extends: {}
+    lastmod: 1698743822547
+    events: []
+    uid: zBdjdn5w7PFCcb
+actions: []
+emitterTandems: []
+scripts:
+  - name: BattleStart
+    code: |-
+      var battleRoomStart = function (room) {
+          room.turn = ["player", "enemy"];
+          ct.rooms.append('BattleUI');
+      };
+
+      function nextTurn() {
+          ct.room.turn.push(ct.room.turn[0]);
+          ct.room.turn.shift();
+          console.log(ct.room.turn[0] + ' turn')
+      }
+startroom: -1
+contentTypes: []
+groups:
+  fonts: []
+  textures: []
+  styles: []
+  rooms: []
+  templates: []
+  sounds: []
+  emitterTandems: []
+settings:
+  authoring:
+    author: ''
+    site: ''
+    title: RPG Battle Engine
+    version:
+      - 0
+      - 0
+      - 0
+    versionPostfix: ''
+    appId: ''
+  rendering:
+    usePixiLegacy: true
+    maxFPS: 60
+    pixelatedrender: true
+    highDensity: true
+    desktopMode: maximized
+    hideCursor: false
+    mobileScreenOrientation: unspecified
+  export:
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+  branding:
+    accent: '#446adb'
+    invertPreloaderScheme: true
+    icon: -1
+    splashScreen: -1
+    forceSmoothIcons: false
+    forceSmoothSplashScreen: false
+    hideLoadingLogo: false
+  fps: 30
+palette: []

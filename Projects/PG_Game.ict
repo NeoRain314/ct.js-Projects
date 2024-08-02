@@ -1,0 +1,278 @@
+ctjsVersion: 3.2.0
+language: typescript
+notes: /* empty */
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  fittoscreen:
+    mode: scaleFit
+  pointer: {}
+  keyboard: {}
+  keyboard.polyfill: {}
+  sound.howler: {}
+textures:
+  - lastmod: 1686211175676
+    type: texture
+    name: Home_Button
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 315
+      - 325
+    marginx: 0
+    marginy: 0
+    imgWidth: 640
+    imgHeight: 640
+    width: 640
+    height: 640
+    offx: 0
+    offy: 0
+    origname: iGwfMMrf8dnQ1MW.png
+    shape: circle
+    left: 100
+    right: 100
+    top: 100
+    bottom: 100
+    uid: GwfMMrf8dnQ1MW
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\PGG\Home Button.png'
+    stripPoints:
+      - x: 0
+        'y': -320
+      - x: 304
+        'y': -99
+      - x: 188
+        'y': 259
+      - x: -188
+        'y': 259
+      - x: -304
+        'y': -99
+    closedStrip: true
+    r: 118
+  - lastmod: 1686211225103
+    type: texture
+    name: LittleBug
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 316
+      - 321
+    marginx: 0
+    marginy: 0
+    imgWidth: 640
+    imgHeight: 640
+    width: 640
+    height: 640
+    offx: 0
+    offy: 0
+    origname: ijzmDb828nW82cT.png
+    shape: circle
+    left: 320
+    right: 320
+    top: 320
+    bottom: 320
+    uid: jzmDb828nW82cT
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\PGG\LittleBug.png'
+    r: 109
+  - lastmod: 1686211208658
+    type: texture
+    name: StartButton
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 320
+      - 320
+    marginx: 0
+    marginy: 0
+    imgWidth: 640
+    imgHeight: 640
+    width: 640
+    height: 640
+    offx: 0
+    offy: 0
+    origname: if54BJmDPnKqBjc.png
+    shape: rect
+    left: 100
+    right: 100
+    top: 124
+    bottom: 122
+    uid: f54BJmDPnKqBjc
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\PGG\StartButton.png'
+    r: 100
+skeletons: []
+templates:
+  - type: template
+    name: Home Button
+    depth: 0
+    texture: GwfMMrf8dnQ1MW
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: this.move();
+        arguments: {}
+    extends: {}
+    lastmod: 1686211110616
+    uid: MTdJW2Pcj4kN3c
+  - type: template
+    name: LittleBug
+    depth: 0
+    texture: jzmDb828nW82cT
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: this.move();
+        arguments: {}
+    extends: {}
+    lastmod: 1686211117339
+    uid: M75hgGrn92nkM6
+  - type: template
+    name: StartButton
+    depth: 0
+    texture: f54BJmDPnKqBjc
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: this.move();
+        arguments: {}
+    extends: {}
+    lastmod: 1686211122467
+    uid: htGN6QLr8j37tD
+sounds: []
+styles: []
+fonts: []
+rooms:
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    simulate: true
+    width: 1280
+    height: 720
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: Room_gtKdFd
+    backgroundColor: '#FFFFFF'
+    follow: -1
+    backgrounds: []
+    copies:
+      - x: 576
+        'y': 384
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: MTdJW2Pcj4kN3c
+        exts: {}
+        customProperties: {}
+      - x: 192
+        'y': 256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: M75hgGrn92nkM6
+        exts: {}
+        customProperties: {}
+      - x: 896
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: htGN6QLr8j37tD
+        exts: {}
+        customProperties: {}
+    tiles: []
+    extends: {}
+    lastmod: 1686211258238
+    events: []
+    uid: ghNJPJG9gtKdFd
+actions: []
+emitterTandems: []
+scripts: []
+startroom: -1
+contentTypes: []
+groups:
+  fonts: []
+  textures: []
+  styles: []
+  rooms: []
+  templates: []
+  sounds: []
+  emitterTandems: []
+settings:
+  authoring:
+    author: ''
+    site: ''
+    title: ''
+    version:
+      - 0
+      - 0
+      - 0
+    versionPostfix: ''
+    appId: ''
+  rendering:
+    usePixiLegacy: true
+    maxFPS: 60
+    pixelatedrender: false
+    highDensity: true
+    desktopMode: maximized
+    hideCursor: false
+    mobileScreenOrientation: unspecified
+  export:
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+  branding:
+    accent: '#446adb'
+    invertPreloaderScheme: true
+    icon: -1
+    splashScreen: -1
+    forceSmoothIcons: false
+    forceSmoothSplashScreen: false
+    hideLoadingLogo: false
+  fps: 30
+palette: []

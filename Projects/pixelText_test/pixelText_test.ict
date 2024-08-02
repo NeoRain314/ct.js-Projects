@@ -1,0 +1,168 @@
+ctjsVersion: 4.0.0
+backups: 3
+language: typescript
+notes: /* empty */
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  pointer: {}
+  keyboard: {}
+  keyboard.polyfill: {}
+  pointer.polyfill: {}
+startroom: -1
+contentTypes: []
+actions: []
+scripts: []
+assets:
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 8
+    gridY: 8
+    diagonalGrid: false
+    simulate: true
+    width: 128
+    height: 72
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: room
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds: []
+    copies:
+      - x: 8
+        'y': 32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: Cfkc9c3NjhbqM4
+        exts: {}
+        customProperties: {}
+        bindings: {}
+    tiles: []
+    extends: {}
+    lastmod: 1716201980183
+    events: []
+    behaviors: []
+    uid: KPdz7L757KDQg2
+  - type: font
+    typefaceName: smallest_pixel-7
+    weight: '100'
+    italic: false
+    origname: fqzWhwcW7Qp4d1Q.ttf
+    lastmod: 1716202293353
+    bitmapFont: true
+    bitmapFontSize: 10
+    bitmapFontLineHeight: 8
+    charsets: []
+    customCharset: ''
+    uid: qzWhwcW7Qp4d1Q
+  - type: template
+    baseClass: Text
+    name: text
+    depth: 0
+    texture: -1
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |-
+          this.label = new PIXI.BitmapText('', {
+              fontName: "smallest_pixel-7_100",
+              fontSize: 10,
+              align: 'left',
+          });
+          this.addChild(this.label);
+
+
+          this.label.text = `${"This is a test Text! OUGC"}`;
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1716203496889
+    uid: Cfkc9c3NjhbqM4
+    behaviors: []
+    defaultText: ''
+    textStyle: D6NKCDgzwGTQR5
+  - type: style
+    name: myStyle
+    uid: D6NKCDgzwGTQR5
+    font:
+      family: '"CTPROJFONTsmallest_pixel-7", "smallest_pixel-7", sans-serif'
+      halign: center
+      italic: false
+      size: 10
+      weight: '100'
+      wrap: false
+      wrapPosition: 640
+      lineHeight: 8
+    fill:
+      type: 0
+      color: '#FFFFFF'
+      color1: '#cccccc'
+      color2: '#ffffff'
+      gradtype: 1
+    lastmod: 1716202300371
+settings:
+  authoring:
+    author: ''
+    site: ''
+    title: ''
+    version:
+      - 0
+      - 0
+      - 0
+    versionPostfix: ''
+    appId: ''
+  rendering:
+    usePixiLegacy: true
+    transparent: false
+    maxFPS: 60
+    pixelatedrender: true
+    highDensity: true
+    desktopMode: maximized
+    hideCursor: false
+    mobileScreenOrientation: unspecified
+    viewMode: scaleFit
+  export:
+    autocloseDesktop: true
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+    bundleAssetTree: false
+    bundleAssetTypes:
+      texture: true
+      template: true
+      room: true
+      behavior: false
+      font: false
+      sound: false
+      style: false
+      tandem: false
+      script: false
+  branding:
+    accent: '#446adb'
+    invertPreloaderScheme: true
+    icon: -1
+    splashScreen: -1
+    forceSmoothIcons: false
+    forceSmoothSplashScreen: false
+    hideLoadingLogo: false
+    alternativeLogo: false
+    customLoadingText: ''
+  fps: 30
+palette: []

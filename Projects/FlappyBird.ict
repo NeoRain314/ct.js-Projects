@@ -1,0 +1,1821 @@
+ctjsVersion: 3.2.0
+language: typescript
+notes: /* empty */
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  fittoscreen:
+    mode: scaleFit
+  pointer: {}
+  keyboard: {}
+  keyboard.polyfill: {}
+  sound.howler: {}
+textures:
+  - lastmod: 1694156944470
+    type: texture
+    name: Chick_Right
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 64
+      - 64
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: i3HPWG75DfLBFBJ.png
+    shape: strip
+    left: 30
+    right: 30
+    top: 30
+    bottom: 40
+    uid: 3HPWG75DfLBFBJ
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\AppData\Local\ct.js\bundledAssets\textures\Comigo's
+      Animals, Farm, and Puzzle sprites\Chick_Right.png
+    r: 35
+    stripPoints:
+      - x: 0.5
+        'y': -31.5
+      - x: 20
+        'y': -22.25
+      - x: 29.75
+        'y': -6.5
+      - x: 29.5
+        'y': 17.5
+      - x: 23.75
+        'y': 28.25
+      - x: 10.75
+        'y': 39.75
+      - x: -11.25
+        'y': 39
+      - x: -26.75
+        'y': 28.5
+      - x: -32.75
+        'y': 3
+      - x: -25
+        'y': -18.75
+      - x: -15.75
+        'y': -27.75
+    closedStrip: true
+  - lastmod: 1693981735505
+    type: texture
+    name: Water
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 80
+    width: 128
+    height: 80
+    offx: 0
+    offy: 0
+    origname: ifhmpcb2t3HRWbK.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 80
+    uid: fhmpcb2t3HRWbK
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\AppData\Local\ct.js\bundledAssets\textures\Comigo's
+      Animals, Farm, and Puzzle sprites\Water.png
+  - lastmod: 1693981841062
+    type: texture
+    name: Bg
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 256
+    imgHeight: 256
+    width: 256
+    height: 256
+    offx: 0
+    offy: 0
+    origname: ibG1tRJ7kJ994q1.png
+    shape: rect
+    left: 0
+    right: 256
+    top: 0
+    bottom: 256
+    uid: bG1tRJ7kJ994q1
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\AppData\Local\ct.js\bundledAssets\textures\Comigo's
+      Animals, Farm, and Puzzle sprites\Bg.png
+    tiled: true
+  - lastmod: 1693981799955
+    type: texture
+    name: Coin
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: ihh85W48MnFg8NT.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: hh85W48MnFg8NT
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\AppData\Local\ct.js\bundledAssets\textures\Comigo's
+      Animals, Farm, and Puzzle sprites\Coin.png
+  - lastmod: 1693981803238
+    type: texture
+    name: Cloud_01
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 462
+    imgHeight: 347
+    width: 462
+    height: 347
+    offx: 0
+    offy: 0
+    origname: iPjMf9F8NGNdfB4.png
+    shape: rect
+    left: 0
+    right: 462
+    top: 0
+    bottom: 347
+    uid: PjMf9F8NGNdfB4
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\AppData\Local\ct.js\bundledAssets\textures\Comigo's
+      Animals, Farm, and Puzzle sprites\Cloud_01.png
+  - lastmod: 1693981804155
+    type: texture
+    name: Cloud_02
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 460
+    imgHeight: 303
+    width: 460
+    height: 303
+    offx: 0
+    offy: 0
+    origname: i2qdJg9hLD5tgDk.png
+    shape: rect
+    left: 0
+    right: 460
+    top: 0
+    bottom: 303
+    uid: 2qdJg9hLD5tgDk
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\AppData\Local\ct.js\bundledAssets\textures\Comigo's
+      Animals, Farm, and Puzzle sprites\Cloud_02.png
+  - lastmod: 1693981805120
+    type: texture
+    name: Cloud_03
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 520
+    imgHeight: 337
+    width: 520
+    height: 337
+    offx: 0
+    offy: 0
+    origname: iJHRkcrDP56JD4w.png
+    shape: rect
+    left: 0
+    right: 520
+    top: 0
+    bottom: 337
+    uid: JHRkcrDP56JD4w
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\AppData\Local\ct.js\bundledAssets\textures\Comigo's
+      Animals, Farm, and Puzzle sprites\Cloud_03.png
+  - lastmod: 1693981806533
+    type: texture
+    name: Cloud_04
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 472
+    imgHeight: 273
+    width: 472
+    height: 273
+    offx: 0
+    offy: 0
+    origname: iQ5MkQ62HdwDr7N.png
+    shape: rect
+    left: 0
+    right: 472
+    top: 0
+    bottom: 273
+    uid: Q5MkQ62HdwDr7N
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\AppData\Local\ct.js\bundledAssets\textures\Comigo's
+      Animals, Farm, and Puzzle sprites\Cloud_04.png
+  - lastmod: 1693981807295
+    type: texture
+    name: Cloud_05
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 482
+    imgHeight: 287
+    width: 482
+    height: 287
+    offx: 0
+    offy: 0
+    origname: i62J2F2BP7hhj6F.png
+    shape: rect
+    left: 0
+    right: 482
+    top: 0
+    bottom: 287
+    uid: 62J2F2BP7hhj6F
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\AppData\Local\ct.js\bundledAssets\textures\Comigo's
+      Animals, Farm, and Puzzle sprites\Cloud_05.png
+  - lastmod: 1693987840483
+    type: texture
+    name: PipeBottom
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 397
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 794
+    imgHeight: 1123
+    width: 794
+    height: 1123
+    offx: 0
+    offy: 0
+    origname: i4kG4JQ53R2GKTK.png
+    shape: rect
+    left: 91
+    right: 91
+    top: -712
+    bottom: 1122
+    uid: 4kG4JQ53R2GKTK
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Projects\FlappyBird\Assets\PipeBottom.png'
+    stripPoints:
+      - x: -64
+        'y': -553
+      - x: 378
+        'y': -174
+      - x: 233
+        'y': 454
+      - x: -233
+        'y': 454
+      - x: -66
+        'y': -201
+    closedStrip: true
+    tiled: false
+  - lastmod: 1693989433948
+    type: texture
+    name: PipeTop
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 397
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 794
+    imgHeight: 1123
+    width: 794
+    height: 1123
+    offx: 0
+    offy: 0
+    origname: iQ7BHz3RBqqCFPG.png
+    shape: rect
+    left: 91
+    right: 91
+    top: 0
+    bottom: 412
+    uid: Q7BHz3RBqqCFPG
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Projects\FlappyBird\Assets\PipeUp.png'
+  - lastmod: 1693988569808
+    type: texture
+    name: Flappy-6-9-2023
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 468
+    imgHeight: 265
+    width: 468
+    height: 265
+    offx: 0
+    offy: 0
+    origname: iCBQT4mw1H9Ljm9.png
+    shape: rect
+    left: 0
+    right: 468
+    top: 0
+    bottom: 265
+    uid: CBQT4mw1H9Ljm9
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Projects\FlappyBird\Assets\Flappy-6-9-2023.png'
+  - lastmod: 1693988569814
+    type: texture
+    name: CHICKEN-6-9-2023
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 684
+    imgHeight: 199
+    width: 684
+    height: 199
+    offx: 0
+    offy: 0
+    origname: iG5dt4bGc9j7N6D.png
+    shape: rect
+    left: 0
+    right: 684
+    top: 0
+    bottom: 199
+    uid: G5dt4bGc9j7N6D
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Projects\FlappyBird\Assets\CHICKEN-6-9-2023.png'
+  - lastmod: 1693988996124
+    type: texture
+    name: '-play-6-9-2023'
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 356
+    imgHeight: 409
+    width: 356
+    height: 409
+    offx: 0
+    offy: 0
+    origname: ihGznKFjD91NkrK.png
+    shape: rect
+    left: 0
+    right: 356
+    top: 0
+    bottom: 409
+    uid: hGznKFjD91NkrK
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Projects\FlappyBird\Assets\-play-6-9-2023.png'
+  - lastmod: 1693990205524
+    type: texture
+    name: score-6-9-2023
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 487
+    imgHeight: 180
+    width: 487
+    height: 180
+    offx: 0
+    offy: 0
+    origname: imjkP15Mmwz1GKr.png
+    shape: rect
+    left: 0
+    right: 487
+    top: 0
+    bottom: 180
+    uid: mjkP15Mmwz1GKr
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Projects\FlappyBird\Assets\score-6-9-2023.png'
+  - lastmod: 1698474486163
+    type: texture
+    name: Icon
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 120
+    imgHeight: 120
+    width: 120
+    height: 120
+    offx: 0
+    offy: 0
+    origname: it74cgr4w4L3dK2.png
+    shape: rect
+    left: 0
+    right: 120
+    top: 0
+    bottom: 120
+    uid: t74cgr4w4L3dK2
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Projects\FlappyBird\Assets\Icon.png'
+  - lastmod: 1693999469057
+    type: texture
+    name: highscore-6-9-2023
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 800
+    imgHeight: 277
+    width: 800
+    height: 277
+    offx: 0
+    offy: 0
+    origname: i3PNzjkQhdMPc6Q.png
+    shape: rect
+    left: 0
+    right: 800
+    top: 0
+    bottom: 277
+    uid: 3PNzjkQhdMPc6Q
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Projects\FlappyBird\Assets\highscore-6-9-2023.png'
+skeletons: []
+templates:
+  - type: template
+    name: Player
+    depth: 2
+    texture: 3HPWG75DfLBFBJ
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |
+          this.vspeed = 0;
+          ct.room.player = this;
+          this.score = 0;
+          this.movingSpeed = 10
+        arguments: {}
+        lib: core
+      - eventKey: OnStep
+        code: |-
+          if(ct.room.name === 'Game'){
+              if(ct.actions.fly.pressed) this.vspeed = -10;        //this.movingSpeed * -1 //-10; //-6
+              this.vspeed+= 0.4;        //this.movingSpeed - 0.4 //0.6; //0.2
+              //this.movingSpeed+= 0.1
+          }else{
+              this.vspeed+= 0.2;
+              if(this.vspeed > 4) this.vspeed = -4.2;
+          }
+
+          this.move();
+
+          if(this.score > ct.highScore) {
+              ct.highScore = this.score;
+              console.log("hight score: " + ct.highScore)
+          }
+        arguments: {}
+        lib: core
+      - eventKey: collisionCGroup
+        code: |
+          ct.rooms.switch('Menue');
+        arguments:
+          group: GameOver
+        lib: place
+    extends: {}
+    lastmod: 1693999194283
+    uid: NWTW5zfbW4mLPF
+  - type: template
+    name: Water
+    depth: 3
+    texture: fhmpcb2t3HRWbK
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: this.alpha = 0.85;
+        arguments: {}
+        lib: core
+    extends:
+      cgroup: GameOver
+      alpha: 1
+    lastmod: 1694002574481
+    uid: 5Mq7Pzd3pDjtHB
+  - type: template
+    name: PipeBottom
+    depth: 2
+    texture: 4kG4JQ53R2GKTK
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: |+
+          if(ct.room.name === 'Game'){
+              if(this.x < -64){
+                  this.x = 1344;
+                  this.y = getRandomInt(-448,-128);
+                  ct.room.player.score += 10;
+                  console.log("score: " + ct.room.player.score);
+              } 
+
+              this.hspeed = this.gameSpeed ;
+              this.move();
+
+              this.gameSpeed -= 0.005;
+          }
+
+
+
+
+          function getRandomInt(a, b) {
+                return Math.floor(Math.random() * (a - (b) + 1)) + (b);
+          }
+
+        arguments: {}
+      - eventKey: OnCreate
+        code: |-
+          this.gameSpeed = -5
+          ct.room.pipe = this;
+        arguments: {}
+        lib: core
+    extends:
+      cgroup: GameOver
+    lastmod: 1694344559559
+    uid: hw98pGK1L1dpmQ
+  - type: template
+    name: counter
+    depth: 5
+    texture: mjkP15Mmwz1GKr
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |+
+          this.text = new PIXI.Text('Your text here', ct.styles.get('score'));
+          this.text.x = 490;
+          this.text.anchor.y = -0.04;
+
+          this.addChild(this.text);
+
+        arguments: {}
+        lib: core
+      - eventKey: OnDraw
+        code: |-
+          if(ct.room.name == "Game"){
+              this.text.text = ct.room.player.score;  
+          }else{
+          //    this.text.text = ct.highScore;
+          }
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1694344561128
+    uid: Tjq4hzdzKgQ1Wg
+  - type: template
+    name: PipeTop
+    depth: 2
+    texture: Q7BHz3RBqqCFPG
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: |-
+          /*if(ct.room.name === 'Game'){
+              this.x = ct.room.pipe.x;
+              this.y = ct.room.pipe.y;
+              
+          }*/
+
+
+          if(ct.room.name === 'Game'){
+              if(this.x < -64){
+                  this.x = 1344;
+                  this.y = getRandomInt(-448,-128);
+              } 
+
+              this.hspeed = ct.room.pipe.gameSpeed ;
+              this.move();
+          } 
+
+
+
+
+          function getRandomInt(a, b) {
+                return Math.floor(Math.random() * (a - (b) + 1)) + (b);
+          }
+        arguments: {}
+    extends:
+      cgroup: GameOver
+    lastmod: 1698393132579
+    uid: HCcnt76g49pwFq
+  - type: template
+    name: Heading2
+    depth: 5
+    texture: G5dt4bGc9j7N6D
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: ''
+        arguments: {}
+    extends: {}
+    lastmod: 1693994029213
+    uid: rjQHfpm85zn74F
+  - type: template
+    name: Heading1
+    depth: 5
+    texture: CBQT4mw1H9Ljm9
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: ''
+        arguments: {}
+    extends: {}
+    lastmod: 1693994027085
+    uid: wqgtkQ56rkH8Kp
+  - type: template
+    name: Heading3
+    depth: 5
+    texture: hGznKFjD91NkrK
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: this.move();
+        arguments: {}
+    extends: {}
+    lastmod: 1693994031447
+    uid: R4cQr5J5ptPQCM
+  - type: template
+    name: Cloud
+    depth: 1
+    texture: PjMf9F8NGNdfB4
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: |+
+          if(ct.room.name === 'Game'){
+              if(this.x < -448){
+                  this.x = 1280;
+                  this.y = getRandomInt(-192,192);
+                  this.alpha = Math.random() + 0.2;
+                  this.moveSpeed = getRandomInt(-5, 5)
+              } 
+
+              this.hspeed = ct.room.pipe.gameSpeed + this.moveSpeed;
+              this.move();
+          }
+
+
+          function getRandomInt(a, b) {
+                return Math.floor(Math.random() * (a - (b) + 1)) + (b);
+          }
+
+        arguments: {}
+      - eventKey: OnCreate
+        code: |-
+          this.alpha = Math.random() + 0.2;
+          this.moveSpeed = 0
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1693994021964
+    uid: HzTL1kqNfCn2mm
+  - type: template
+    name: highscore
+    depth: 5
+    texture: 3PNzjkQhdMPc6Q
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |+
+          this.text = new PIXI.Text('', ct.styles.get('score'));
+          this.text.x = 800;
+          this.text.anchor.y = -0.25;
+
+          this.addChild(this.text);
+
+        arguments: {}
+        lib: core
+      - eventKey: OnDraw
+        code: |
+          this.text.text = ct.highScore;
+        arguments: {}
+        lib: core
+    extends: {}
+    lastmod: 1694156768095
+    uid: HmhHrckbhBPdQ5
+  - type: template
+    name: sky
+    depth: 3
+    texture: Q5MkQ62HdwDr7N
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: ''
+        arguments: {}
+    extends:
+      cgroup: GameOver
+    lastmod: 1694002666491
+    uid: w1CR2WQhFh1Kj8
+sounds: []
+styles:
+  - name: score
+    uid: C4hDRLm9Mp68b2
+    origname: sMp68b2
+    font:
+      family: sans-serif
+      size: 147
+      weight: '500'
+      italic: false
+    lastmod: 1693999197298
+    fill:
+      type: '1'
+      color1: '#FFF308'
+      color2: '#FFBB00'
+      gradtype: '1'
+    stroke:
+      color: '#FFFFFF'
+      weight: 8
+    shadow:
+      color: '#000000'
+      x: 2
+      'y': 2
+      blur: 4
+fonts: []
+rooms:
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    simulate: true
+    width: 1280
+    height: 720
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: Game
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds:
+      - depth: 0
+        texture: bG1tRJ7kJ994q1
+        shiftX: 0
+        shiftY: 0
+        parallaxX: 1
+        parallaxY: 1
+        movementX: 0
+        movementY: 0
+        scaleX: 1
+        scaleY: 1
+        repeat: repeat
+    copies:
+      - x: 192
+        'y': 320
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: NWTW5zfbW4mLPF
+        exts: {}
+        customProperties: {}
+      - x: 1344
+        'y': -192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: hw98pGK1L1dpmQ
+        exts: {}
+        customProperties: {}
+      - x: 1984
+        'y': -128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: hw98pGK1L1dpmQ
+        exts: {}
+        customProperties: {}
+      - x: 1344
+        'y': -128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: HCcnt76g49pwFq
+        exts: {}
+        customProperties: {}
+      - x: 1984
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: HCcnt76g49pwFq
+        exts: {}
+        customProperties: {}
+      - x: 64
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 0.28888889
+          'y': 0.28888889
+        rotation: 0
+        uid: Tjq4hzdzKgQ1Wg
+        exts: {}
+        customProperties: {}
+      - x: 0
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 128
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 256
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 384
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 512
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 640
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 768
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 896
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 1024
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 1152
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 963.81227437
+        'y': 62.84
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 0.23523466
+          'y': 0.23523466
+        rotation: 0
+        uid: HmhHrckbhBPdQ5
+        exts: {}
+        customProperties: {}
+      - x: 0
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 128
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 256
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 384
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 512
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 640
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 768
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 896
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 1024
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 1152
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: -1344
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: HzTL1kqNfCn2mm
+        exts: {}
+        customProperties: {}
+      - x: -896
+        'y': -128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: HzTL1kqNfCn2mm
+        exts: {}
+        customProperties: {}
+      - x: -384
+        'y': 256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: HzTL1kqNfCn2mm
+        exts: {}
+        customProperties: {}
+    tiles: []
+    extends: {}
+    lastmod: 1694157242403
+    events: []
+    uid: WjnJ5BQGqKRmMC
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    simulate: true
+    width: 1280
+    height: 720
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: Menue
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds:
+      - depth: 0
+        texture: bG1tRJ7kJ994q1
+        shiftX: 0
+        shiftY: 0
+        parallaxX: 1
+        parallaxY: 1
+        movementX: 0
+        movementY: 0
+        scaleX: 1
+        scaleY: 1
+        repeat: repeat
+    copies:
+      - x: -256
+        'y': 128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: HzTL1kqNfCn2mm
+        exts: {}
+        customProperties: {}
+      - x: 768
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: HzTL1kqNfCn2mm
+        exts: {}
+        customProperties: {}
+      - x: 384
+        'y': -192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: HzTL1kqNfCn2mm
+        exts: {}
+        customProperties: {}
+      - x: 128
+        'y': 256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: NWTW5zfbW4mLPF
+        exts: {}
+        customProperties: {}
+      - x: 128
+        'y': -192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: hw98pGK1L1dpmQ
+        exts: {}
+        customProperties: {}
+      - x: 256
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: rjQHfpm85zn74F
+        exts: {}
+        customProperties: {}
+      - x: 256
+        'y': 0
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: wqgtkQ56rkH8Kp
+        exts: {}
+        customProperties: {}
+      - x: 576
+        'y': 380.41573034
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 0.53932584
+          'y': 0.53932584
+        rotation: 0
+        uid: R4cQr5J5ptPQCM
+        exts: {}
+        customProperties: {}
+      - x: 448
+        'y': -320
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: hw98pGK1L1dpmQ
+        exts: {}
+        customProperties: {}
+      - x: -1792
+        'y': -576
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 960
+        'y': -256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: hw98pGK1L1dpmQ
+        exts: {}
+        customProperties: {}
+      - x: 0
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 128
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 256
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 384
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 512
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 640
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 768
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 896
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 1024
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 1152
+        'y': 640
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 832
+        'y': 64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 0.30685921
+          'y': 0.30685921
+        rotation: 0
+        uid: HmhHrckbhBPdQ5
+        exts: {}
+        customProperties: {}
+      - x: 0
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 128
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 256
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 384
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 512
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 1152
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 1024
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 896
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 768
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+      - x: 640
+        'y': -64
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: 5Mq7Pzd3pDjtHB
+        exts: {}
+        customProperties: {}
+    tiles: []
+    extends: {}
+    lastmod: 1694163479297
+    events:
+      - eventKey: OnActionPress
+        code: ct.rooms.switch('Game')
+        arguments:
+          action: fly
+        lib: core
+      - eventKey: OnRoomStart
+        code: ''
+        arguments: {}
+        lib: core
+    uid: QzhW4kWbK237qD
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    simulate: true
+    width: 1280
+    height: 720
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: TestingRoom
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds:
+      - depth: 0
+        texture: bG1tRJ7kJ994q1
+        shiftX: 0
+        shiftY: 0
+        parallaxX: 1
+        parallaxY: 1
+        movementX: 0
+        movementY: 0
+        scaleX: 1
+        scaleY: 1
+        repeat: repeat
+    copies:
+      - x: 448
+        'y': 448
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 0.28888889
+          'y': 0.28888889
+        rotation: 0
+        uid: Tjq4hzdzKgQ1Wg
+        exts: {}
+        customProperties: {}
+      - x: 64
+        'y': 128
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: NWTW5zfbW4mLPF
+        exts: {}
+        customProperties: {}
+    tiles: []
+    extends: {}
+    lastmod: 1693991565093
+    events: []
+    uid: w5BWF7BH6k9WFH
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    simulate: true
+    width: 1280
+    height: 720
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: setHightscore
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds: []
+    copies: []
+    tiles: []
+    extends: {}
+    lastmod: 1694153842277
+    events:
+      - eventKey: OnRoomStart
+        code: ct.highScore = 0;
+        arguments: {}
+        lib: core
+      - eventKey: OnDraw
+        code: ct.rooms.switch('Menue');
+        arguments: {}
+        lib: core
+    uid: jb5n78mw1WFQPL
+actions:
+  - name: fly
+    methods:
+      - code: pointer.Any
+      - code: keyboard.Space
+emitterTandems: []
+scripts:
+  - name: ''
+    code: ''
+startroom: jb5n78mw1WFQPL
+contentTypes:
+  - name: ''
+    readableName: ''
+    entries: []
+    specification: []
+groups:
+  fonts: []
+  textures: []
+  styles: []
+  rooms: []
+  templates: []
+  sounds: []
+  emitterTandems: []
+settings:
+  authoring:
+    author: Jasmin Dammertz
+    site: ''
+    title: Flappy Chicken
+    version:
+      - 0
+      - 0
+      - 0
+    versionPostfix: ''
+    appId: ''
+  rendering:
+    usePixiLegacy: true
+    maxFPS: 60
+    pixelatedrender: false
+    highDensity: true
+    desktopMode: maximized
+    hideCursor: false
+    mobileScreenOrientation: unspecified
+  export:
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+  branding:
+    accent: '#0087A8'
+    invertPreloaderScheme: true
+    icon: t74cgr4w4L3dK2
+    splashScreen: -1
+    forceSmoothIcons: false
+    forceSmoothSplashScreen: false
+    hideLoadingLogo: false
+  fps: 30
+palette: []

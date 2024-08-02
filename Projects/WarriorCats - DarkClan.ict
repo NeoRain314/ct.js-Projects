@@ -1,0 +1,220 @@
+ctjsVersion: 3.2.0
+language: typescript
+notes: /* empty */
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  fittoscreen:
+    mode: scaleFit
+  pointer: {}
+  keyboard: {}
+  keyboard.polyfill: {}
+  sound.howler: {}
+textures:
+  - lastmod: 1704436931133
+    type: texture
+    name: Grass
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 32
+    imgHeight: 32
+    width: 32
+    height: 32
+    offx: 0
+    offy: 0
+    origname: iTqqdRq1n4Cz5Md.png
+    shape: rect
+    left: 0
+    right: 32
+    top: 0
+    bottom: 32
+    uid: TqqdRq1n4Cz5Md
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: 'C:\Users\Jasmin\ct.js\Graphiks\CatClanLive\Map\Grass.png'
+    tiled: true
+  - lastmod: 1704437302358
+    type: texture
+    name: sprite_0
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: ijhFqC8Gkt4R6K9.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: jhFqC8Gkt4R6K9
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\ct.js\Graphiks\WarriorCats-DarkClan\New Piskel
+      (7)\sprite_0.png
+  - lastmod: 1704437302367
+    type: texture
+    name: sprite_1
+    untill: 0
+    grid:
+      - 1
+      - 1
+    axis:
+      - 0
+      - 0
+    marginx: 0
+    marginy: 0
+    imgWidth: 128
+    imgHeight: 128
+    width: 128
+    height: 128
+    offx: 0
+    offy: 0
+    origname: iGknjQLKbmhWQdH.png
+    shape: rect
+    left: 0
+    right: 128
+    top: 0
+    bottom: 128
+    uid: GknjQLKbmhWQdH
+    padding: 1
+    isBlank: false
+    group: !<tag:yaml.org,2002:js/undefined> ''
+    source: >-
+      C:\Users\Jasmin\ct.js\Graphiks\WarriorCats-DarkClan\New Piskel
+      (7)\sprite_1.png
+skeletons: []
+templates:
+  - type: template
+    name: den
+    depth: 0
+    texture: jhFqC8Gkt4R6K9
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events: []
+    extends: {}
+    lastmod: 1704437322141
+    uid: tzJ5HrzkLhbJcF
+sounds: []
+styles: []
+fonts: []
+rooms:
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    simulate: true
+    width: 1280
+    height: 720
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 1280
+    restrictMaxY: 720
+    restrictMinY: 720
+    isUi: false
+    name: Camp
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds:
+      - depth: 0
+        texture: TqqdRq1n4Cz5Md
+        shiftX: 0
+        shiftY: 0
+        parallaxX: 1
+        parallaxY: 1
+        movementX: 0
+        movementY: 0
+        scaleX: 1
+        scaleY: 1
+        repeat: repeat
+    copies:
+      - x: 256
+        'y': 192
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: tzJ5HrzkLhbJcF
+        exts: {}
+        customProperties: {}
+    tiles: []
+    extends: {}
+    lastmod: 1704437333738
+    events: []
+    uid: LtqMbQW9n8qwFT
+actions: []
+emitterTandems: []
+scripts: []
+startroom: -1
+contentTypes: []
+groups:
+  fonts: []
+  textures: []
+  styles: []
+  rooms: []
+  templates: []
+  sounds: []
+  emitterTandems: []
+settings:
+  authoring:
+    author: ''
+    site: ''
+    title: ''
+    version:
+      - 0
+      - 0
+      - 0
+    versionPostfix: ''
+    appId: ''
+  rendering:
+    usePixiLegacy: true
+    maxFPS: 60
+    pixelatedrender: false
+    highDensity: true
+    desktopMode: maximized
+    hideCursor: false
+    mobileScreenOrientation: unspecified
+  export:
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+  branding:
+    accent: '#446adb'
+    invertPreloaderScheme: true
+    icon: -1
+    splashScreen: -1
+    forceSmoothIcons: false
+    forceSmoothSplashScreen: false
+    hideLoadingLogo: false
+  fps: 30
