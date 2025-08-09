@@ -224,7 +224,7 @@ assets:
         backgrounds: []
         copies:
           - x: 512
-            'y': 64
+            'y': 0
             opacity: 1
             tint: 16777215
             scale:
@@ -261,7 +261,7 @@ assets:
             bindings: {}
         tiles: []
         extends: {}
-        lastmod: 1754733225520
+        lastmod: 1754737178656
         events:
           - eventKey: OnRoomStart
             code: ''
