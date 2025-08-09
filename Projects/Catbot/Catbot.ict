@@ -102,6 +102,29 @@ scripts:
           rooms.current.inputTextBox.visible = true;
           rooms.current.speachBubble.tex = "speachBubble";
       }
+
+
+
+      function buildPrompt(chatVerlauf, userInput) {
+         var prompt = "You are a helpful assistant: Please continue the following conversation: \n\n";
+         for (const entry of chatVerlauf) {
+            prompt += "USER: " + entry.user + "\n";
+            prompt += "BOT: " + entry.bot + "\n";
+         }
+         prompt += "USER: " + userInput + "\n";
+         
+         prompt += "Now write the BOT answer:\n";
+         return prompt;
+      }
+
+      function promptBot(chatVerlauf,userInput) {
+          var nextPrompt = buildPrompt(chatVerlauf, userInput)
+          var result = queryGemini(nextPrompt, localStorage.GEMINI_API_KEY).then(writeAnswer);
+          var newEntry = {}
+          newEntry.user = userInput
+          newEntry.bot = result
+          chatVerlauf.append(newEntry)
+      }
   - name: main vars
     code: >-
       let system_prompt = `You are an Chatbot for small conversations with a
@@ -738,8 +761,10 @@ assets:
               chat_history += "; " + `${localStorage.USER_NAME}: ` + this.text;
 
 
-              queryGemini(chat_history,
+              //queryGemini(chat_history,
               localStorage.GEMINI_API_KEY).then(writeAnswer);
+
+              promptBot(/*chatverlauf, //User Input */);
 
               this.text = "";
 
@@ -754,7 +779,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754755017697
+        lastmod: 1754755699931
         uid: zzJ9R4D8BFrTPM
         behaviors: []
         extendTypes: ''
