@@ -1,0 +1,407 @@
+ctjsVersion: 5.2.1
+backups: 3
+language: typescript
+notes: /* empty */
+libs:
+  place:
+    gridX: 1024
+    gridY: 1024
+  pointer: {}
+  keyboard: {}
+  keyboard.polyfill: {}
+  pointer.polyfill: {}
+startroom: 4BjNDncQhQfzrd
+contentTypes: []
+actions: []
+scripts: []
+assets:
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    disableGrid: false
+    simulate: true
+    width: 1280
+    height: 720
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 0
+    restrictMaxY: 720
+    restrictMinY: 0
+    isUi: false
+    name: Main
+    backgroundColor: '#470070'
+    follow: -1
+    backgrounds: []
+    copies: []
+    tiles: []
+    extends: {}
+    lastmod: 1754728811923
+    events:
+      - eventKey: OnRoomStart
+        code: >-
+          console.log("Test");
+
+
+          /**
+           * Queries the Google Gemini API with a given prompt.
+           *
+           * @param {string} prompt The text prompt to send to the model.
+           * @param {string} apiKey Your Google AI Studio API key.
+           * @returns {Promise<string>} A promise that resolves to the model's text response.
+           * @throws {Error} Throws an error if the API request fails.
+           */
+          async function queryGemini(prompt, apiKey) {
+            // The API endpoint for the gemini-1.5-flash-latest model
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemma-3n-e4b-it:generateContent?key=${apiKey}`;
+
+            // The request payload, containing the user's prompt
+            const requestBody = {
+              contents: [{
+                parts: [{ text: prompt }]
+              }]
+            };
+
+            try {
+              // Make the API call using the fetch function
+              const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody),
+              });
+
+              // Check if the request was successful
+              if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`API Error: ${response.status} - ${errorData.error.message}`);
+              }
+
+              // Parse the JSON response
+              const data = await response.json();
+
+              // Extract and return the model's text response
+              // Added safety checks for the response structure
+              const responseText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+              if (responseText) {
+                return responseText;
+              } else {
+                throw new Error("Invalid response structure from API.");
+              }
+
+            } catch (error) {
+              // Log the error and re-throw it for the calling code to handle
+              console.error("Failed to query Gemini:", error);
+              throw error;
+            }
+          }
+
+
+          // --- Example Usage ---
+
+          // This is how you would call the function.
+
+          // Replace 'YOUR_API_KEY' with your actual key.
+
+
+          /*
+
+          async function main() {
+            const myApiKey = 'YOUR_API_KEY';
+            const myPrompt = 'Write a short poem about coding.';
+
+            try {
+              console.log("Sending prompt...");
+              const result = await queryGemini(myPrompt, myApiKey);
+              console.log("--- Gemini's Response ---");
+              console.log(result);
+            } catch (e) {
+              console.log("An error occurred during the API call.");
+            }
+          }
+
+
+          main();
+
+          */
+
+
+          queryGemini("Du bist eine Katze",
+          localStorage.GEMINI_API_KEY).then(writeAnswer);
+
+
+
+          function writeAnswer(answer){
+            console.log(answer);
+          }
+        arguments: {}
+        lib: core
+    behaviors: []
+    extendTypes: ''
+    uid: MFmq1hg3f59ngD
+  - type: template
+    baseClass: Text
+    name: Text
+    depth: 0
+    texture: -1
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events: []
+    extends:
+      cgroup: ''
+    lastmod: 1754322238672
+    uid: P6Kpcw9QNKWqWN
+    behaviors: []
+    extendTypes: ''
+    defaultText: hallo
+    textStyle: F9f5599b4PQwmH
+  - type: template
+    baseClass: AnimatedSprite
+    name: InputButton
+    depth: 0
+    texture: LbwC7L3cCmptWN
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnStep
+        lib: core
+        code: this.move();
+        arguments: {}
+    extends:
+      cgroup: ''
+    lastmod: 1754323975360
+    uid: pmGDDGWPwNWMRG
+    behaviors: []
+    extendTypes: ''
+  - type: folder
+    uid: b2Qwc7tWJKnfHB
+    colorClass: act
+    icon: help-circle
+    name: Textures
+    lastmod: 1754322289519
+    entries:
+      - lastmod: 1754323874099
+        type: texture
+        name: Button_
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 265
+        imgHeight: 128
+        width: 265
+        height: 128
+        offx: 0
+        offy: 0
+        origname: iLbwC7L3cCmptWN.png
+        shape: rect
+        left: 0
+        right: 265
+        top: 0
+        bottom: 128
+        uid: LbwC7L3cCmptWN
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\Button_.png'
+  - type: folder
+    uid: B2zmjCd44LgJbB
+    colorClass: act
+    icon: help-circle
+    name: Text Styles
+    lastmod: 1754323881504
+    entries:
+      - type: style
+        name: normalTextStyle
+        uid: F9f5599b4PQwmH
+        typeface: -1
+        font:
+          family: sans-serif
+          halign: left
+          italic: false
+          size: 12
+          weight: '400'
+          wrap: false
+          wrapPosition: 640
+          lineHeight: 16
+        fill:
+          type: 0
+          color: '#ffffff'
+          color1: '#cccccc'
+          color2: '#ffffff'
+          gradtype: 1
+        lastmod: 1754319222719
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    disableGrid: false
+    simulate: true
+    width: 1280
+    height: 720
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 0
+    restrictMaxY: 720
+    restrictMinY: 0
+    isUi: false
+    name: StartMenu
+    backgroundColor: '#470070'
+    follow: -1
+    backgrounds: []
+    copies:
+      - x: 448
+        'y': 256
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: bm8J5JH3hTfgWR
+        exts: {}
+        customProperties: {}
+        bindings: {}
+    tiles: []
+    extends: {}
+    lastmod: 1754728553077
+    events:
+      - eventKey: OnRoomStart
+        code: ''
+        arguments: {}
+        lib: core
+    behaviors: []
+    extendTypes: ''
+    uid: 4BjNDncQhQfzrd
+  - type: template
+    baseClass: AnimatedSprite
+    name: StartButton
+    depth: 0
+    texture: LbwC7L3cCmptWN
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnPointerClick
+        code: console.log(rooms.current);
+        arguments: {}
+        lib: core
+    extends:
+      cgroup: ''
+    lastmod: 1754728771146
+    uid: rcHPd26D783dp1
+    behaviors: []
+    extendTypes: ''
+  - type: template
+    baseClass: TextBox
+    name: InputTextbox
+    depth: 0
+    texture: LbwC7L3cCmptWN
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |
+          if ('GEMINI_API_KEY' in localStorage) { // was anything saved before?
+              this.text = localStorage.GEMINI_API_KEY;
+          }
+        arguments: {}
+        lib: core
+      - eventKey: OnTextChange
+        code: localStorage.GEMINI_API_KEY = this.text;
+        arguments: {}
+        lib: core
+    extends:
+      cgroup: ''
+    lastmod: 1754728775017
+    uid: bm8J5JH3hTfgWR
+    behaviors: []
+    extendTypes: ''
+    defaultText: enter your API Key here
+    textStyle: F9f5599b4PQwmH
+    nineSliceSettings:
+      top: 16
+      left: 16
+      bottom: 16
+      right: 16
+      autoUpdate: false
+    hoverTexture: LbwC7L3cCmptWN
+    pressedTexture: LbwC7L3cCmptWN
+    disabledTexture: LbwC7L3cCmptWN
+    fieldType: text
+    maxTextLength: -2
+globalVars: []
+settings:
+  authoring:
+    author: ''
+    site: ''
+    title: ''
+    version:
+      - 0
+      - 0
+      - 0
+    versionPostfix: ''
+    appId: ''
+  rendering:
+    usePixiLegacy: true
+    transparent: false
+    maxFPS: 60
+    pixelatedrender: false
+    highDensity: true
+    desktopMode: maximized
+    hideCursor: false
+    mobileScreenOrientation: unspecified
+    viewMode: scaleFit
+  export:
+    showErrors: true
+    errorsLink: ''
+    autocloseDesktop: true
+    windows: true
+    linux: true
+    mac: true
+    functionWrap: false
+    codeModifier: none
+    bundleAssetTree: false
+    bundleAssetTypes:
+      texture: true
+      template: true
+      room: true
+      behavior: false
+      typeface: false
+      sound: false
+      style: false
+      tandem: false
+      script: false
+      enum: false
+  branding:
+    accent: '#446adb'
+    invertPreloaderScheme: true
+    icon: -1
+    splashScreen: -1
+    forceSmoothIcons: false
+    forceSmoothSplashScreen: false
+    hideLoadingLogo: false
+    alternativeLogo: false
+    customLoadingText: ''
+  fps: 30
+palette: []
