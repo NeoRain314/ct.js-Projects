@@ -1,4 +1,4 @@
-ctjsVersion: 4.0.0
+ctjsVersion: 5.2.1
 backups: 3
 language: typescript
 notes: |-
@@ -49,7 +49,35 @@ actions:
       - code: keyboard.ArrowUp
 scripts:
   - name: mainScript
-    code: "let total_crystals = 0;\r\nlet unlocked_rooms = [\r\n    \"GameMenue\",\r\n    \"Level_01\",\r\n]\r\n\r\nlet finished_rooms = []\r\n\r\nconsole.log(unlocked_rooms);\r\n\r\n\r\n\r\n/*\r\n// --- Project notes --- //\r\n\r\n    > Heart Bonus: if you finished level with 3 ore more hearts --> +5 Crystal Bonus\r\n    > Crystal Bonus: if all crystals found --> +10 Crystal Bonus \r\n\r\nBugs:\r\n    > Buttons updaten sich erst wenn man sie mit dem mauszeiger berührt (egal ob textur änderung in create oder in frame start ist)\r\n\r\nIdeas:\r\n    > if you finished Level without finding all crystals you can play it again and find the rest crystals:\r\n        - code reminds how many crystals of a level weren't found - you can find this amount of crystals still in \r\n            the level (or already founded crystals are half visible and dont count)\r\n    > Unendlicher Modus!!!!!!!!!!!!\r\n\r\n*/"
+    code: |-
+      let total_crystals = 0;
+      let unlocked_rooms = [
+          "GameMenue",
+          "Level_01",
+      ]
+
+      let finished_rooms = []
+
+      console.log(unlocked_rooms);
+
+
+
+      /*
+      // --- Project notes --- //
+
+          > Heart Bonus: if you finished level with 3 ore more hearts --> +5 Crystal Bonus
+          > Crystal Bonus: if all crystals found --> +10 Crystal Bonus 
+
+      Bugs:
+          > Buttons updaten sich erst wenn man sie mit dem mauszeiger berührt (egal ob textur änderung in create oder in frame start ist)
+
+      Ideas:
+          > if you finished Level without finding all crystals you can play it again and find the rest crystals:
+              - code reminds how many crystals of a level weren't found - you can find this amount of crystals still in 
+                  the level (or already founded crystals are half visible and dont count)
+          > Unendlicher Modus!!!!!!!!!!!!
+
+      */
 assets:
   - type: folder
     uid: jJ7mNzfbcqdTqn
@@ -1202,8 +1230,9 @@ assets:
         arguments: {}
         lib: core
     specification: []
-    lastmod: 1707930848972
+    lastmod: 1754403358257
     uid: W3t1hfRgKpBFc9
+    extendTypes: ''
   - type: folder
     uid: KNLFb15wwWNk7K
     colorClass: error
@@ -1233,6 +1262,7 @@ assets:
         stroke:
           color: '#FFFFFF'
           weight: 4
+        typeface: -1
       - type: style
         name: HeartCounter
         uid: wLJ56fk75n9c4p
@@ -1255,6 +1285,7 @@ assets:
         stroke:
           color: '#FFFFFF'
           weight: 4
+        typeface: -1
       - type: style
         name: Tutorial
         uid: B7h6mzNmDnBW47
@@ -1274,6 +1305,7 @@ assets:
           color2: '#ffffff'
           gradtype: 1
         lastmod: 1707919963443
+        typeface: -1
       - type: style
         name: menue
         uid: 9mn52365tkKR7b
@@ -1293,6 +1325,7 @@ assets:
           color2: '#ffffff'
           gradtype: 1
         lastmod: 1722073855181
+        typeface: -1
   - type: folder
     uid: hGdbKCmR4FQMQn
     colorClass: text
@@ -1434,6 +1467,7 @@ assets:
         lastmod: 1722265158796
         uid: TwBcw4nh8tTdqz
         behaviors: []
+        extendTypes: ''
       - type: template
         baseClass: Text
         name: CrystalsWidgetText
@@ -1456,6 +1490,7 @@ assets:
         behaviors: []
         defaultText: ''
         textStyle: 3PtLGHMFzqL4BC
+        extendTypes: ''
       - type: template
         baseClass: AnimatedSprite
         name: Exit
@@ -1478,6 +1513,7 @@ assets:
         lastmod: 1722264476914
         uid: rdBTjFrfckDpD5
         behaviors: []
+        extendTypes: ''
       - type: template
         baseClass: AnimatedSprite
         name: GreenCrystal
@@ -1538,6 +1574,7 @@ assets:
         lastmod: 1722268464884
         uid: h6f2mn1wwWCCd8
         behaviors: []
+        extendTypes: ''
       - type: template
         baseClass: AnimatedSprite
         name: Heart
@@ -1601,10 +1638,12 @@ assets:
               this.move();
             arguments: {}
             lib: core
-        extends: {}
-        lastmod: 1722074979804
+        extends:
+          cgroup: ''
+        lastmod: 1754733958786
         uid: zJbp9Qn1Q9w4Hf
         behaviors: []
+        extendTypes: ''
       - type: template
         baseClass: AnimatedSprite
         name: HeartWidget
@@ -1619,6 +1658,7 @@ assets:
         lastmod: 1707811929328
         uid: jzqdL9593K3Njj
         behaviors: []
+        extendTypes: ''
       - type: template
         baseClass: Text
         name: HeartWidgetText
@@ -1639,6 +1679,7 @@ assets:
         behaviors: []
         defaultText: ''
         textStyle: wLJ56fk75n9c4p
+        extendTypes: ''
       - type: template
         baseClass: AnimatedSprite
         name: Player
@@ -1758,6 +1799,7 @@ assets:
         lastmod: 1722265321132
         uid: b4zrLtPNmw5927
         behaviors: []
+        extendTypes: ''
       - type: template
         baseClass: AnimatedSprite
         name: TutorialIcon
@@ -1799,6 +1841,7 @@ assets:
         lastmod: 1722160166741
         uid: TKDjRj49DMMr36
         behaviors: []
+        extendTypes: ''
       - type: template
         baseClass: Text
         name: TutorialText
@@ -1827,6 +1870,7 @@ assets:
         behaviors: []
         defaultText: ''
         textStyle: B7h6mzNmDnBW47
+        extendTypes: ''
       - type: template
         baseClass: AnimatedSprite
         name: Void
@@ -1846,6 +1890,7 @@ assets:
         lastmod: 1722340316949
         uid: LfkDnJ7rCw2jzK
         behaviors: []
+        extendTypes: ''
       - type: template
         baseClass: AnimatedSprite
         name: Checkpoint
@@ -1871,6 +1916,7 @@ assets:
         lastmod: 1708241417121
         uid: J5hhzWQKRp8fgK
         behaviors: []
+        extendTypes: ''
       - type: template
         baseClass: Button
         name: button
@@ -1938,8 +1984,9 @@ assets:
               }
             arguments: {}
             lib: core
-        extends: {}
-        lastmod: 1722338014809
+        extends:
+          cgroup: ''
+        lastmod: 1754733942734
         uid: Nk9Brwwmz7C4bj
         behaviors: []
         defaultText: undefined button
@@ -1953,6 +2000,7 @@ assets:
         hoverTexture: 3ThhM8CWw7K1z2
         pressedTexture: 3ThhM8CWw7K1z2
         disabledTexture: K2fkPq17ghBzTW
+        extendTypes: ''
       - type: template
         baseClass: Text
         name: LevelSelection
@@ -1992,6 +2040,7 @@ assets:
         hoverTexture: -1
         pressedTexture: -1
         disabledTexture: -1
+        extendTypes: ''
       - type: template
         baseClass: AnimatedSprite
         name: LevelExit
@@ -2048,6 +2097,7 @@ assets:
         lastmod: 1722264485909
         uid: pbzG8Cn4DTGnd4
         behaviors: []
+        extendTypes: ''
       - type: template
         baseClass: Text
         name: TotCrystalsWidgetText
@@ -2068,6 +2118,7 @@ assets:
         behaviors: []
         defaultText: ''
         textStyle: 3PtLGHMFzqL4BC
+        extendTypes: ''
       - type: template
         baseClass: Button
         name: test
@@ -2128,6 +2179,7 @@ assets:
         hoverTexture: -1
         pressedTexture: -1
         disabledTexture: -1
+        extendTypes: ''
       - type: template
         baseClass: AnimatedSprite
         name: arrowDown
@@ -2151,6 +2203,7 @@ assets:
         lastmod: 1722269276668
         uid: 4jdL4dnCNpjn7b
         behaviors: []
+        extendTypes: ''
       - type: template
         baseClass: AnimatedSprite
         name: arrowUp
@@ -2171,6 +2224,7 @@ assets:
         lastmod: 1722337045058
         uid: FFJknpCn7j2pC8
         behaviors: []
+        extendTypes: ''
   - type: folder
     uid: c26Jkb5R4JMnPp
     colorClass: act
@@ -2242,6 +2296,7 @@ assets:
         events: []
         behaviors: []
         uid: mt3QKkh8M2TRrg
+        extendTypes: ''
       - type: room
         oncreate: ''
         onstep: ''
@@ -2296,6 +2351,7 @@ assets:
             lib: core
         behaviors: []
         uid: MpKwh3tj4GFt2G
+        extendTypes: ''
       - type: room
         oncreate: ''
         onstep: ''
@@ -2454,6 +2510,7 @@ assets:
             lib: core
         behaviors: []
         uid: FKGR45h3pbqmDJ
+        extendTypes: ''
       - type: room
         oncreate: ''
         onstep: ''
@@ -2584,6 +2641,7 @@ assets:
             lib: core
         behaviors: []
         uid: qdhjjdLB6JrGCr
+        extendTypes: ''
       - type: folder
         uid: CT393H8WF3FJtH
         colorClass: act
@@ -7878,6 +7936,7 @@ assets:
             behaviors:
               - W3t1hfRgKpBFc9
             uid: bNw2fttNG2gwH8
+            extendTypes: ''
           - type: room
             oncreate: ''
             onstep: ''
@@ -10423,6 +10482,7 @@ assets:
             behaviors:
               - W3t1hfRgKpBFc9
             uid: MJg7bRDHFg9bQw
+            extendTypes: ''
           - type: room
             oncreate: ''
             onstep: ''
@@ -11340,6 +11400,7 @@ assets:
             behaviors:
               - W3t1hfRgKpBFc9
             uid: jrrGm6bkmrBrjF
+            extendTypes: ''
           - type: room
             oncreate: ''
             onstep: ''
@@ -36506,6 +36567,7 @@ assets:
             behaviors:
               - W3t1hfRgKpBFc9
             uid: b341M3Bn6hPmct
+            extendTypes: ''
           - type: room
             oncreate: ''
             onstep: ''
@@ -37423,6 +37485,7 @@ assets:
             behaviors:
               - W3t1hfRgKpBFc9
             uid: j2bcjjt5TJj9bC
+            extendTypes: ''
           - type: room
             oncreate: ''
             onstep: ''
@@ -63246,6 +63309,7 @@ assets:
             behaviors:
               - W3t1hfRgKpBFc9
             uid: 5Hw2TjztWzbjfk
+            extendTypes: ''
 settings:
   authoring:
     author: ''
@@ -63285,6 +63349,9 @@ settings:
       style: false
       tandem: false
       script: false
+      typefaces: !<tag:yaml.org,2002:js/undefined> ''
+    showErrors: true
+    errorsLink: ''
   branding:
     accent: '#446adb'
     invertPreloaderScheme: true
@@ -63298,3 +63365,4 @@ settings:
   fps: 30
 palette:
   - '#8CCBFF'
+globalVars: []

@@ -94,11 +94,22 @@ scripts:
 
 
       function writeAnswer(answer){
-          console.log(answer);
+          //console.log(answer);
           //console.log(rooms.current.inputTextBox)
           rooms.current.outputText.text = answer;
+          chat_history += "; " + "Catbot: " + answer;
+          console.log(chat_history);
           rooms.current.inputTextBox.visible = true;
       }
+  - name: main vars
+    code: >-
+      let system_prompt = `You are an Chatbot for small conversations with a
+      user called ${localStorage.USER_NAME}. Your name is 'Catbot' and you
+      answer out of the view of a cat and include some funny catlike
+      expressions`;
+
+
+      let chat_history = "system Prompt: " ;
 assets:
   - type: folder
     uid: b2Qwc7tWJKnfHB
@@ -135,6 +146,174 @@ assets:
         padding: 1
         isBlank: false
         source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\Button_.png'
+      - lastmod: 1754738205603
+        type: texture
+        name: Cat
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 713
+        imgHeight: 921
+        width: 713
+        height: 921
+        offx: 0
+        offy: 0
+        origname: iCQTqqkghqPH8K9.png
+        shape: rect
+        left: 0
+        right: 713
+        top: 0
+        bottom: 921
+        uid: CQTqqkghqPH8K9
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\Cat.png'
+      - lastmod: 1754738225740
+        type: texture
+        name: long_button
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 641
+        imgHeight: 136
+        width: 641
+        height: 136
+        offx: 0
+        offy: 0
+        origname: iFTtH4991L2tnT8.png
+        shape: rect
+        left: 0
+        right: 641
+        top: -27
+        bottom: 109
+        uid: FTtH4991L2tnT8
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\long_button.png'
+      - lastmod: 1754738251158
+        type: texture
+        name: small_button
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 265
+        imgHeight: 136
+        width: 265
+        height: 136
+        offx: 0
+        offy: 0
+        origname: izJnG6cmPBhhg3K.png
+        shape: rect
+        left: 0
+        right: 265
+        top: -27
+        bottom: 109
+        uid: zJnG6cmPBhhg3K
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\start_button.png'
+      - lastmod: 1754738501654
+        type: texture
+        name: long_button_light
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 641
+        imgHeight: 136
+        width: 641
+        height: 136
+        offx: 0
+        offy: 0
+        origname: iB4c3HpLkB6fD4p.png
+        shape: rect
+        left: 0
+        right: 641
+        top: 0
+        bottom: 136
+        uid: B4c3HpLkB6fD4p
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\long_button_light.png'
+      - lastmod: 1754738501657
+        type: texture
+        name: small_button_light
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 265
+        imgHeight: 136
+        width: 265
+        height: 136
+        offx: 0
+        offy: 0
+        origname: iD2hhpFD5HKGhTj.png
+        shape: rect
+        left: 0
+        right: 265
+        top: 0
+        bottom: 136
+        uid: D2hhpFD5HKGhTj
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\small_button_light.png'
+      - lastmod: 1754738840767
+        type: texture
+        name: input_field
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 1259
+        imgHeight: 231
+        width: 1259
+        height: 231
+        offx: 0
+        offy: 0
+        origname: inTkgG1J8BwBjqd.png
+        shape: rect
+        left: 0
+        right: 1259
+        top: 0
+        bottom: 231
+        uid: nTkgG1J8BwBjqd
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\input_field.png'
   - type: folder
     uid: B2zmjCd44LgJbB
     colorClass: act
@@ -150,18 +329,18 @@ assets:
           family: sans-serif
           halign: left
           italic: false
-          size: 12
+          size: 16
           weight: '400'
-          wrap: false
-          wrapPosition: 640
-          lineHeight: 16
+          wrap: true
+          wrapPosition: 601
+          lineHeight: 21.32
         fill:
           type: 0
           color: '#ffffff'
           color1: '#cccccc'
           color2: '#ffffff'
           gradtype: 1
-        lastmod: 1754319222719
+        lastmod: 1754741246867
   - type: folder
     uid: K2Gd8mDJLB4hDf
     colorClass: text
@@ -173,7 +352,7 @@ assets:
         baseClass: Button
         name: StartButton
         depth: 0
-        texture: LbwC7L3cCmptWN
+        texture: zJnG6cmPBhhg3K
         playAnimationOnStart: false
         loopAnimation: true
         animationFPS: 30
@@ -185,19 +364,19 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754732804867
+        lastmod: 1754741254061
         uid: rcHPd26D783dp1
         behaviors: []
         extendTypes: ''
         defaultText: Start CatBot
-        textStyle: -1
+        textStyle: F9f5599b4PQwmH
         nineSliceSettings:
           top: 16
           left: 16
           bottom: 16
           right: 16
           autoUpdate: false
-        hoverTexture: -1
+        hoverTexture: D2hhpFD5HKGhTj
         pressedTexture: -1
         disabledTexture: -1
       - type: room
@@ -223,8 +402,8 @@ assets:
         follow: -1
         backgrounds: []
         copies:
-          - x: 512
-            'y': 0
+          - x: 320
+            'y': 64
             opacity: 1
             tint: 16777215
             scale:
@@ -247,8 +426,8 @@ assets:
             exts: {}
             customProperties: {}
             bindings: {}
-          - x: 512
-            'y': 256
+          - x: 320
+            'y': 192
             opacity: 1
             tint: 16777215
             scale:
@@ -261,7 +440,7 @@ assets:
             bindings: {}
         tiles: []
         extends: {}
-        lastmod: 1754737178656
+        lastmod: 1754741284940
         events:
           - eventKey: OnRoomStart
             code: ''
@@ -274,7 +453,7 @@ assets:
         baseClass: TextBox
         name: API_KEY_input
         depth: 0
-        texture: LbwC7L3cCmptWN
+        texture: FTtH4991L2tnT8
         playAnimationOnStart: false
         loopAnimation: true
         animationFPS: 30
@@ -294,7 +473,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754732713811
+        lastmod: 1754741280213
         uid: bm8J5JH3hTfgWR
         behaviors: []
         extendTypes: ''
@@ -306,16 +485,16 @@ assets:
           bottom: 16
           right: 16
           autoUpdate: false
-        hoverTexture: LbwC7L3cCmptWN
-        pressedTexture: LbwC7L3cCmptWN
-        disabledTexture: LbwC7L3cCmptWN
-        fieldType: text
+        hoverTexture: B4c3HpLkB6fD4p
+        pressedTexture: -1
+        disabledTexture: -1
+        fieldType: password
         maxTextLength: -2
       - type: template
         baseClass: TextBox
         name: name_input
         depth: 0
-        texture: LbwC7L3cCmptWN
+        texture: FTtH4991L2tnT8
         playAnimationOnStart: false
         loopAnimation: true
         animationFPS: 30
@@ -334,7 +513,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754733209154
+        lastmod: 1754738531918
         uid: QnCfHdfpp5hDG4
         behaviors: []
         extendTypes: ''
@@ -346,9 +525,9 @@ assets:
           bottom: 16
           right: 16
           autoUpdate: false
-        hoverTexture: LbwC7L3cCmptWN
-        pressedTexture: LbwC7L3cCmptWN
-        disabledTexture: LbwC7L3cCmptWN
+        hoverTexture: B4c3HpLkB6fD4p
+        pressedTexture: -1
+        disabledTexture: -1
         fieldType: text
         maxTextLength: -2
   - type: room
@@ -411,12 +590,12 @@ assets:
         follow: -1
         backgrounds: []
         copies:
-          - x: 512
-            'y': 448
+          - x: 320
+            'y': 480
             opacity: 1
             tint: 16777215
             scale:
-              x: 1
+              x: 0.75218427
               'y': 1
             rotation: 0
             uid: zzJ9R4D8BFrTPM
@@ -435,19 +614,29 @@ assets:
             exts: {}
             customProperties: {}
             bindings: {}
+          - x: 0
+            'y': 272
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 0.4864278
+              'y': 0.4864278
+            rotation: 0
+            uid: T89RnCt1Pm7kwk
+            exts: {}
+            customProperties: {}
+            bindings: {}
         tiles: []
         extends: {}
-        lastmod: 1754735940117
+        lastmod: 1754741721909
         events:
           - eventKey: OnRoomStart
-            code: >+
+            code: >-
               console.log("Started CatBot");
 
 
-              queryGemini(`Your are an Chatbot for small conversations with a
-              user called ${localStorage.USER_NAME}`,
+              queryGemini(system_prompt,
               localStorage.GEMINI_API_KEY).then(writeAnswer);
-
             arguments: {}
             lib: core
         behaviors: []
@@ -457,29 +646,44 @@ assets:
         baseClass: TextBox
         name: InputTextbox
         depth: 0
-        texture: LbwC7L3cCmptWN
+        texture: nTkgG1J8BwBjqd
         playAnimationOnStart: false
         loopAnimation: true
         animationFPS: 30
-        visible: false
+        visible: true
         events:
           - eventKey: OnCreate
-            code: rooms.current.inputTextBox = this;
+            code: |-
+              rooms.current.inputTextBox = this;
+              this.visible = false;
+
+              //this.disabled = true;
+              //console.log(this.disabled);
             arguments: {}
             lib: core
           - eventKey: OnTextChange
-            code: >-
-              queryGemini(this.text,
+            code: >+
+              //queryGemini(system_prompt + "; " + this.text,
+              localStorage.GEMINI_API_KEY).then(writeAnswer);
+
+              chat_history += "; " + `${localStorage.USER_NAME}: ` + this.text;
+
+
+              queryGemini(chat_history,
               localStorage.GEMINI_API_KEY).then(writeAnswer);
 
               this.text = "";
 
               this.visible = false;
+
+
+              //this.disabled = true;
+
             arguments: {}
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754736152111
+        lastmod: 1754742138958
         uid: zzJ9R4D8BFrTPM
         behaviors: []
         extendTypes: ''
@@ -491,8 +695,8 @@ assets:
           bottom: 16
           right: 16
           autoUpdate: false
-        hoverTexture: LbwC7L3cCmptWN
-        pressedTexture: LbwC7L3cCmptWN
+        hoverTexture: -1
+        pressedTexture: -1
         disabledTexture: LbwC7L3cCmptWN
         fieldType: text
         maxTextLength: -2
@@ -507,19 +711,40 @@ assets:
         visible: true
         events:
           - eventKey: OnCreate
-            code: rooms.current.outputText = this;
+            code: |+
+              rooms.current.outputText = this;
+
+
             arguments: {}
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754736153280
+        lastmod: 1754741915909
         uid: wbPfjWHwt9GD5M
         behaviors: []
         extendTypes: ''
-        defaultText: >-
-          sagdhas asdög asödh sd gaölsdkhga asödgkhsad agölsa kdgfhsa
-          syögdlkhasdg asödkhg
+        defaultText: ''
         textStyle: F9f5599b4PQwmH
+      - type: template
+        baseClass: AnimatedSprite
+        name: Cat
+        depth: 0
+        texture: CQTqqkghqPH8K9
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: true
+        events:
+          - eventKey: OnStep
+            lib: core
+            code: this.move();
+            arguments: {}
+        extends:
+          cgroup: ''
+        lastmod: 1754741156837
+        uid: T89RnCt1Pm7kwk
+        behaviors: []
+        extendTypes: ''
 globalVars: []
 settings:
   authoring:
