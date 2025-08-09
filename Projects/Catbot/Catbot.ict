@@ -94,10 +94,10 @@ scripts:
 
 
       function writeAnswer(answer){
-        console.log(answer);
-
-          console.log(rooms.current.inputTextBox)
-
+          console.log(answer);
+          //console.log(rooms.current.inputTextBox)
+          rooms.current.outputText.text = answer;
+          rooms.current.inputTextBox.visible = true;
       }
 assets:
   - type: folder
@@ -423,9 +423,21 @@ assets:
             exts: {}
             customProperties: {}
             bindings: {}
+          - x: 384
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            rotation: 0
+            uid: wbPfjWHwt9GD5M
+            exts: {}
+            customProperties: {}
+            bindings: {}
         tiles: []
         extends: {}
-        lastmod: 1754734439476
+        lastmod: 1754735940117
         events:
           - eventKey: OnRoomStart
             code: >+
@@ -449,12 +461,10 @@ assets:
         playAnimationOnStart: false
         loopAnimation: true
         animationFPS: 30
-        visible: true
+        visible: false
         events:
           - eventKey: OnCreate
-            code: |-
-
-              rooms.current.inputTextBox = this;
+            code: rooms.current.inputTextBox = this;
             arguments: {}
             lib: core
           - eventKey: OnTextChange
@@ -469,11 +479,11 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754734439478
+        lastmod: 1754736152111
         uid: zzJ9R4D8BFrTPM
         behaviors: []
         extendTypes: ''
-        defaultText: ...
+        defaultText: ''
         textStyle: F9f5599b4PQwmH
         nineSliceSettings:
           top: 16
@@ -486,6 +496,30 @@ assets:
         disabledTexture: LbwC7L3cCmptWN
         fieldType: text
         maxTextLength: -2
+      - type: template
+        baseClass: Text
+        name: OutputText
+        depth: 0
+        texture: -1
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: true
+        events:
+          - eventKey: OnCreate
+            code: rooms.current.outputText = this;
+            arguments: {}
+            lib: core
+        extends:
+          cgroup: ''
+        lastmod: 1754736153280
+        uid: wbPfjWHwt9GD5M
+        behaviors: []
+        extendTypes: ''
+        defaultText: >-
+          sagdhas asdög asödh sd gaölsdkhga asödgkhsad agölsa kdgfhsa
+          syögdlkhasdg asödkhg
+        textStyle: F9f5599b4PQwmH
 globalVars: []
 settings:
   authoring:
