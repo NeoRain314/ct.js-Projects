@@ -109,7 +109,7 @@ scripts:
       expressions`;
 
 
-      let chat_history = "system Prompt: " ;
+      let chat_history = "system Prompt: " + system_prompt;
 assets:
   - type: folder
     uid: b2Qwc7tWJKnfHB
@@ -174,7 +174,7 @@ assets:
         padding: 1
         isBlank: false
         source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\Cat.png'
-      - lastmod: 1754738225740
+      - lastmod: 1754742485070
         type: texture
         name: long_button
         untill: 0
@@ -314,6 +314,62 @@ assets:
         padding: 1
         isBlank: false
         source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\input_field.png'
+      - lastmod: 1754743123352
+        type: texture
+        name: speachBubble
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 1872
+        imgHeight: 882
+        width: 1872
+        height: 882
+        offx: 0
+        offy: 0
+        origname: i4w14Hn2CmnPmWG.png
+        shape: rect
+        left: 0
+        right: 1872
+        top: 0
+        bottom: 882
+        uid: 4w14Hn2CmnPmWG
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\speachBubble.png'
+      - lastmod: 1754743123355
+        type: texture
+        name: thoughtBubble
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 1921
+        imgHeight: 937
+        width: 1921
+        height: 937
+        offx: 0
+        offy: 0
+        origname: imwTk3cHWr1FCkd.png
+        shape: rect
+        left: 0
+        right: 1921
+        top: 0
+        bottom: 937
+        uid: mwTk3cHWr1FCkd
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\thoughtBubble.png'
   - type: folder
     uid: B2zmjCd44LgJbB
     colorClass: act
@@ -473,7 +529,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754741280213
+        lastmod: 1754742498852
         uid: bm8J5JH3hTfgWR
         behaviors: []
         extendTypes: ''
@@ -602,18 +658,6 @@ assets:
             exts: {}
             customProperties: {}
             bindings: {}
-          - x: 384
-            'y': 64
-            opacity: 1
-            tint: 16777215
-            scale:
-              x: 1
-              'y': 1
-            rotation: 0
-            uid: wbPfjWHwt9GD5M
-            exts: {}
-            customProperties: {}
-            bindings: {}
           - x: 0
             'y': 272
             opacity: 1
@@ -626,9 +670,33 @@ assets:
             exts: {}
             customProperties: {}
             bindings: {}
+          - x: 360
+            'y': 32.0000003
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 0.44444444
+              'y': 0.44444444
+            rotation: 0
+            uid: 2wcpK21pLcPJ5T
+            exts: {}
+            customProperties: {}
+            bindings: {}
+          - x: 520
+            'y': 80
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            rotation: 0
+            uid: wbPfjWHwt9GD5M
+            exts: {}
+            customProperties: {}
+            bindings: {}
         tiles: []
         extends: {}
-        lastmod: 1754741721909
+        lastmod: 1754743406551
         events:
           - eventKey: OnRoomStart
             code: >-
@@ -676,6 +744,8 @@ assets:
 
               this.visible = false;
 
+              //rooms.current.speachBubble._tex = "thoughtBubble";
+
 
               //this.disabled = true;
 
@@ -683,7 +753,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754742138958
+        lastmod: 1754743661875
         uid: zzJ9R4D8BFrTPM
         behaviors: []
         extendTypes: ''
@@ -719,7 +789,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754741915909
+        lastmod: 1754743378940
         uid: wbPfjWHwt9GD5M
         behaviors: []
         extendTypes: ''
@@ -743,6 +813,28 @@ assets:
           cgroup: ''
         lastmod: 1754741156837
         uid: T89RnCt1Pm7kwk
+        behaviors: []
+        extendTypes: ''
+      - type: template
+        baseClass: AnimatedSprite
+        name: SpeachBubble
+        depth: -2
+        texture: 4w14Hn2CmnPmWG
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: true
+        events:
+          - eventKey: OnCreate
+            code: |-
+              rooms.current.speachBubble = this;
+              //console.log(this._tex)
+            arguments: {}
+            lib: core
+        extends:
+          cgroup: ''
+        lastmod: 1754743614068
+        uid: 2wcpK21pLcPJ5T
         behaviors: []
         extendTypes: ''
 globalVars: []
