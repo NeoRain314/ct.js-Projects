@@ -14,86 +14,6 @@ startroom: 4BjNDncQhQfzrd
 contentTypes: []
 actions: []
 scripts:
-  - name: main functions
-    code: |+
-      /**
-       * Queries the Google Gemini API with a given prompt.
-       *
-       * @param {string} prompt The text prompt to send to the model.
-       * @param {string} apiKey Your Google AI Studio API key.
-       * @returns {Promise<string>} A promise that resolves to the model's text response.
-       * @throws {Error} Throws an error if the API request fails.
-       */
-      async function queryGemini(prompt, apiKey) {
-        // The API endpoint for the gemini-1.5-flash-latest model
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemma-3n-e4b-it:generateContent?key=${apiKey}`;
-
-        // The request payload, containing the user's prompt
-        const requestBody = {
-          contents: [{
-            parts: [{ text: prompt }]
-          }]
-        };
-
-        try {
-          // Make the API call using the fetch function
-          const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestBody),
-          });
-
-          // Check if the request was successful
-          if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(`API Error: ${response.status} - ${errorData.error.message}`);
-          }
-
-          // Parse the JSON response
-          const data = await response.json();
-
-          // Extract and return the model's text response
-          // Added safety checks for the response structure
-          const responseText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-          if (responseText) {
-            return responseText;
-          } else {
-            throw new Error("Invalid response structure from API.");
-          }
-
-        } catch (error) {
-          // Log the error and re-throw it for the calling code to handle
-          rooms.current.error_message.visible = true;
-          console.error("Failed to query Gemini:", error);
-          throw error;
-        }
-      }
-
-      // --- Example Usage ---
-      // This is how you would call the function.
-      // Replace 'YOUR_API_KEY' with your actual key.
-
-      /*
-      async function main() {
-        const myApiKey = 'YOUR_API_KEY';
-        const myPrompt = 'Write a short poem about coding.';
-
-        try {
-          console.log("Sending prompt...");
-          const result = await queryGemini(myPrompt, myApiKey);
-          console.log("--- Gemini's Response ---");
-          console.log(result);
-        } catch (e) {
-          console.log("An error occurred during the API call.");
-        }
-      }
-
-      main();
-      */
-
-
   - name: main vars
     code: >-
       let system_prompt = `You are an Chatbot for small conversations with a
@@ -147,6 +67,87 @@ scripts:
           newEntry.bot = result
           chatVerlauf.push(newEntry)
       }
+  - name: main function
+    code: |+
+      /**
+       * Queries the Google Gemini API with a given prompt.
+       *
+       * @param {string} prompt The text prompt to send to the model.
+       * @param {string} apiKey Your Google AI Studio API key.
+       * @returns {Promise<string>} A promise that resolves to the model's text response.
+       * @throws {Error} Throws an error if the API request fails.
+       */
+      async function queryGemini(prompt, apiKey) {
+        // The API endpoint for the gemini-1.5-flash-latest model
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemma-3n-e4b-it:generateContent?key=${apiKey}`;
+
+        // The request payload, containing the user's prompt
+        const requestBody = {
+          contents: [{
+            parts: [{ text: prompt }]
+          }]
+        };
+
+        try {
+          // Make the API call using the fetch function
+          const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody),
+          });
+
+          // Check if the request was successful
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(`API Error: ${response.status} - ${errorData.error.message}`);
+          }
+
+          // Parse the JSON response
+          const data = await response.json();
+
+          // Extract and return the model's text response
+          // Added safety checks for the response structure
+          const responseText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (responseText) {
+            return responseText;
+          } else {
+            throw new Error("Invalid response structure from API.");
+          }
+
+        } catch (error) {
+          // Log the error and re-throw it for the calling code to handle
+          rooms.current.error_message.visible = true;
+          rooms.current.darken.visible = true;
+          console.error("Failed to query Gemini:", error);
+          throw error;
+        }
+      }
+
+      // --- Example Usage ---
+      // This is how you would call the function.
+      // Replace 'YOUR_API_KEY' with your actual key.
+
+      /*
+      async function main() {
+        const myApiKey = 'YOUR_API_KEY';
+        const myPrompt = 'Write a short poem about coding.';
+
+        try {
+          console.log("Sending prompt...");
+          const result = await queryGemini(myPrompt, myApiKey);
+          console.log("--- Gemini's Response ---");
+          console.log(result);
+        } catch (e) {
+          console.log("An error occurred during the API call.");
+        }
+      }
+
+      main();
+      */
+
+
 assets:
   - type: folder
     uid: b2Qwc7tWJKnfHB
@@ -463,6 +464,146 @@ assets:
         padding: 1
         isBlank: false
         source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\error_button_light.png'
+      - lastmod: 1754826752059
+        type: texture
+        name: back_button_light
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 104
+        imgHeight: 65
+        width: 104
+        height: 65
+        offx: 0
+        offy: 0
+        origname: i4PH71tNgdTFzD8.png
+        shape: rect
+        left: 0
+        right: 104
+        top: 0
+        bottom: 65
+        uid: 4PH71tNgdTFzD8
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\back_button_light.png'
+      - lastmod: 1754826752060
+        type: texture
+        name: back_button
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 104
+        imgHeight: 65
+        width: 104
+        height: 65
+        offx: 0
+        offy: 0
+        origname: iNR88qTRr8Q6BDh.png
+        shape: rect
+        left: 0
+        right: 104
+        top: 0
+        bottom: 65
+        uid: NR88qTRr8Q6BDh
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\back_button.png'
+      - lastmod: 1754828959881
+        type: texture
+        name: error_2_light
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 265
+        imgHeight: 561
+        width: 265
+        height: 561
+        offx: 0
+        offy: 0
+        origname: i6zPnn8TKzrp7BJ.png
+        shape: rect
+        left: 0
+        right: 265
+        top: 0
+        bottom: 561
+        uid: 6zPnn8TKzrp7BJ
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\error_2_light.png'
+      - lastmod: 1754828931059
+        type: texture
+        name: error_2
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 265
+        imgHeight: 548
+        width: 265
+        height: 548
+        offx: 0
+        offy: 0
+        origname: ipj8bz1j56n7pR5.png
+        shape: rect
+        left: 0
+        right: 265
+        top: 0
+        bottom: 548
+        uid: pj8bz1j56n7pR5
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\error_2.png'
+      - lastmod: 1754829292017
+        type: texture
+        name: darken
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 1251
+        imgHeight: 712
+        width: 1251
+        height: 712
+        offx: 0
+        offy: 0
+        origname: i6Q8tMGPQJ9drz1.png
+        shape: rect
+        left: 0
+        right: 1251
+        top: 0
+        bottom: 712
+        uid: 6Q8tMGPQJ9drz1
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\darken.png'
   - type: folder
     uid: B2zmjCd44LgJbB
     colorClass: act
@@ -825,7 +966,19 @@ assets:
             exts: {}
             customProperties: {}
             bindings: {}
-          - x: 64
+          - x: 16
+            'y': 8
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            rotation: 0
+            uid: WPPmzwkT8hjRRf
+            exts: {}
+            customProperties: {}
+            bindings: {}
+          - x: 512
             'y': 64
             opacity: 1
             tint: 16777215
@@ -837,9 +990,21 @@ assets:
             exts: {}
             customProperties: {}
             bindings: {}
+          - x: 48
+            'y': 48
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            rotation: 0
+            uid: p35P4kfMdhK6tc
+            exts: {}
+            customProperties: {}
+            bindings: {}
         tiles: []
         extends: {}
-        lastmod: 1754824728801
+        lastmod: 1754829710714
         events:
           - eventKey: OnRoomStart
             code: >-
@@ -895,6 +1060,8 @@ assets:
 
               rooms.current.speachBubble.tex = "thoughtBubble";
 
+              rooms.current.outputText.text = "";
+
 
               //this.disabled = true;
 
@@ -902,7 +1069,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754824714650
+        lastmod: 1754825750617
         uid: zzJ9R4D8BFrTPM
         behaviors: []
         extendTypes: ''
@@ -939,7 +1106,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754743378940
+        lastmod: 1754825734235
         uid: wbPfjWHwt9GD5M
         behaviors: []
         extendTypes: ''
@@ -983,7 +1150,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754824756570
+        lastmod: 1754825738770
         uid: 2wcpK21pLcPJ5T
         behaviors: []
         extendTypes: ''
@@ -991,17 +1158,18 @@ assets:
         baseClass: Button
         name: errorMessage
         depth: 0
-        texture: LjRzm8zctL8MtW
+        texture: pj8bz1j56n7pR5
         playAnimationOnStart: false
         loopAnimation: true
         animationFPS: 30
         visible: false
         events:
           - eventKey: OnCreate
-            code: |+
+            code: |-
               this.visible = false;
               rooms.current.error_message = this;
 
+              console.log(this.scale);
             arguments: {}
             lib: core
           - eventKey: OnPointerClick
@@ -1010,9 +1178,23 @@ assets:
               rooms.switch('StartMenu');
             arguments: {}
             lib: core
+          - eventKey: OnStep
+            code: |+
+              for(let i = 0; i < 10; i++){
+                  this.scale[0] += 1;
+                  this.scale[1] += 1;
+              }
+
+              for(let i = 0; i < 10; i++){
+                  this.scale[0] -= 1;
+                  this.scale[1] -= 1;
+              }
+
+            arguments: {}
+            lib: core
         extends:
           cgroup: ''
-        lastmod: 1754825377370
+        lastmod: 1754829668781
         uid: 7dnPgnhW9q5nhr
         behaviors: []
         extendTypes: ''
@@ -1024,9 +1206,63 @@ assets:
           bottom: 16
           right: 16
           autoUpdate: false
-        hoverTexture: qtBzQ83MBKMGHw
+        hoverTexture: -1
         pressedTexture: -1
         disabledTexture: -1
+      - type: template
+        baseClass: Button
+        name: backButton
+        depth: 0
+        texture: NR88qTRr8Q6BDh
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: true
+        events:
+          - eventKey: OnPointerClick
+            code: |
+              rooms.switch('StartMenu');
+            arguments: {}
+            lib: core
+        extends:
+          cgroup: ''
+        lastmod: 1754826802537
+        uid: p35P4kfMdhK6tc
+        behaviors: []
+        extendTypes: ''
+        defaultText: ''
+        textStyle: -1
+        nineSliceSettings:
+          top: 16
+          left: 16
+          bottom: 16
+          right: 16
+          autoUpdate: false
+        hoverTexture: 4PH71tNgdTFzD8
+        pressedTexture: -1
+        disabledTexture: -1
+      - type: template
+        baseClass: AnimatedSprite
+        name: darken
+        depth: 0
+        texture: 6Q8tMGPQJ9drz1
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: false
+        events:
+          - eventKey: OnCreate
+            code: |-
+              this.visible = false;
+              rooms.current.darken = this;
+            arguments: {}
+            lib: core
+        extends:
+          cgroup: ''
+        lastmod: 1754829345720
+        uid: WPPmzwkT8hjRRf
+        behaviors: []
+        extendTypes: ''
 globalVars: []
 settings:
   authoring:
