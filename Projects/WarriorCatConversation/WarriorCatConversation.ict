@@ -143,6 +143,9 @@ scripts:
       /* Use scripts to define frequent functions and import small libraries */
 
 
+      let answer_possible = false;
+
+
       function writeAnswerOptions(answer){
          // -- update Chat Verlauf: -- 
          answer = answer.replace(/```/g, "").replace(/json/g, "");
@@ -152,6 +155,7 @@ scripts:
          console.log(chat_history);
 
          console.log(answer);
+         answer_possible = true;
       }
 
 
@@ -379,7 +383,7 @@ assets:
         bindings: {}
     tiles: []
     extends: {}
-    lastmod: 1754845202559
+    lastmod: 1754845588097
     events:
       - eventKey: OnRoomStart
         code: |-
@@ -475,9 +479,19 @@ assets:
             code: rooms.current.answer1_textbox = this;
             arguments: {}
             lib: core
+          - eventKey: OnPointerClick
+            code: |-
+              if(answer_possible){
+                  promptBot(chat_history, rooms.current.answer1_text.text);
+                  rooms.current.answer1_text.text = "";
+                  rooms.current.answer2_text.text = "";
+                  answer_possible = false;
+              }
+            arguments: {}
+            lib: core
         extends:
           cgroup: ''
-        lastmod: 1754845084527
+        lastmod: 1754845555091
         uid: fM4QTHhqh2DLMg
         behaviors: []
         extendTypes: ''
@@ -491,13 +505,23 @@ assets:
         animationFPS: 30
         visible: true
         events:
-          - eventKey: OnStep
-            lib: core
-            code: this.move();
+          - eventKey: OnCreate
+            code: rooms.current.answer2_textbox = this;
             arguments: {}
+            lib: core
+          - eventKey: OnPointerClick
+            code: |-
+              if(answer_possible){
+                  promptBot(chat_history, rooms.current.answer2_text.text);
+                  rooms.current.answer1_text.text = "";
+                  rooms.current.answer2_text.text = "";
+                  answer_possible = false;
+              }
+            arguments: {}
+            lib: core
         extends:
           cgroup: ''
-        lastmod: 1754845178109
+        lastmod: 1754845555080
         uid: 564QfWNnK23Qg7
         behaviors: []
         extendTypes: ''
