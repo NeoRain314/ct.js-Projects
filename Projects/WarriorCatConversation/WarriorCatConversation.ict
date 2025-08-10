@@ -10,7 +10,7 @@ libs:
   keyboard: {}
   keyboard.polyfill: {}
   pointer.polyfill: {}
-startroom: -1
+startroom: jknj4M3kMGqJpG
 contentTypes: []
 actions: []
 scripts:
@@ -100,7 +100,6 @@ scripts:
 
 
       let chat_history = []
-
 
 
 
@@ -337,7 +336,7 @@ assets:
         bindings: {}
     tiles: []
     extends: {}
-    lastmod: 1754834738256
+    lastmod: 1754835520508
     events: []
     behaviors: []
     extendTypes: ''
@@ -501,6 +500,91 @@ assets:
           This is a test Text This is a test Text This is a test Text This is a
           test Text 
         textStyle: RmH352m331CKcT
+  - type: template
+    baseClass: TextBox
+    name: API_key_input
+    depth: 0
+    texture: rG8CFrTCD5z35M
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: true
+    events:
+      - eventKey: OnCreate
+        code: |-
+          if ('GEMINI_API_KEY' in localStorage) { // was anything saved before?
+              this.text = localStorage.GEMINI_API_KEY;
+          }
+        arguments: {}
+        lib: core
+      - eventKey: OnTextChange
+        code: |-
+          localStorage.GEMINI_API_KEY = this.text;
+
+          rooms.switch('ConversationRoom');
+        arguments: {}
+        lib: core
+    extends:
+      cgroup: ''
+    lastmod: 1754835439835
+    uid: Hc22Krk1j6z1Nm
+    behaviors: []
+    extendTypes: ''
+    defaultText: ''
+    textStyle: RmH352m331CKcT
+    nineSliceSettings:
+      top: 16
+      left: 16
+      bottom: 16
+      right: 16
+      autoUpdate: false
+    hoverTexture: -1
+    pressedTexture: -1
+    disabledTexture: -1
+    fieldType: text
+    maxTextLength: 0
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    disableGrid: false
+    simulate: true
+    width: 320
+    height: 180
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 0
+    restrictMaxY: 720
+    restrictMinY: 0
+    isUi: false
+    name: StartingRoom
+    backgroundColor: '#000000'
+    follow: -1
+    backgrounds: []
+    copies:
+      - x: 32
+        'y': -80
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 3
+          'y': 3
+        rotation: 0
+        uid: Hc22Krk1j6z1Nm
+        exts: {}
+        customProperties: {}
+        bindings: {}
+    tiles: []
+    extends: {}
+    lastmod: 1754835424428
+    events: []
+    behaviors: []
+    extendTypes: ''
+    uid: jknj4M3kMGqJpG
 globalVars: []
 settings:
   authoring:
