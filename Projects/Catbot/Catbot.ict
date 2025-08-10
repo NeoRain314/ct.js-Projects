@@ -1176,9 +1176,6 @@ assets:
               console.log(this.scale);
 
               let i = 0;
-
-              this.scale.x = 1.1;
-              this.scale.y = 1.1;
             arguments: {}
             lib: core
           - eventKey: OnPointerClick
@@ -1190,12 +1187,12 @@ assets:
           - eventKey: OnStep
             code: |
               this.i += 0.01;
-              //this.scale._x = 1 + Math.sin(this.i);
+              this.scale._x = 1 + Math.sin(this.i);
             arguments: {}
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754830378909
+        lastmod: 1754830743286
         uid: 7dnPgnhW9q5nhr
         behaviors: []
         extendTypes: ''
