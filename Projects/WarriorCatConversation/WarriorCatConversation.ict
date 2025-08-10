@@ -140,7 +140,7 @@ scripts:
 
   - name: Option generating functions
     code: >-
-      /* Use scripts to define frequent functions and import small libraries */
+      //* Use scripts to define frequent functions and import small libraries */
 
 
       let answer_possible = false;
@@ -183,6 +183,82 @@ scripts:
           var nextPrompt = buildAnswerOptionsPrompt(chatVerlauf)
           var result = queryGemini(nextPrompt, localStorage.GEMINI_API_KEY).then(writeAnswerOptions);
       }
+  - name: AI Cat Information
+    code: "let ai_cat = {\n    name:\"\",\n    rank:\"\",\n    age:\"\",\n    gender:\"\",\n    furcolor:\"\",\n    eyecolor:\"\",\n    personality:\"\",\n    backgroundhistory:\"\",\n    //family\n    clan:\"\",\n    relationshipToUser:\"\",\n    skills:\"\",\n    weaknesses:\"\",\n}\n\nfunction getRandomInt(max) {\n      return Math.floor(Math.random() * max);\n    }\n\n\nfunction generateNewCat(cat_object){\n    let prefix = warriorCatPrefixes[getRandomInt(warriorCatPrefixes.length)];\n    let suffix = warriorCatSuffixes[getRandomInt(warriorCatSuffixes.length)];\n    cat_object.name = prefix + suffix;\n    cat_object.rank = warriorCatRanks[getRandomInt(warriorCatRanks.length)];\n    cat_object.age = getRandomCatAge(cat_object.rank) + \" moons\";\n    cat_object.clan = warriorCatClans[getRandomInt(warriorCatClans.length)];\n    cat_object.relationshipToUser = \"neutral\";\n    console.log(cat_object)\n    let prompt = \"Please fill in empty strings the following javascript object for a warrior cats cat based on the already given information. Don't change the existing information. Return a structured JSON matching exactly the given specification:. \\n \" + JSON.stringify(ai_cat, null,\_4);;\n    console.log(prompt);\n    var result = queryGemini(prompt, localStorage.GEMINI_API_KEY).then(writeCatToConsole);\n}\n\nfunction getRandomCatAge(rank) {\n  switch (rank) {\n    case \"kit\":\n      return getRandomInt(0, 5); // 0–5 moons\n    case \"apprentice\":\n    case \"medicine apprentice\":\n      return getRandomInt(6, 12); // 6–12 moons\n    case \"warrior\":\n    case \"medicine cat\":\n      return getRandomInt(13, 60); // 13–60 moons\n    case \"queen\":\n      return getRandomInt(20, 70); // 20–70 moons, assuming mature adult\n    case \"deputy\":\n      return getRandomInt(30, 80); // 30–80 moons, experienced\n    case \"leader\":\n      return getRandomInt(40, 100); // 40–100 moons, seasoned\n    case \"elder\":\n      return getRandomInt(80, 120); // 80–120 moons, retired\n    default:\n      return getRandomInt(12, 60); // fallback for unknown rank\n  }\n}\n\nfunction writeCatToConsole(cat){\n    console.log(cat)\n}"
+  - name: Cat Generation
+    code: >
+      const warriorCatClans = ["Thunderclan", "Windclan", "Riverclan",
+      "Shadowclan"];
+
+
+      const warriorCatRanks = ["kit", "apprentice", "medicine apprentice",
+      "warrior", "medicine cat", "queen", "deputy", "leader", "elder"]
+
+
+      const warriorCatPrefixes = [
+        "Acorn", "Adder", "Alder", "Amber", "Ant", "Apple", "Arc", "Arch", "Ash", "Aspen",
+        "Badger", "Bark", "Bay", "Bee", "Beech", "Beetle", "Bella", "Berry", "Big", "Billy",
+        "Birch", "Bird", "Black", "Blaze", "Blizzard", "Bloom", "Blossom", "Blue", "Bluebell",
+        "Boulder", "Bounce", "Bracken", "Bramble", "Branch", "Brave", "Breeze", "Briar",
+        "Bright", "Brindle", "Bristle", "Broken", "Brook", "Brown", "Brush", "Bubbling",
+        "Bug", "Bumble", "Buzzard", "Cedar", "Cherry", "Chestnut", "Chive", "Cinder",
+        "Cinnamon", "Claw", "Clear", "Cloud", "Clover", "Cone", "Copper", "Creek", "Cricket",
+        "Crooked", "Crouch", "Crow", "Curl", "Curly", "Cypress", "Daisy", "Dandelion",
+        "Dangling", "Dapple", "Dappled", "Dark", "Dawn", "Dead", "Deer", "Dew", "Doe", "Dove",
+        "Down", "Drift", "Duck", "Dusk", "Dust", "Eagle", "Ebony", "Echo", "Eel", "Egg",
+        "Elder", "Ember", "Fallen", "Fallow", "Fawn", "Feather", "Fennel", "Fern", "Ferret",
+        "Fidget", "Fin", "Finch", "Fir", "Fire", "Flail", "Flame", "Flash", "Flax", "Fleet",
+        "Flicker", "Flint", "Flip", "Float", "Flower", "Fluff", "Flutter", "Fly", "Fog",
+        "Fox", "Freckle", "Fringe", "Frog", "Frond", "Frost", "Furze", "Fuzzy", "Gale",
+        "Golden", "Goose", "Gorse", "Grass", "Gravel", "Gray", "Green", "Gull", "Gust",
+        "Hail", "Half", "Hare", "Harry", "Harvey", "Hatch", "Haven", "Hawk", "Hay", "Hazel",
+        "Heather", "Heavy", "Heron", "Hickory", "Hill", "Hollow", "Holly", "Honey", "Hoot",
+        "Hop", "Hope", "Hound", "Hunt", "Ice", "Ivy", "Jagged", "Jay", "Jump", "Juniper",
+        "Kestrel", "Kink", "Kite", "Lake", "Larch", "Lark", "Lavender", "Leaf", "Leopard",
+        "Lichen", "Light", "Lightning", "Lily", "Lion", "Little", "Lizard", "Log", "Long",
+        "Lost", "Loud", "Lynx", "Maggot", "Mallow", "Maple", "Marigold", "Marsh", "Meadow",
+        "Midge", "Milk", "Minnow", "Mint", "Mist", "Mistle", "Misty", "Mole", "Monkey",
+        "Moon", "Morning", "Moss", "Mossy", "Moth", "Mottle", "Mouse", "Mud", "Mumble",
+        "Myrtle", "Nectar", "Needle", "Nettle", "Newt", "Night", "Nut", "Oak", "Oat", "Odd",
+        "Olive", "One", "Otter", "Owl", "Pale", "Parsley", "Patch", "Peak", "Pear", "Pebble",
+        "Perch", "Petal", "Pigeon", "Pike", "Pine", "Pink", "Plum", "Pod", "Pool", "Poppy",
+        "Pounce", "Prickle", "Primrose", "Puddle", "Quail", "Quick", "Quiet", "Rabbit",
+        "Ragged", "Rain", "Rapid", "Rat", "Raven", "Red", "Reed", "Ridge", "Riley", "Ripple",
+        "River", "Robin", "Rock", "Rook", "Root", "Rose", "Rough", "Rowan", "Rubble",
+        "Running", "Rush", "Russet", "Rustle", "Rye", "Sage", "Sand", "Sandy", "Scorch",
+        "Sedge", "Seed", "Shade", "Shadow", "Sharp", "Shattered", "Sheep", "Shell",
+        "Shimmer", "Shine", "Shining", "Shivering", "Short", "Shred", "Shrew", "Shy",
+        "Silky", "Silver", "Sky", "Slate", "Sleek", "Slight", "Sloe", "Small", "Smoke",
+        "Snail", "Snake", "Snap", "Sneeze", "Snip", "Snook", "Snow", "Soft", "Song", "Soot",
+        "Sorrel", "Spark", "Sparrow", "Speckle", "Spider", "Spike", "Spire", "Splash",
+        "Spot", "Spotted", "Spruce", "Squirrel", "Stag", "Star", "Starling", "Stem", "Stoat",
+        "Stone", "Stork", "Storm", "Stream", "Stretch", "Strike", "Stripe", "Stumpy", "Sun",
+        "Sunny", "Swallow", "Swamp", "Swan", "Sweet", "Swift", "Tall", "Talon", "Tangle",
+        "Tansy", "Tawny", "Thistle", "Thorn", "Thrift", "Thrush", "Thunder", "Tiger",
+        "Timber", "Tiny", "Toad", "Torn", "Trout", "Tulip", "Tumble", "Turtle", "Twig",
+        "Vine", "Violet", "Vixen", "Vole", "Waffle", "Wasp", "Wave", "Weasel", "Web", "Weed",
+        "Wet", "Whisker", "Whisper", "Whistle", "White", "Whorl", "Wild", "Willow", "Wind",
+        "Wish", "Wolf", "Wood", "Woolly", "Wren", "Yarrow", "Yellow", "Yew"
+      ];
+
+
+      const warriorCatSuffixes = [
+        "bark", "beam", "bee", "belly", "berry", "bird", "blaze", "bloom", "blossom",
+        "branch", "breeze", "briar", "bright", "brook", "brush", "burr", "burrow", "bush",
+        "call", "claw", "cloud", "crawl", "creek", "cry", "curl", "dapple", "dawn", "drift",
+        "dusk", "dust", "ear", "eater", "eye", "eyes", "face", "fall", "fang", "feather",
+        "fern", "fire", "fish", "flake", "flame", "flight", "flower", "foot", "frond",
+        "frost", "fur", "glow", "grass", "gorse", "hawk", "haze", "heart", "ice", "jaw",
+        "kit", "leaf", "leap", "leg", "light", "mask", "minnow", "mist", "moon", "mouse",
+        "muzzle", "needle", "nose", "pad", "paw", "paws", "peak", "pelt", "petal", "pool",
+        "poppy", "pounce", "puddle", "ripple", "rose", "runner", "scar", "scratch", "seed",
+        "shade", "shadow", "shell", "shimmer", "shine", "sight", "skip", "sky", "slime",
+        "slip", "sludge", "smoke", "snout", "snow", "song", "speck", "speckle", "spirit",
+        "splash", "spot", "spots", "spring", "stalk", "star", "stem", "step", "sting",
+        "stone", "storm", "stream", "strike", "stripe", "swoop", "tail", "talon", "teeth",
+        "thistle", "thorn", "throat", "toe", "tooth", "tuft", "watcher", "water", "weed",
+        "whisker", "whisper", "whistle", "willow", "wind", "wing", "wish"
+      ];
 assets:
   - type: folder
     uid: QBfdbBfbjfN4mj
@@ -262,18 +338,18 @@ assets:
           family: sans-serif
           halign: left
           italic: false
-          size: 10
+          size: 8
           weight: '400'
           wrap: true
           wrapPosition: 169
-          lineHeight: 11.25
+          lineHeight: 9.01
         fill:
           type: '0'
           color: '#000000'
           color1: '#cccccc'
           color2: '#ffffff'
           gradtype: '2'
-        lastmod: 1754834379456
+        lastmod: 1754845806656
   - type: room
     oncreate: ''
     onstep: ''
@@ -383,10 +459,11 @@ assets:
         bindings: {}
     tiles: []
     extends: {}
-    lastmod: 1754845588097
+    lastmod: 1754849640313
     events:
       - eventKey: OnRoomStart
         code: |-
+          generateNewCat(ai_cat);
 
           promptBot(chat_history, system_prompt);
         arguments: {}
@@ -417,7 +494,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754836327276
+        lastmod: 1754846658916
         uid: fB6cfg1j9crhWT
         behaviors: []
         extendTypes: ''
@@ -435,15 +512,17 @@ assets:
             code: rooms.current.output_text = this;
             arguments: {}
             lib: core
+          - eventKey: OnStep
+            code: ''
+            arguments: {}
+            lib: core
         extends:
           cgroup: ''
-        lastmod: 1754834963899
+        lastmod: 1754846306588
         uid: CrPqG9RDfGKdLN
         behaviors: []
         extendTypes: ''
-        defaultText: >-
-          This is a test Text This is a test Text This is a test Text This is a
-          test Text 
+        defaultText: ''
         textStyle: RmH352m331CKcT
       - type: template
         baseClass: AnimatedSprite
@@ -489,9 +568,13 @@ assets:
               }
             arguments: {}
             lib: core
+          - eventKey: OnStep
+            code: this.visible = answer_possible;
+            arguments: {}
+            lib: core
         extends:
           cgroup: ''
-        lastmod: 1754845555091
+        lastmod: 1754845889420
         uid: fM4QTHhqh2DLMg
         behaviors: []
         extendTypes: ''
@@ -519,9 +602,13 @@ assets:
               }
             arguments: {}
             lib: core
+          - eventKey: OnStep
+            code: this.visible = answer_possible;
+            arguments: {}
+            lib: core
         extends:
           cgroup: ''
-        lastmod: 1754845555080
+        lastmod: 1754845896405
         uid: 564QfWNnK23Qg7
         behaviors: []
         extendTypes: ''
@@ -541,13 +628,11 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754845101301
+        lastmod: 1754845921379
         uid: d62dbn7mDC4nNh
         behaviors: []
         extendTypes: ''
-        defaultText: >-
-          This is a test Text This is a test Text This is a test Text This is a
-          test Text 
+        defaultText: ''
         textStyle: RmH352m331CKcT
       - type: template
         baseClass: Text
@@ -565,13 +650,11 @@ assets:
             arguments: {}
         extends:
           cgroup: ''
-        lastmod: 1754845098285
+        lastmod: 1754845920052
         uid: CWLpKWNc79NnKW
         behaviors: []
         extendTypes: ''
-        defaultText: >-
-          This is a test Text This is a test Text This is a test Text This is a
-          test Text 
+        defaultText: ''
         textStyle: RmH352m331CKcT
   - type: template
     baseClass: TextBox
@@ -653,7 +736,7 @@ assets:
         bindings: {}
     tiles: []
     extends: {}
-    lastmod: 1754835424428
+    lastmod: 1754848815876
     events: []
     behaviors: []
     extendTypes: ''
