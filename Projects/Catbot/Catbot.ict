@@ -65,6 +65,7 @@ scripts:
 
         } catch (error) {
           // Log the error and re-throw it for the calling code to handle
+          rooms.current.error_message.visible = true;
           console.error("Failed to query Gemini:", error);
           throw error;
         }
@@ -406,6 +407,62 @@ assets:
         padding: 1
         isBlank: false
         source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\thoughtBubble.png'
+      - lastmod: 1754825362649
+        type: texture
+        name: error_button
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 265
+        imgHeight: 165
+        width: 265
+        height: 165
+        offx: 0
+        offy: 0
+        origname: iLjRzm8zctL8MtW.png
+        shape: rect
+        left: 0
+        right: 265
+        top: 0
+        bottom: 165
+        uid: LjRzm8zctL8MtW
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\error_button.png'
+      - lastmod: 1754825362653
+        type: texture
+        name: error_button_light
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 265
+        imgHeight: 165
+        width: 265
+        height: 165
+        offx: 0
+        offy: 0
+        origname: iqtBzQ83MBKMGHw.png
+        shape: rect
+        left: 0
+        right: 265
+        top: 0
+        bottom: 165
+        uid: qtBzQ83MBKMGHw
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\Catbot\error_button_light.png'
   - type: folder
     uid: B2zmjCd44LgJbB
     colorClass: act
@@ -433,6 +490,26 @@ assets:
           color2: '#ffffff'
           gradtype: 1
         lastmod: 1754741246867
+      - type: style
+        name: errorMessageStyle
+        uid: 4JWk9tfH96ntGG
+        typeface: -1
+        font:
+          family: sans-serif
+          halign: left
+          italic: false
+          size: 16
+          weight: '400'
+          wrap: true
+          wrapPosition: 257
+          lineHeight: 18.68
+        fill:
+          type: 0
+          color: '#ffffff'
+          color1: '#cccccc'
+          color2: '#ffffff'
+          gradtype: 1
+        lastmod: 1754825467723
   - type: folder
     uid: K2Gd8mDJLB4hDf
     colorClass: text
@@ -456,7 +533,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754824408907
+        lastmod: 1754824685946
         uid: rcHPd26D783dp1
         behaviors: []
         extendTypes: ''
@@ -748,9 +825,21 @@ assets:
             exts: {}
             customProperties: {}
             bindings: {}
+          - x: 64
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            rotation: 0
+            uid: 7dnPgnhW9q5nhr
+            exts: {}
+            customProperties: {}
+            bindings: {}
         tiles: []
         extends: {}
-        lastmod: 1754824156897
+        lastmod: 1754824728801
         events:
           - eventKey: OnRoomStart
             code: >-
@@ -813,7 +902,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754824153611
+        lastmod: 1754824714650
         uid: zzJ9R4D8BFrTPM
         behaviors: []
         extendTypes: ''
@@ -894,49 +983,50 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754755026145
+        lastmod: 1754824756570
         uid: 2wcpK21pLcPJ5T
         behaviors: []
         extendTypes: ''
-  - type: template
-    baseClass: Button
-    name: errorMessage
-    depth: 0
-    texture: LbwC7L3cCmptWN
-    playAnimationOnStart: false
-    loopAnimation: true
-    animationFPS: 30
-    visible: false
-    events:
-      - eventKey: OnCreate
-        code: |-
-          //this.visible = false;
-          //let rooms.current.error_message = this;
-        arguments: {}
-        lib: core
-      - eventKey: OnPointerClick
-        code: |-
-          //rooms.switch('StartMenu');
-          //this.visible = false;
-        arguments: {}
-        lib: core
-    extends:
-      cgroup: ''
-    lastmod: 1754824520146
-    uid: 7dnPgnhW9q5nhr
-    behaviors: []
-    extendTypes: ''
-    defaultText: There was a problem. Please go back and check your API Key!
-    textStyle: -1
-    nineSliceSettings:
-      top: 16
-      left: 16
-      bottom: 16
-      right: 16
-      autoUpdate: false
-    hoverTexture: -1
-    pressedTexture: -1
-    disabledTexture: -1
+      - type: template
+        baseClass: Button
+        name: errorMessage
+        depth: 0
+        texture: LjRzm8zctL8MtW
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: false
+        events:
+          - eventKey: OnCreate
+            code: |+
+              this.visible = false;
+              rooms.current.error_message = this;
+
+            arguments: {}
+            lib: core
+          - eventKey: OnPointerClick
+            code: |
+              this.visible = false;
+              rooms.switch('StartMenu');
+            arguments: {}
+            lib: core
+        extends:
+          cgroup: ''
+        lastmod: 1754825377370
+        uid: 7dnPgnhW9q5nhr
+        behaviors: []
+        extendTypes: ''
+        defaultText: There was a problem. Please go back and check your API Key!
+        textStyle: 4JWk9tfH96ntGG
+        nineSliceSettings:
+          top: 16
+          left: 16
+          bottom: 16
+          right: 16
+          autoUpdate: false
+        hoverTexture: qtBzQ83MBKMGHw
+        pressedTexture: -1
+        disabledTexture: -1
 globalVars: []
 settings:
   authoring:
