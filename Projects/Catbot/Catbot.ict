@@ -1,7 +1,11 @@
 ctjsVersion: 5.2.1
 backups: 3
 language: typescript
-notes: /* empty */
+notes: >-
+  /* empty */
+
+
+  https://generativelanguage.googleapis.com/v1beta/models/gemma-3n-e4b-it:generateContent?key=${apiKey}
 libs:
   place:
     gridX: 1024
@@ -1170,6 +1174,11 @@ assets:
               rooms.current.error_message = this;
 
               console.log(this.scale);
+
+              let i = 0;
+
+              this.scale.x = 1.1;
+              this.scale.y = 1.1;
             arguments: {}
             lib: core
           - eventKey: OnPointerClick
@@ -1179,22 +1188,14 @@ assets:
             arguments: {}
             lib: core
           - eventKey: OnStep
-            code: |+
-              for(let i = 0; i < 10; i++){
-                  this.scale[0] += 1;
-                  this.scale[1] += 1;
-              }
-
-              for(let i = 0; i < 10; i++){
-                  this.scale[0] -= 1;
-                  this.scale[1] -= 1;
-              }
-
+            code: |
+              this.i += 0.01;
+              //this.scale._x = 1 + Math.sin(this.i);
             arguments: {}
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754829668781
+        lastmod: 1754830378909
         uid: 7dnPgnhW9q5nhr
         behaviors: []
         extendTypes: ''
