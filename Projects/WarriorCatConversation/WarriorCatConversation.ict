@@ -14,6 +14,51 @@ startroom: jknj4M3kMGqJpG
 contentTypes: []
 actions: []
 scripts:
+  - name: Answer functions
+    code: >-
+      let system_prompt = `You are a Chatbot to chat with People. You only talk
+      in 1 or 2 short sentences. Introduce your self!`;
+
+
+      let chat_history = []
+
+
+
+      function writeBotAnswer(answer){
+         // -- update Chat Verlauf: -- 
+          chat_history[chat_history.length - 1].bot = answer;
+          
+          rooms.current.output_text.text = answer;
+
+          console.log(chat_history);
+
+          promptAnswerOptions(chat_history);
+      }
+
+
+
+
+      function buildBotPrompt(chatVerlauf, userInput) {
+         var prompt = system_prompt + "Please continue the following conversation: \n\n";
+         for (const entry of chatVerlauf) {
+            prompt += "USER: " + entry.user + "\n";
+            prompt += "BOT: " + entry.bot + "\n";
+         }
+         prompt += "USER: " + userInput + "\n";
+         
+         prompt += "Now write the Chatbot answer and continue the conversation:\n";
+         return prompt;
+      }
+
+
+      function promptBot(chatVerlauf, userInput) {
+          var nextPrompt = buildBotPrompt(chatVerlauf, userInput)
+          var result = queryGemini(nextPrompt, localStorage.GEMINI_API_KEY).then(writeBotAnswer);
+          var newEntry = {}
+          newEntry.user = userInput
+          newEntry.bot = result
+          chatVerlauf.push(newEntry)
+      }
   - name: queryGemini Function
     code: |+
       /**
@@ -93,81 +138,46 @@ scripts:
       */
 
 
-  - name: Answer functions
-    code: >-
-      let system_prompt = `You are a Chatbot to chat with People. You only talk
-      in 1 or 2 short sentences.`;
-
-
-      let chat_history = []
-
-
-
-      function writeBotAnswer(answer){
-         // -- update Chat Verlauf: -- 
-          chat_history[chat_history.length - 1].bot = answer;
-          
-          rooms.current.output_text.text = answer;
-
-          console.log(chat_history);
-
-          promptAnswerOption(chat_history);
-      }
-
-
-
-
-      function buildBotPrompt(chatVerlauf, userInput) {
-         var prompt = system_prompt + "Please continue the following conversation: \n\n";
-         for (const entry of chatVerlauf) {
-            prompt += "USER: " + entry.user + "\n";
-            prompt += "BOT: " + entry.bot + "\n";
-         }
-         prompt += "USER: " + userInput + "\n";
-         
-         prompt += "Now write the Chatbot answer and continue the conversation:\n";
-         return prompt;
-      }
-
-
-      function promptBot(chatVerlauf, userInput) {
-          var nextPrompt = buildBotPrompt(chatVerlauf, userInput)
-          var result = queryGemini(nextPrompt, localStorage.GEMINI_API_KEY).then(writeBotAnswer);
-          var newEntry = {}
-          newEntry.user = userInput
-          newEntry.bot = result
-          chatVerlauf.push(newEntry)
-      }
   - name: Option generating functions
-    code: |-
+    code: >-
       /* Use scripts to define frequent functions and import small libraries */
 
-      function writeAnswerOption(answer){
+
+      function writeAnswerOptions(answer){
          // -- update Chat Verlauf: -- 
-          chat_history[chat_history.length - 1].bot = answer;
-          rooms.current.answer1_text.text = answer;
+         answer = answer.replace(/```/g, "").replace(/json/g, "");
+         answer = JSON.parse(answer);
+         rooms.current.answer1_text.text = answer.friendly_option;
+         rooms.current.answer2_text.text = answer.rude_option;
+         console.log(chat_history);
 
-          console.log(chat_history);
-
-
+         console.log(answer);
       }
 
 
+      let build_answer_prompt = 'Please create two answers to the last part of
+      the conversation and fill in structured json in this format Produce JSON
+      matching exactly this specification: `{"friendly_option": string",
+      "rude_option": string}`. IMPORTANT: NOT like this: ``` json {...}```'
 
-      function buildAnswerOptionPrompt(chatVerlauf) {
+
+
+      function buildAnswerOptionsPrompt(chatVerlauf) {
          var prompt = system_prompt + "Please generate a possible short answers for the last question of the following conversation: \n\n";
          for (const entry of chatVerlauf) {
             prompt += "USER: " + entry.user + "\n";
             prompt += "BOT: " + entry.bot + "\n";
          }
          
-         prompt += "Now write one possible answer out of one Sentence:\n";
+         prompt += build_answer_prompt + '\n';
          return prompt;
       }
 
-      function promptAnswerOption(chatVerlauf) {
-          var nextPrompt = buildAnswerOptionPrompt(chatVerlauf)
-          var result = queryGemini(nextPrompt, localStorage.GEMINI_API_KEY).then(writeAnswerOption);
+
+
+      function promptAnswerOptions(chatVerlauf) {
+          var nextPrompt = buildAnswerOptionsPrompt(chatVerlauf)
+          var result = queryGemini(nextPrompt, localStorage.GEMINI_API_KEY).then(writeAnswerOptions);
       }
 assets:
   - type: folder
@@ -369,7 +379,7 @@ assets:
         bindings: {}
     tiles: []
     extends: {}
-    lastmod: 1754836235272
+    lastmod: 1754845202559
     events:
       - eventKey: OnRoomStart
         code: |-
@@ -403,7 +413,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754835677220
+        lastmod: 1754836327276
         uid: fB6cfg1j9crhWT
         behaviors: []
         extendTypes: ''
@@ -467,7 +477,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754834935314
+        lastmod: 1754845084527
         uid: fM4QTHhqh2DLMg
         behaviors: []
         extendTypes: ''
@@ -487,7 +497,7 @@ assets:
             arguments: {}
         extends:
           cgroup: ''
-        lastmod: 1754834516803
+        lastmod: 1754845178109
         uid: 564QfWNnK23Qg7
         behaviors: []
         extendTypes: ''
@@ -507,7 +517,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754836225660
+        lastmod: 1754845101301
         uid: d62dbn7mDC4nNh
         behaviors: []
         extendTypes: ''
@@ -527,11 +537,11 @@ assets:
         events:
           - eventKey: OnStep
             lib: core
-            code: this.move();
+            code: rooms.current.answer2_text = this;
             arguments: {}
         extends:
           cgroup: ''
-        lastmod: 1754834340387
+        lastmod: 1754845098285
         uid: CWLpKWNc79NnKW
         behaviors: []
         extendTypes: ''
