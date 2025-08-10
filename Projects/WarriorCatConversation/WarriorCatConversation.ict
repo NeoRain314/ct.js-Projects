@@ -13,8 +13,494 @@ libs:
 startroom: -1
 contentTypes: []
 actions: []
-scripts: []
-assets: []
+scripts:
+  - name: queryGemini Function
+    code: |+
+      /**
+       * Queries the Google Gemini API with a given prompt.
+       *
+       * @param {string} prompt The text prompt to send to the model.
+       * @param {string} apiKey Your Google AI Studio API key.
+       * @returns {Promise<string>} A promise that resolves to the model's text response.
+       * @throws {Error} Throws an error if the API request fails.
+       */
+      async function queryGemini(prompt, apiKey) {
+        // The API endpoint for the gemini-1.5-flash-latest model
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemma-3n-e4b-it:generateContent?key=${apiKey}`;
+
+        // The request payload, containing the user's prompt
+        const requestBody = {
+          contents: [{
+            parts: [{ text: prompt }]
+          }]
+        };
+
+        try {
+          // Make the API call using the fetch function
+          const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody),
+          });
+
+          // Check if the request was successful
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(`API Error: ${response.status} - ${errorData.error.message}`);
+          }
+
+          // Parse the JSON response
+          const data = await response.json();
+
+          // Extract and return the model's text response
+          // Added safety checks for the response structure
+          const responseText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (responseText) {
+            return responseText;
+          } else {
+            throw new Error("Invalid response structure from API.");
+          }
+
+        } catch (error) {
+          // Log the error and re-throw it for the calling code to handle
+          console.error("Failed to query Gemini:", error);
+          throw error;
+        }
+      }
+
+      // --- Example Usage ---
+      // This is how you would call the function.
+      // Replace 'YOUR_API_KEY' with your actual key.
+
+      /*
+      async function main() {
+        const myApiKey = 'YOUR_API_KEY';
+        const myPrompt = 'Write a short poem about coding.';
+
+        try {
+          console.log("Sending prompt...");
+          const result = await queryGemini(myPrompt, myApiKey);
+          console.log("--- Gemini's Response ---");
+          console.log(result);
+        } catch (e) {
+          console.log("An error occurred during the API call.");
+        }
+      }
+
+      main();
+      */
+
+
+  - name: prompt functions
+    code: >-
+      let system_prompt = `You are a Chatbot to chat with People. You only talk
+      in 1 or 2 short sentences.`;
+
+
+      let chat_history = []
+
+
+
+
+      function writeAnswer(answer){
+         // -- update Chat Verlauf: -- 
+          chat_history[chat_history.length - 1].bot = answer;
+          
+          rooms.current.output_text.text = answer;
+          //chat_history += "; " + "Catbot: " + answer;
+          console.log(chat_history);
+      }
+
+
+
+
+      function buildPrompt(chatVerlauf, userInput) {
+         var prompt = system_prompt + "Please continue the following conversation: \n\n";
+         for (const entry of chatVerlauf) {
+            prompt += "USER: " + entry.user + "\n";
+            prompt += "BOT: " + entry.bot + "\n";
+         }
+         prompt += "USER: " + userInput + "\n";
+         
+         prompt += "Now write the Catbot answer and continue the conversation:\n";
+         return prompt;
+      }
+
+
+      function promptBot(chatVerlauf, userInput) {
+          var nextPrompt = buildPrompt(chatVerlauf, userInput)
+          var result = queryGemini(nextPrompt, localStorage.GEMINI_API_KEY).then(writeAnswer);
+          var newEntry = {}
+          newEntry.user = userInput
+          newEntry.bot = result
+          chatVerlauf.push(newEntry)
+      }
+assets:
+  - type: folder
+    uid: QBfdbBfbjfN4mj
+    colorClass: act
+    icon: texture
+    name: Textures
+    lastmod: 1754832586836
+    entries:
+      - lastmod: 1754832804036
+        type: texture
+        name: Nightbreeze
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 32
+        imgHeight: 32
+        width: 32
+        height: 32
+        offx: 0
+        offy: 0
+        origname: i96LrbR1NcB2prc.png
+        shape: rect
+        left: -5
+        right: 27
+        top: -4
+        bottom: 32
+        uid: 96LrbR1NcB2prc
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\WarriorCatConversation\Nightbreeze.png'
+      - lastmod: 1754834248395
+        type: texture
+        name: TextBox
+        untill: 0
+        grid:
+          - 1
+          - 1
+        axis:
+          - 0
+          - 0
+        marginx: 0
+        marginy: 0
+        imgWidth: 128
+        imgHeight: 128
+        width: 128
+        height: 128
+        offx: 0
+        offy: 0
+        origname: irG8CFrTCD5z35M.png
+        shape: rect
+        left: -8
+        right: 83
+        top: -42
+        bottom: 75
+        uid: rG8CFrTCD5z35M
+        padding: 1
+        isBlank: false
+        source: 'C:\Users\Jasmin\ct.js\Assets\WarriorCatConversation\TextBox.png'
+  - type: folder
+    uid: 7b4FjQ7drnk22w
+    colorClass: act
+    icon: bitmap-font
+    name: Styles
+    lastmod: 1754832629565
+    entries:
+      - type: style
+        name: MainStyle
+        uid: RmH352m331CKcT
+        typeface: -1
+        font:
+          family: sans-serif
+          halign: left
+          italic: false
+          size: 10
+          weight: '400'
+          wrap: true
+          wrapPosition: 169
+          lineHeight: 11.25
+        fill:
+          type: '0'
+          color: '#000000'
+          color1: '#cccccc'
+          color2: '#ffffff'
+          gradtype: '2'
+        lastmod: 1754834379456
+  - type: room
+    oncreate: ''
+    onstep: ''
+    ondraw: ''
+    onleave: ''
+    gridX: 64
+    gridY: 64
+    diagonalGrid: false
+    disableGrid: false
+    simulate: true
+    width: 320
+    height: 180
+    restrictCamera: false
+    restrictMaxX: 1280
+    restrictMinX: 0
+    restrictMaxY: 720
+    restrictMinY: 0
+    isUi: false
+    name: ConversationRoom
+    backgroundColor: '#1F2B22'
+    follow: -1
+    backgrounds: []
+    copies:
+      - x: 184
+        'y': 32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 5
+          'y': 5
+        rotation: 0
+        uid: fB6cfg1j9crhWT
+        exts: {}
+        customProperties: {}
+        bindings: {}
+      - x: -8
+        'y': -16
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 2.5
+          'y': 2.5
+        rotation: 0
+        uid: LbPgLfHTM51G2r
+        exts: {}
+        customProperties: {}
+        bindings: {}
+      - x: -8
+        'y': -32
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 2.5
+          'y': 1
+        rotation: 0
+        uid: fM4QTHhqh2DLMg
+        exts: {}
+        customProperties: {}
+        bindings: {}
+      - x: -8
+        'y': 8
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 2.5
+          'y': 1
+        rotation: 0
+        uid: 564QfWNnK23Qg7
+        exts: {}
+        customProperties: {}
+        bindings: {}
+      - x: 16
+        'y': 14
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: d62dbn7mDC4nNh
+        exts: {}
+        customProperties: {}
+        bindings: {}
+      - x: 16
+        'y': 55
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CWLpKWNc79NnKW
+        exts: {}
+        customProperties: {}
+        bindings: {}
+      - x: 16
+        'y': 96
+        opacity: 1
+        tint: 16777215
+        scale:
+          x: 1
+          'y': 1
+        rotation: 0
+        uid: CrPqG9RDfGKdLN
+        exts: {}
+        customProperties: {}
+        bindings: {}
+    tiles: []
+    extends: {}
+    lastmod: 1754834738256
+    events: []
+    behaviors: []
+    extendTypes: ''
+    uid: rf51RTcQ1R6L8B
+  - type: folder
+    uid: GD3whkTJmr6FpM
+    colorClass: act
+    icon: template
+    name: Templates
+    lastmod: 1754833035916
+    entries:
+      - type: template
+        baseClass: AnimatedSprite
+        name: Cat
+        depth: 0
+        texture: 96LrbR1NcB2prc
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: true
+        events:
+          - eventKey: OnCreate
+            code: 'promptBot(chat_history, "Hello");'
+            arguments: {}
+            lib: core
+        extends:
+          cgroup: ''
+        lastmod: 1754835035699
+        uid: fB6cfg1j9crhWT
+        behaviors: []
+        extendTypes: ''
+      - type: template
+        baseClass: Text
+        name: Output_Text
+        depth: 0
+        texture: -1
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: true
+        events:
+          - eventKey: OnCreate
+            code: rooms.current.output_text = this;
+            arguments: {}
+            lib: core
+        extends:
+          cgroup: ''
+        lastmod: 1754834963899
+        uid: CrPqG9RDfGKdLN
+        behaviors: []
+        extendTypes: ''
+        defaultText: >-
+          This is a test Text This is a test Text This is a test Text This is a
+          test Text 
+        textStyle: RmH352m331CKcT
+      - type: template
+        baseClass: AnimatedSprite
+        name: Output_TextBox
+        depth: 0
+        texture: rG8CFrTCD5z35M
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: true
+        events:
+          - eventKey: OnCreate
+            code: rooms.current.output_textbox = this;
+            arguments: {}
+            lib: core
+        extends:
+          cgroup: ''
+        lastmod: 1754834923658
+        uid: LbPgLfHTM51G2r
+        behaviors: []
+        extendTypes: ''
+      - type: template
+        baseClass: AnimatedSprite
+        name: Answer1_TextBox
+        depth: 0
+        texture: rG8CFrTCD5z35M
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: true
+        events:
+          - eventKey: OnCreate
+            code: rooms.current.answer1_textbox = this;
+            arguments: {}
+            lib: core
+        extends:
+          cgroup: ''
+        lastmod: 1754834935314
+        uid: fM4QTHhqh2DLMg
+        behaviors: []
+        extendTypes: ''
+      - type: template
+        baseClass: AnimatedSprite
+        name: Answer2_TextBox
+        depth: 0
+        texture: rG8CFrTCD5z35M
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: true
+        events:
+          - eventKey: OnStep
+            lib: core
+            code: this.move();
+            arguments: {}
+        extends:
+          cgroup: ''
+        lastmod: 1754834516803
+        uid: 564QfWNnK23Qg7
+        behaviors: []
+        extendTypes: ''
+      - type: template
+        baseClass: Text
+        name: Output_Answer1
+        depth: 0
+        texture: -1
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: true
+        events:
+          - eventKey: OnStep
+            lib: core
+            code: this.move();
+            arguments: {}
+        extends:
+          cgroup: ''
+        lastmod: 1754834340387
+        uid: d62dbn7mDC4nNh
+        behaviors: []
+        extendTypes: ''
+        defaultText: >-
+          This is a test Text This is a test Text This is a test Text This is a
+          test Text 
+        textStyle: RmH352m331CKcT
+      - type: template
+        baseClass: Text
+        name: Output_Answer2
+        depth: 0
+        texture: -1
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: true
+        events:
+          - eventKey: OnStep
+            lib: core
+            code: this.move();
+            arguments: {}
+        extends:
+          cgroup: ''
+        lastmod: 1754834340387
+        uid: CWLpKWNc79NnKW
+        behaviors: []
+        extendTypes: ''
+        defaultText: >-
+          This is a test Text This is a test Text This is a test Text This is a
+          test Text 
+        textStyle: RmH352m331CKcT
 globalVars: []
 settings:
   authoring:
@@ -31,7 +517,7 @@ settings:
     usePixiLegacy: true
     transparent: false
     maxFPS: 60
-    pixelatedrender: false
+    pixelatedrender: true
     highDensity: true
     desktopMode: maximized
     hideCursor: false
@@ -68,3 +554,5 @@ settings:
     hideLoadingLogo: false
     alternativeLogo: false
     customLoadingText: ''
+  fps: 30
+palette: []
