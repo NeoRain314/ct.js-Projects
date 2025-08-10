@@ -15,7 +15,7 @@ contentTypes: []
 actions: []
 scripts:
   - name: main functions
-    code: |-
+    code: |+
       /**
        * Queries the Google Gemini API with a given prompt.
        *
@@ -93,38 +93,6 @@ scripts:
       */
 
 
-      function writeAnswer(answer){
-          //console.log(answer);
-          //console.log(rooms.current.inputTextBox)
-          rooms.current.outputText.text = answer;
-          chat_history += "; " + "Catbot: " + answer;
-          console.log(chat_history);
-          rooms.current.inputTextBox.visible = true;
-          rooms.current.speachBubble.tex = "speachBubble";
-      }
-
-
-
-      function buildPrompt(chatVerlauf, userInput) {
-         var prompt = "You are a helpful assistant: Please continue the following conversation: \n\n";
-         for (const entry of chatVerlauf) {
-            prompt += "USER: " + entry.user + "\n";
-            prompt += "BOT: " + entry.bot + "\n";
-         }
-         prompt += "USER: " + userInput + "\n";
-         
-         prompt += "Now write the BOT answer:\n";
-         return prompt;
-      }
-
-      function promptBot(chatVerlauf,userInput) {
-          var nextPrompt = buildPrompt(chatVerlauf, userInput)
-          var result = queryGemini(nextPrompt, localStorage.GEMINI_API_KEY).then(writeAnswer);
-          var newEntry = {}
-          newEntry.user = userInput
-          newEntry.bot = result
-          chatVerlauf.append(newEntry)
-      }
   - name: main vars
     code: >-
       let system_prompt = `You are an Chatbot for small conversations with a
@@ -133,7 +101,51 @@ scripts:
       expressions`;
 
 
-      let chat_history = "system Prompt: " + system_prompt;
+      //let chat_history = "system Prompt: " + system_prompt;
+
+
+      let chat_history = []
+
+
+
+
+      function writeAnswer(answer){
+         // -- update Chat Verlauf: -- 
+          chat_history[chat_history.length - 1].bot = answer;
+
+          //console.log(answer);
+          //console.log(rooms.current.inputTextBox)
+          rooms.current.outputText.text = answer;
+          //chat_history += "; " + "Catbot: " + answer;
+          console.log(chat_history);
+          rooms.current.inputTextBox.visible = true;
+          rooms.current.speachBubble.tex = "speachBubble";
+      }
+
+
+
+
+      function buildPrompt(chatVerlauf, userInput) {
+         var prompt = system_prompt + "Please continue the following conversation: \n\n";
+         for (const entry of chatVerlauf) {
+            prompt += "USER: " + entry.user + "\n";
+            prompt += "BOT: " + entry.bot + "\n";
+         }
+         prompt += "USER: " + userInput + "\n";
+         
+         prompt += "Now write the Catbot answer and continue the conversation:\n";
+         return prompt;
+      }
+
+
+      function promptBot(chatVerlauf, userInput) {
+          var nextPrompt = buildPrompt(chatVerlauf, userInput)
+          var result = queryGemini(nextPrompt, localStorage.GEMINI_API_KEY).then(writeAnswer);
+          var newEntry = {}
+          newEntry.user = userInput
+          newEntry.bot = result
+          chatVerlauf.push(newEntry)
+      }
 assets:
   - type: folder
     uid: b2Qwc7tWJKnfHB
@@ -444,7 +456,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754741254061
+        lastmod: 1754824408907
         uid: rcHPd26D783dp1
         behaviors: []
         extendTypes: ''
@@ -518,9 +530,35 @@ assets:
             exts: {}
             customProperties: {}
             bindings: {}
+          - x: 320
+            'y': 64
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            rotation: 0
+            uid: Wc5q7hhGcCCK3J
+            exts: {}
+            customProperties:
+              set_text: 'Your API Key:'
+            bindings: {}
+          - x: 320
+            'y': 192
+            opacity: 1
+            tint: 16777215
+            scale:
+              x: 1
+              'y': 1
+            rotation: 0
+            uid: Wc5q7hhGcCCK3J
+            exts: {}
+            customProperties:
+              set_text: 'Your username:'
+            bindings: {}
         tiles: []
         extends: {}
-        lastmod: 1754741284940
+        lastmod: 1754824287572
         events:
           - eventKey: OnRoomStart
             code: ''
@@ -593,7 +631,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754738531918
+        lastmod: 1754824203722
         uid: QnCfHdfpp5hDG4
         behaviors: []
         extendTypes: ''
@@ -610,36 +648,28 @@ assets:
         disabledTexture: -1
         fieldType: text
         maxTextLength: -2
-  - type: room
-    oncreate: ''
-    onstep: ''
-    ondraw: ''
-    onleave: ''
-    gridX: 64
-    gridY: 64
-    diagonalGrid: false
-    disableGrid: false
-    simulate: true
-    width: 1280
-    height: 720
-    restrictCamera: false
-    restrictMaxX: 1280
-    restrictMinX: 0
-    restrictMaxY: 720
-    restrictMinY: 0
-    isUi: false
-    name: CatBot
-    backgroundColor: '#000000'
-    follow: -1
-    backgrounds: []
-    copies: []
-    tiles: []
-    extends: {}
-    lastmod: 1754732969502
-    events: []
-    behaviors: []
-    extendTypes: ''
-    uid: qT294FKF11K6rR
+      - type: template
+        baseClass: Text
+        name: displayedText
+        depth: 0
+        texture: -1
+        playAnimationOnStart: false
+        loopAnimation: true
+        animationFPS: 30
+        visible: true
+        events:
+          - eventKey: OnCreate
+            code: this.text = this.set_text;
+            arguments: {}
+            lib: core
+        extends:
+          cgroup: ''
+        lastmod: 1754824252370
+        uid: Wc5q7hhGcCCK3J
+        behaviors: []
+        extendTypes: ''
+        defaultText: ''
+        textStyle: F9f5599b4PQwmH
   - type: folder
     uid: b16fJw9Gwb7JnK
     colorClass: text
@@ -720,15 +750,18 @@ assets:
             bindings: {}
         tiles: []
         extends: {}
-        lastmod: 1754755098465
+        lastmod: 1754824156897
         events:
           - eventKey: OnRoomStart
             code: >-
               console.log("Started CatBot");
 
 
-              queryGemini(system_prompt,
+              //queryGemini(system_prompt,
               localStorage.GEMINI_API_KEY).then(writeAnswer);
+
+
+              promptBot(chat_history, system_prompt); 
             arguments: {}
             lib: core
         behaviors: []
@@ -758,13 +791,14 @@ assets:
               //queryGemini(system_prompt + "; " + this.text,
               localStorage.GEMINI_API_KEY).then(writeAnswer);
 
-              chat_history += "; " + `${localStorage.USER_NAME}: ` + this.text;
+              //chat_history += "; " + `${localStorage.USER_NAME}: ` +
+              this.text;
 
 
               //queryGemini(chat_history,
               localStorage.GEMINI_API_KEY).then(writeAnswer);
 
-              promptBot(/*chatverlauf, //User Input */);
+              promptBot(chat_history, this.text); 
 
               this.text = "";
 
@@ -779,7 +813,7 @@ assets:
             lib: core
         extends:
           cgroup: ''
-        lastmod: 1754755699931
+        lastmod: 1754824153611
         uid: zzJ9R4D8BFrTPM
         behaviors: []
         extendTypes: ''
@@ -864,6 +898,45 @@ assets:
         uid: 2wcpK21pLcPJ5T
         behaviors: []
         extendTypes: ''
+  - type: template
+    baseClass: Button
+    name: errorMessage
+    depth: 0
+    texture: LbwC7L3cCmptWN
+    playAnimationOnStart: false
+    loopAnimation: true
+    animationFPS: 30
+    visible: false
+    events:
+      - eventKey: OnCreate
+        code: |-
+          //this.visible = false;
+          //let rooms.current.error_message = this;
+        arguments: {}
+        lib: core
+      - eventKey: OnPointerClick
+        code: |-
+          //rooms.switch('StartMenu');
+          //this.visible = false;
+        arguments: {}
+        lib: core
+    extends:
+      cgroup: ''
+    lastmod: 1754824520146
+    uid: 7dnPgnhW9q5nhr
+    behaviors: []
+    extendTypes: ''
+    defaultText: There was a problem. Please go back and check your API Key!
+    textStyle: -1
+    nineSliceSettings:
+      top: 16
+      left: 16
+      bottom: 16
+      right: 16
+      autoUpdate: false
+    hoverTexture: -1
+    pressedTexture: -1
+    disabledTexture: -1
 globalVars: []
 settings:
   authoring:
