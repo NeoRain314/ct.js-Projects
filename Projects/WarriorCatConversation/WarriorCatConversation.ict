@@ -1,7 +1,15 @@
 ctjsVersion: 5.2.1
 backups: 3
 language: typescript
-notes: /* empty */
+notes: |-
+  /*
+
+  TODO
+
+  - suffix of kit, app, lead !!
+
+
+  */
 libs:
   place:
     gridX: 1024
@@ -459,7 +467,7 @@ assets:
         bindings: {}
     tiles: []
     extends: {}
-    lastmod: 1754849640313
+    lastmod: 1754852432134
     events:
       - eventKey: OnRoomStart
         code: |-
