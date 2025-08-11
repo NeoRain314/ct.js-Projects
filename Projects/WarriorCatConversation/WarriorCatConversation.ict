@@ -7,6 +7,9 @@ notes: |-
   TODO
 
   - suffix of kit, app, lead !!
+  - übersichtlicher machen
+  - system prompt anpassen!!
+  - besserer start in konversation !
 
 
   */
@@ -22,10 +25,10 @@ startroom: jknj4M3kMGqJpG
 contentTypes: []
 actions: []
 scripts:
-  - name: Answer functions
+  - name: AI Answer generating
     code: >-
-      let system_prompt = `You are a Chatbot to chat with People. You only talk
-      in 1 or 2 short sentences. Introduce your self!`;
+      let system_prompt = `You are an chatbot for conversations with people. You
+      answer in short phrases. Say hello!`;
 
 
       let chat_history = []
@@ -67,7 +70,7 @@ scripts:
           newEntry.bot = result
           chatVerlauf.push(newEntry)
       }
-  - name: queryGemini Function
+  - name: queryGemini
     code: |+
       /**
        * Queries the Google Gemini API with a given prompt.
@@ -146,7 +149,7 @@ scripts:
       */
 
 
-  - name: Option generating functions
+  - name: Option generating
     code: >-
       //* Use scripts to define frequent functions and import small libraries */
 
@@ -167,15 +170,16 @@ scripts:
       }
 
 
-      let build_answer_prompt = 'Please create two answers to the last part of
-      the conversation and fill in structured json in this format Produce JSON
-      matching exactly this specification: `{"friendly_option": string",
-      "rude_option": string}`. IMPORTANT: NOT like this: ``` json {...}```'
+      let build_answer_prompt = 'Please create two short answers out of one
+      sentence to the last part of the conversation and fill in structured json
+      in this format Produce JSON matching exactly this specification:
+      `{"friendly_option": string", "rude_option": string}`. IMPORTANT: NOT like
+      this: ``` json {...}```'
 
 
 
       function buildAnswerOptionsPrompt(chatVerlauf) {
-         var prompt = system_prompt + "Please generate a possible short answers for the last question of the following conversation: \n\n";
+         var prompt = /*system_prompt + */"Please generate two possible very short answers how the user could react for the last AI part of the following conversation: \n\n";
          for (const entry of chatVerlauf) {
             prompt += "USER: " + entry.user + "\n";
             prompt += "BOT: " + entry.bot + "\n";
@@ -191,9 +195,9 @@ scripts:
           var nextPrompt = buildAnswerOptionsPrompt(chatVerlauf)
           var result = queryGemini(nextPrompt, localStorage.GEMINI_API_KEY).then(writeAnswerOptions);
       }
-  - name: AI Cat Information
-    code: "let ai_cat = {\n    name:\"\",\n    rank:\"\",\n    age:\"\",\n    gender:\"\",\n    furcolor:\"\",\n    eyecolor:\"\",\n    personality:\"\",\n    backgroundhistory:\"\",\n    //family\n    clan:\"\",\n    relationshipToUser:\"\",\n    skills:\"\",\n    weaknesses:\"\",\n}\n\nfunction getRandomInt(max) {\n      return Math.floor(Math.random() * max);\n    }\n\n\nfunction generateNewCat(cat_object){\n    let prefix = warriorCatPrefixes[getRandomInt(warriorCatPrefixes.length)];\n    let suffix = warriorCatSuffixes[getRandomInt(warriorCatSuffixes.length)];\n    cat_object.name = prefix + suffix;\n    cat_object.rank = warriorCatRanks[getRandomInt(warriorCatRanks.length)];\n    cat_object.age = getRandomCatAge(cat_object.rank) + \" moons\";\n    cat_object.clan = warriorCatClans[getRandomInt(warriorCatClans.length)];\n    cat_object.relationshipToUser = \"neutral\";\n    console.log(cat_object)\n    let prompt = \"Please fill in empty strings the following javascript object for a warrior cats cat based on the already given information. Don't change the existing information. Return a structured JSON matching exactly the given specification:. \\n \" + JSON.stringify(ai_cat, null,\_4);;\n    console.log(prompt);\n    var result = queryGemini(prompt, localStorage.GEMINI_API_KEY).then(writeCatToConsole);\n}\n\nfunction getRandomCatAge(rank) {\n  switch (rank) {\n    case \"kit\":\n      return getRandomInt(0, 5); // 0–5 moons\n    case \"apprentice\":\n    case \"medicine apprentice\":\n      return getRandomInt(6, 12); // 6–12 moons\n    case \"warrior\":\n    case \"medicine cat\":\n      return getRandomInt(13, 60); // 13–60 moons\n    case \"queen\":\n      return getRandomInt(20, 70); // 20–70 moons, assuming mature adult\n    case \"deputy\":\n      return getRandomInt(30, 80); // 30–80 moons, experienced\n    case \"leader\":\n      return getRandomInt(40, 100); // 40–100 moons, seasoned\n    case \"elder\":\n      return getRandomInt(80, 120); // 80–120 moons, retired\n    default:\n      return getRandomInt(12, 60); // fallback for unknown rank\n  }\n}\n\nfunction writeCatToConsole(cat){\n    console.log(cat)\n}"
-  - name: Cat Generation
+  - name: Cat generation
+    code: "let ai_cat = {\n    name:\"\",\n    rank:\"\",\n    age:\"\",\n    gender:\"\",\n    furcolor:\"\",\n    eyecolor:\"\",\n    personality:\"\",\n    backgroundhistory:\"\",\n    //family\n    clan:\"\",\n    relationshipToUser:\"\",\n    skills:\"\",\n    weaknesses:\"\",\n}\n\nfunction getRandomInt(max) {\n      return Math.floor(Math.random() * max);\n    }\n\n\nfunction generateNewCat(cat_object){\n    let prefix = warriorCatPrefixes[getRandomInt(warriorCatPrefixes.length)];\n    let suffix = warriorCatSuffixes[getRandomInt(warriorCatSuffixes.length)];\n    cat_object.name = prefix + suffix;\n    cat_object.rank = warriorCatRanks[getRandomInt(warriorCatRanks.length)];\n    cat_object.age = getRandomCatAge(cat_object.rank) + \" moons\";\n    cat_object.clan = warriorCatClans[getRandomInt(warriorCatClans.length)];\n    cat_object.relationshipToUser = \"neutral\";\n    console.log(cat_object)\n    let prompt = \"Please fill in empty strings the following javascript object for a warrior cats cat based on the already given information. Don't change the existing information. Return a structured JSON matching exactly the given specification:. \\n \" + JSON.stringify(ai_cat, null,\_4);;\n    console.log(prompt);\n    var result = queryGemini(prompt, localStorage.GEMINI_API_KEY).then(writeCatToConsole);\n}\n\nfunction getRandomCatAge(rank) {\n  switch (rank) {\n    case \"kit\":\n      return getRandomInt(0, 5); // 0–5 moons\n    case \"apprentice\":\n    case \"medicine apprentice\":\n      return getRandomInt(6, 12); // 6–12 moons\n    case \"warrior\":\n    case \"medicine cat\":\n      return getRandomInt(13, 60); // 13–60 moons\n    case \"queen\":\n      return getRandomInt(20, 70); // 20–70 moons, assuming mature adult\n    case \"deputy\":\n      return getRandomInt(30, 80); // 30–80 moons, experienced\n    case \"leader\":\n      return getRandomInt(40, 100); // 40–100 moons, seasoned\n    case \"elder\":\n      return getRandomInt(80, 120); // 80–120 moons, retired\n    default:\n      return getRandomInt(12, 60); // fallback for unknown rank\n  }\n}\n\nfunction writeCatToConsole(cat){\n    cat = cat.replace(/```/g, \"\").replace(/json/g, \"\");\n    cat = JSON.parse(cat);\n    console.log(cat)\n    let cat_prompt = generateCatAIPrompt(cat);\n    console.log(cat_prompt);\n\n    //start conversation\n    promptBot(chat_history, cat_prompt);\n}\n\n\nfunction generateCatAIPrompt(cat_object){\n  let prompt = `You are ${cat_object.name}, a ${cat_object.rank} in ${cat_object.clan}. You are ${cat_object.age} old, with ${cat_object.furcolor} fur and ${cat_object.eyecolor} eyes. ${cat_object.personality} ${cat_object.backgroundhistory} You'r skills: ${cat_object.skills}. You'r weaknesses: ${cat_object.weaknesses} Speak as ${cat_object.name} would—use her voice, thoughts, and feelings. Respond to questions or situations as if you were her.`;\n  return prompt;\n}"
+  - name: Cat Info Lists
     code: >
       const warriorCatClans = ["Thunderclan", "Windclan", "Riverclan",
       "Shadowclan"];
@@ -467,13 +471,14 @@ assets:
         bindings: {}
     tiles: []
     extends: {}
-    lastmod: 1754852432134
+    lastmod: 1754906769599
     events:
       - eventKey: OnRoomStart
         code: |-
+
           generateNewCat(ai_cat);
 
-          promptBot(chat_history, system_prompt);
+          //promptBot(chat_history, system_prompt);
         arguments: {}
         lib: core
     behaviors: []
